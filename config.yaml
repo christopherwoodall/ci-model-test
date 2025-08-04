@@ -1,0 +1,16 @@
+evals:
+  claude-3-haiku:
+    model: openrouter/anthropic/claude-3-haiku
+    limit: 10
+    # logfile: results_claude3_haiku$(date +%Y%m%d).json
+    json: true
+
+    # OpenBench Evals: https://github.com/groq/openbench/tree/main/src/openbench/evals
+    evals:
+      # - gpqa_diamond
+      # - human_eval
+      # - mmlu
+      # - musr
+      # - openbookqa
+      - simple_qa
+      # - supergpqa
