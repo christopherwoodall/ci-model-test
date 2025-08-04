@@ -22,23 +22,41 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-    #   - name: Run model evaluation
-    #     env:
-    #       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-    #     run: |
-    #         bench eval mmlu \
-    #             --model openrouter/anthropic/claude-3-haiku \
-    #             --limit 10 \
-    #             --logfile results_claude3_haiku$(date +%Y%m%d).json \
-    #             --json
-
+      - name: Run model evaluation
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+            bench eval mmlu \
+                --model openrouter/anthropic/claude-3-haiku \
+                --limit 10 \
+                --logfile results_claude3_haiku$(date +%Y%m%d).json \
+                --json
     #         bench eval mmlu --model openrouter/qwen/qwen3-30b-a3b-instruct-2507 --limit 10 --logfile results_qwen3_30b_a3b_instruct_2507$(date +%Y%m%d).json --json
     #         bench eval mmlu --model openrouter/openai/gpt-4.1-mini --limit 10 --logfile results_gpt4_1_mini$(date +%Y%m%d).json --json
     #         bench eval mmlu --model openrouter/openai/gpt-4.1-nano --limit 10 --logfile results_gpt4_1_nano$(date +%Y%m%d).json --json
 
+      - name: Commit files
+        id: commit
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions"
+          git add --all
+          if [-z "$(git status --porcelain)"]; then
+            echo "::set-output name=push::false"
+          else
+            git commit -m "Update Logs" -a
+            echo "::set-output name=push::true"
+          fi
+
+      - name: Push changes
+        if: steps.commit.outputs.push == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
     #   - name: Generate report
     #     run: |
-    #       python src/report_generator.py results.json --output docs/index.html
+    #       python report_generator.py results.json --output docs/index.html
 
     #   - name: Deploy to GitHub Pages
     #     uses: peaceiris/actions-gh-pages@v3
