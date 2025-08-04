@@ -44,19 +44,19 @@ evaluation_runs:
     evals:
       - mmlu
 
-  # # Evaluation for GPT-4.1 Nano on musr
-  # gpt4-nano-musr:
-  #   model: openrouter/openai/gpt-4.1-nano
-  #   limit: 20
-  #   json: true
-  #   evals:
-  #     - musr
+  # Evaluation for GPT-4.1 Nano on musr
+  gpt4-nano-musr:
+    model: openrouter/openai/gpt-4.1-nano
+    limit: 20
+    json: true
+    evals:
+      - musr
 
-  # # Evaluation for Qwen 3 (30B) on simpleqa
-  # qwen3-30b-simpleqa:
-  #   model: openrouter/qwen/qwen3-30b-a3b-instruct-2507
-  #   limit: 15
-  #   json: true
-  #   evals:
-  #     - simpleqa
-  #     - openbookqa
+  # Evaluation for Qwen 3 (30B) on simpleqa
+  qwen3-30b-simpleqa:
+    model: openrouter/qwen/qwen3-30b-a3b-instruct-2507
+    limit: 15
+    json: true
+    evals:
+      - simpleqa
+      - openbookqa
