@@ -1,3 +1,3 @@
 anthropic
 openai
-openbench @ git+https://github.com/christopherwoodall/openbench.git@31e0d1e01f8a115a93dadcf8d7d17c779588a751
+openbench @ git+https://github.com/christopherwoodall/openbench.git@support-json-output
