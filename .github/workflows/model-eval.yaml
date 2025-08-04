@@ -33,13 +33,7 @@ jobs:
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: |
-            bench eval \
-              mmlu \
-              --model openrouter/anthropic/claude-3-haiku \
-              --limit 10 \
-              --logfile results_openrouter_anthropic_claude3_haiku_$(date +%Y%m%d_%H%M) \
-              --json
-            
+            python evaluation.py --config config.yaml            
             echo "push=true" >> $GITHUB_OUTPUT
 
       - name: Push changes
