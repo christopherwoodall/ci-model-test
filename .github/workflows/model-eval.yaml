@@ -1,0 +1,46 @@
+name: Model Evaluation CI/CD
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs daily at midnight UTC (1 PM PDT)
+  workflow_dispatch:      # Allows manual triggering
+
+jobs:
+  evaluate-models:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+    #   - name: Run model evaluation
+    #     env:
+    #       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+    #     run: |
+    #         bench eval mmlu \
+    #             --model openrouter/anthropic/claude-3-haiku \
+    #             --limit 10 \
+    #             --logfile results_claude3_haiku$(date +%Y%m%d).json
+
+    #         bench eval mmlu --model openrouter/qwen/qwen3-30b-a3b-instruct-2507 --limit 10 --logfile results_qwen3_30b_a3b_instruct_2507$(date +%Y%m%d).json
+    #         bench eval mmlu --model openrouter/openai/gpt-4.1-mini --limit 10 --logfile results_gpt4_1_mini$(date +%Y%m%d).json
+    #         bench eval mmlu --model openrouter/openai/gpt-4.1-nano --limit 10 --logfile results_gpt4_1_nano$(date +%Y%m%d).json
+
+    #   - name: Generate report
+    #     run: |
+    #       python src/report_generator.py results.json --output docs/index.html
+
+    #   - name: Deploy to GitHub Pages
+    #     uses: peaceiris/actions-gh-pages@v3
+    #     with:
+    #       github_token: ${{ secrets.GITHUB_TOKEN }}
+    #       publish_dir: ./docs
