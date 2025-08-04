@@ -8,6 +8,10 @@ on:
 jobs:
   evaluate-models:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -29,19 +33,29 @@ jobs:
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: |
-            bench eval mmlu \
-                --model openrouter/moonshotai/kimi-k2 \
-                --limit 10 \
-                --logfile results_moonshotai_kimi_k2_$(date +%Y%m%d).json \
-                --json
+            bench eval \
+              mmlu \
+              --model openrouter/moonshotai/kimi-k2 \
+              --limit 10 \
+              --logfile results_moonshotai_kimi_k2_$(date +%Y%m%d_%H%M) \
+              --json
             
             echo "::set-output name=push::true"
 
       - name: Push changes
-        if: steps.eval.outputs.push == 'true'
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Update Logs
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add logs/
+
+          if git diff --cached --exit-code; then
+            echo "No changes to commit. Exiting."
+          else
+            git commit -m "Automated: Add new model evaluation results"
+            
+            git push
+          fi
 
     #   - name: Generate report
     #     run: |
