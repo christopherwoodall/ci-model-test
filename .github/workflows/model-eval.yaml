@@ -46,6 +46,8 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
+          git pull
+          
           if git status --porcelain | grep -q '\.json$'; then
             git add *.json
             git commit -m "Automated: Add model evaluation results"
