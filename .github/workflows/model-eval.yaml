@@ -38,6 +38,10 @@ jobs:
             python evaluation.py --config config.yaml            
             echo "push=true" >> $GITHUB_OUTPUT
 
+      - name: Generate report
+        run: |
+          python report_generator.py
+
       - name: Push changes
         if: steps.eval.outputs.push == 'true'
         run: |
@@ -52,12 +56,8 @@ jobs:
             echo "No new files to commit."
           fi
 
-    #   - name: Generate report
-    #     run: |
-    #       python report_generator.py results.json --output docs/index.html
-
-    #   - name: Deploy to GitHub Pages
-    #     uses: peaceiris/actions-gh-pages@v3
-    #     with:
-    #       github_token: ${{ secrets.GITHUB_TOKEN }}
-    #       publish_dir: ./docs
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
