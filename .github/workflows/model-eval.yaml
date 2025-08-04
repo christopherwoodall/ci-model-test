@@ -35,9 +35,9 @@ jobs:
         run: |
             bench eval \
               mmlu \
-              --model openrouter/moonshotai/kimi-k2 \
+              --model openrouter/anthropic/claude-3-haiku \
               --limit 10 \
-              --logfile results_moonshotai_kimi_k2_$(date +%Y%m%d_%H%M) \
+              --logfile results_openrouter_anthropic_claude3_haiku_$(date +%Y%m%d_%H%M) \
               --json
             
             echo "push=true" >> $GITHUB_OUTPUT
