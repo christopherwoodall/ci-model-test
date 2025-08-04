@@ -40,9 +40,10 @@ jobs:
               --logfile results_moonshotai_kimi_k2_$(date +%Y%m%d_%H%M) \
               --json
             
-            echo "::set-output name=push::true"
+            echo "push=true" >> $GITHUB_OUTPUT
 
       - name: Push changes
+        if: steps.eval.outputs.push == 'true'
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
