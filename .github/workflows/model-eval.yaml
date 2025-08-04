@@ -44,14 +44,12 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add logs/
-
-          if git diff --cached --exit-code; then
-            echo "No changes to commit. Exiting."
-          else
-            git commit -m "Automated: Add new model evaluation results"
-            
+          if git status --porcelain | grep -q '\.json$'; then
+            git add *.json
+            git commit -m "Automated: Add model evaluation results"
             git push
+          else
+            echo "No new files to commit."
           fi
 
     #   - name: Generate report
