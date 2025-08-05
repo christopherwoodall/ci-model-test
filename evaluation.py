@@ -73,12 +73,8 @@ def run_evaluation(model_name, eval_name, limit, json_output):
             check=True,
             capture_output=True,
             text=True,
-            env=env,
+            env=env, # env=os.environ
         )
-
-        # result = subprocess.run(
-        #     command, check=True, capture_output=True, text=True, env=os.environ
-        # )
 
         if result.stdout:
             print("STDOUT:\n", result.stdout)
