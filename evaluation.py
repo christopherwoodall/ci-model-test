@@ -62,7 +62,11 @@ def run_evaluation(model_name, eval_name, limit, json_output):
         env = os.environ.copy()
         env["OPENROUTER_API_KEY"] = os.getenv("OPENROUTER_API_KEY", "")
         result = subprocess.run(
-            command, check=True, capture_output=True, text=True, env=env
+            command,
+            check=True,
+            capture_output=True,
+            text=True,
+            env=env
         )
 
         # result = subprocess.run(
