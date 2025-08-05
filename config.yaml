@@ -35,21 +35,21 @@ evaluation_runs:
 #       # - hmmt_feb_2024
 #       # - hmmt_feb_2025
 
-  # Evaluation for GPT-4.1 Mini on MMLU
-  gpt4-mini-mmlu:
-    model: openrouter/openai/gpt-4.1-mini
-    limit: 10 # Increased limit for a more comprehensive MMLU evaluation
-    json: true
-    evals:
-      - mmlu
-
-  # # Evaluation for GPT-4.1 Nano on musr
-  # gpt4-nano-musr:
-  #   model: openrouter/openai/gpt-4.1-nano
-  #   limit: 20
+  # # Evaluation for GPT-4.1 Mini on MMLU
+  # gpt4-mini-mmlu:
+  #   model: openrouter/openai/gpt-4.1-mini
+  #   limit: 10 # Increased limit for a more comprehensive MMLU evaluation
   #   json: true
   #   evals:
-  #     - musr
+  #     - mmlu
+
+  # Evaluation for GPT-4.1 Nano on musr
+  gpt4-nano-musr:
+    model: openrouter/openai/gpt-4.1-nano
+    limit: 20
+    json: true
+    evals:
+      - musr
 
   # # Evaluation for Qwen 3 (30B) on simpleqa
   # qwen3-30b-simpleqa:
