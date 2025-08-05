@@ -59,7 +59,7 @@ jobs:
           git pull
 
           if git status --porcelain | grep -q '\.json$'; then
-            git add *.json
+            git add .
             git commit -m "Automated: Add model evaluation results"
             git push
           else
