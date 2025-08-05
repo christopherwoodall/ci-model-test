@@ -4,36 +4,36 @@
 # Each entry represents a distinct evaluation task for a particular model.
 # The key for each entry (e.g., 'gpt4-mini-simple-qa') is a unique identifier for that run.
 evaluation_runs:
-#   # Example: Evaluation for Claude 3 Haiku on simple_qa
-#   claude-3-haiku-simple-qa:
-#     # model: Specifies the full model identifier to be used for this evaluation.
-#     model: openrouter/anthropic/claude-3-haiku
-#     # limit: The maximum number of evaluation examples to run. Useful for quick tests.
-#     limit: 10
-#     # json: If true, the evaluation results will be output in JSON format.
-#     json: true
-#     # evals: A list of OpenBench evaluation names to run.
-#     # Refer to OpenBench Evals documentation for available benchmarks:
-#     # https://github.com/groq/openbench/tree/main/src/openbench/evals
-#     evals:
-#       # - mmlu
-#       # - gpqa_diamond
-#       # - humaneval
-#       # - openbookqa
-#       # - musr
-#       # - supergpqa
-#       - simpleqa
-#       # - aime_2023_I
-#       # - aime_2023_II
-#       # - aime_2024
-#       # - aime_2024_I
-#       # - aime_2024_II
-#       # - aime_2025
-#       # - aime_2025_II
-#       # - brumo_2025
-#       # - hmmt_feb_2023
-#       # - hmmt_feb_2024
-#       # - hmmt_feb_2025
+  # Example: Evaluation for Claude 3 Haiku on simple_qa
+  claude-3-haiku-simple-qa:
+    # model: Specifies the full model identifier to be used for this evaluation.
+    model: openrouter/anthropic/claude-3-haiku
+    # limit: The maximum number of evaluation examples to run. Useful for quick tests.
+    limit: 10
+    # json: If true, the evaluation results will be output in JSON format.
+    json: true
+    # evals: A list of OpenBench evaluation names to run.
+    # Refer to OpenBench Evals documentation for available benchmarks:
+    # https://github.com/groq/openbench/tree/main/src/openbench/evals
+    evals:
+      # - mmlu
+      # - gpqa_diamond
+      # - humaneval
+      # - openbookqa
+      # - musr
+      # - supergpqa
+      - simpleqa
+      # - aime_2023_I
+      # - aime_2023_II
+      # - aime_2024
+      # - aime_2024_I
+      # - aime_2024_II
+      # - aime_2025
+      # - aime_2025_II
+      # - brumo_2025
+      # - hmmt_feb_2023
+      # - hmmt_feb_2024
+      # - hmmt_feb_2025
 
   # # Evaluation for GPT-4.1 Mini on MMLU
   # gpt4-mini-mmlu:
@@ -43,13 +43,13 @@ evaluation_runs:
   #   evals:
   #     - mmlu
 
-  # Evaluation for GPT-4.1 Nano on musr
-  gpt4-nano-musr:
-    model: openrouter/openai/gpt-4.1-nano
-    limit: 20
-    json: true
-    evals:
-      - musr
+  # # Evaluation for GPT-4.1 Nano on musr
+  # gpt4-nano-musr:
+  #   model: openrouter/openai/gpt-4.1-nano
+  #   limit: 20
+  #   json: true
+  #   evals:
+  #     - musr
 
   # # Evaluation for Qwen 3 (30B) on simpleqa
   # qwen3-30b-simpleqa:
