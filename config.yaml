@@ -16,11 +16,11 @@ evaluation_runs:
     # Refer to OpenBench Evals documentation for available benchmarks:
     # https://github.com/groq/openbench/tree/main/src/openbench/evals
     evals:
-      - humaneval
       - mmlu
       - musr
       - openbookqa
       - simpleqa
+      # - humaneval
       # - gpqa_diamond
       # - supergpqa
       # - aime_2023_I
@@ -41,7 +41,6 @@ evaluation_runs:
     limit: 10
     json: true
     evals:
-      - humaneval
       - mmlu
       - musr
       - openbookqa
@@ -53,7 +52,6 @@ evaluation_runs:
     limit: 10
     json: true
     evals:
-      - humaneval
       - mmlu
       - musr
       - openbookqa
@@ -65,7 +63,6 @@ evaluation_runs:
     limit: 10
     json: true
     evals:
-      - humaneval
       - mmlu
       - musr
       - openbookqa
