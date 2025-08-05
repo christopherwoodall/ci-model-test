@@ -22,7 +22,7 @@ evaluation_runs:
       # - openbookqa
       # - musr
       # - supergpqa
-      # - simpleqa       # Requires OPENAI_API_KEY
+      - simpleqa       # Requires OPENAI_API_KEY
       # - aime_2023_I
       # - aime_2023_II
       # - aime_2024
