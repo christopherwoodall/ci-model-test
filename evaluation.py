@@ -61,9 +61,10 @@ def run_evaluation(model_name, eval_name, limit, json_output):
         # `env=os.environ` passes the current environment variables, including OPENROUTER_API_KEY.
         env = os.environ.copy()
         env["OPENROUTER_API_KEY"] = os.getenv("OPENROUTER_API_KEY", "")
-        env["ROUTER_BASE_URL"] = os.getenv("OPENAI_API_BASE_URL", "https://openrouter.ai/api/v1")
-        env["OPENAI_API_KEY"] = env["OPENROUTER_API_KEY"]
-        env["OPENAI_BASE_URL"] = env["ROUTER_BASE_URL"]
+        env["OPENROUTER_BASE_URL"] = os.getenv("OPENAI_API_BASE_URL", "https://openrouter.ai/api/v1")
+        # env["OPENAI_API_KEY"] = env["OPENROUTER_API_KEY"]
+        # env["OPENAI_BASE_URL"] = env["OPENROUTER_BASE_URL"]
+        env["BENCH_MODEL_BASE_URL"] = env["OPENROUTER_BASE_URL"]
 
         result = subprocess.run(
             command,
