@@ -37,7 +37,6 @@ def run_evaluation(model_name, eval_name, limit, json_output):
         "eval", eval_name,
         "--model", model_name,
         "--limit", str(limit),
-        "--log-level", "debug"
     ]
 
     # Add JSON flag and logfile if required
