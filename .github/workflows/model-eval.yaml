@@ -28,6 +28,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      # - name: Patch dependencies
+      #   run: |
+      #     for pkg in inspect_ai openbench; do
+      #       pkg_path=$(python -c "import $pkg; print('/'.join($pkg.__file__.split('/')[:-1]))")
+      #       find "$pkg_path" -type f -name "*.py" \
+      #         -exec sed -i 's|https://api.openai.com/v1|https://openrouter.ai/api/v1|g' {} +
+      #     done
+
       - name: Run model evaluation
         id: eval
         env:
@@ -38,6 +46,7 @@ jobs:
             echo "push=true" >> $GITHUB_OUTPUT
 
       - name: Generate report
+        if: steps.eval.outputs.push == 'true'
         run: |
           python report_generator.py
 
@@ -58,6 +67,7 @@ jobs:
           fi
 
       - name: Deploy to GitHub Pages
+        if: steps.eval.outputs.push == 'true'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
