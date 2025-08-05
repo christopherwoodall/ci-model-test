@@ -59,9 +59,15 @@ def run_evaluation(model_name, eval_name, limit, json_output):
         # `capture_output=True` captures stdout and stderr.
         # `text=True` decodes stdout/stderr as text.
         # `env=os.environ` passes the current environment variables, including OPENROUTER_API_KEY.
+        env = os.environ.copy()
+        env["OPENROUTER_API_KEY"] = os.getenv("OPENROUTER_API_KEY", "")
         result = subprocess.run(
-            command, check=True, capture_output=True, text=True, env=os.environ
+            command, check=True, capture_output=True, text=True, env=env
         )
+
+        # result = subprocess.run(
+        #     command, check=True, capture_output=True, text=True, env=os.environ
+        # )
 
         if result.stdout:
             print("STDOUT:\n", result.stdout)
@@ -92,18 +98,6 @@ def main():
     """
     Main function to parse arguments and run evaluations based on config.
     """
-    import openai
-    try:
-        openai.api_key = os.environ["OPENROUTER_API_KEY"]
-        openai.api_base = "https://openrouter.ai/api/v1"
-        session = openai.OpenAI(
-            base_url="https://openrouter.ai/api/v1",
-            api_key=os.environ["OPENROUTER_API_KEY"],
-        )
-    except KeyError:
-        print("Error: OPENROUTER_API_KEY environment variable is not set.")
-    exit()
-
     parser = argparse.ArgumentParser(
         description="Run model evaluations based on a configuration file."
     )
