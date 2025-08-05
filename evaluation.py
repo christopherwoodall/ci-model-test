@@ -32,7 +32,13 @@ def run_evaluation(model_name, eval_name, limit, json_output):
     Constructs and executes the bench eval command.
     """
     # Construct the base command
-    command = ["bench", "eval", eval_name, "--model", model_name, "--limit", str(limit)]
+    command = [
+        "bench",
+        "eval", eval_name,
+        "--model", model_name,
+        "--limit", str(limit),
+        "--log-level", "debug"
+    ]
 
     # Add JSON flag and logfile if required
     if json_output:
