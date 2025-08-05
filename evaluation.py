@@ -92,6 +92,18 @@ def main():
     """
     Main function to parse arguments and run evaluations based on config.
     """
+    import openai
+    try:
+        openai.api_key = os.environ["OPENROUTER_API_KEY"]
+        openai.api_base = "https://openrouter.ai/api/v1"
+        session = openai.OpenAI(
+            base_url="https://openrouter.ai/api/v1",
+            api_key=os.environ["OPENROUTER_API_KEY"],
+        )
+    except KeyError:
+        print("Error: OPENROUTER_API_KEY environment variable is not set.")
+    exit()
+
     parser = argparse.ArgumentParser(
         description="Run model evaluations based on a configuration file."
     )
