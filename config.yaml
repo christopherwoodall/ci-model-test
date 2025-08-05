@@ -68,8 +68,8 @@ evaluation_runs:
       - openbookqa
       - simpleqa
 
-  openai-gpt-oss-150B:
-      model: openrouter/openai/gpt-oss-150b
+  openai-gpt-oss-120B:
+      model: openrouter/openai/gpt-oss-120b
       limit: 50
       json: true
       evals:
@@ -79,8 +79,8 @@ evaluation_runs:
         - simpleqa
         - humaneval
 
-  openai-gpt-oss-50B:
-      model: openrouter/openai/gpt-oss-50b
+  openai-gpt-oss-20B:
+      model: openrouter/openai/gpt-oss-20b
       limit: 50
       json: true
       evals:
