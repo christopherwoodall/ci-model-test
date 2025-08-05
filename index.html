@@ -1,0 +1,94 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Model Evaluation Report</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f9; color: #333; }
+            h1 { text-align: center; color: #444; }
+            table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+            th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+            th { background-color: #f2f2f2; }
+            tr:nth-child(even) { background-color: #f9f9f9; }
+            tr:hover { background-color: #f1f1f1; }
+            .container { max-width: 1200px; margin: auto; background: #fff; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Model Evaluation Report</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Timestamp</th>
+                        <th>Eval Name</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+    
+                    <tr>
+                        <td>openrouter/openai/gpt-4.1-mini</td>
+                        <td>2025-08-04T18:14:09-05:00</td>
+                        <td>mmlu</td>
+                        <td>0.9400</td>
+                    </tr>
+        
+                    <tr>
+                        <td>openrouter/openai/gpt-4.1-nano</td>
+                        <td>2025-08-04T23:30:24+00:00</td>
+                        <td>openbench/musr</td>
+                        <td>0.5000</td>
+                    </tr>
+        
+                    <tr>
+                        <td>openrouter/qwen/qwen3-30b-a3b-instruct-2507</td>
+                        <td>2025-08-04T23:30:37+00:00</td>
+                        <td>openbench/openbookqa</td>
+                        <td>0.8000</td>
+                    </tr>
+        
+                    <tr>
+                        <td>openrouter/openai/gpt-4.1-mini</td>
+                        <td>2025-08-04T23:22:08+00:00</td>
+                        <td>mmlu</td>
+                        <td>0.9400</td>
+                    </tr>
+        
+                    <tr>
+                        <td>openrouter/anthropic/claude-3-haiku</td>
+                        <td>2025-08-04T17:50:42-05:00</td>
+                        <td>mmlu</td>
+                        <td>0.4000</td>
+                    </tr>
+        
+                    <tr>
+                        <td>openrouter/anthropic/claude-3-haiku</td>
+                        <td>2025-08-04T18:03:41-05:00</td>
+                        <td>simpleqa</td>
+                        <td>0.2000</td>
+                    </tr>
+        
+                    <tr>
+                        <td>openrouter/anthropic/claude-3-haiku</td>
+                        <td>2025-08-04T18:06:37-05:00</td>
+                        <td>simpleqa</td>
+                        <td>0.2000</td>
+                    </tr>
+        
+                    <tr>
+                        <td>openrouter/openai/gpt-4.1-mini</td>
+                        <td>2025-08-04T23:29:38+00:00</td>
+                        <td>mmlu</td>
+                        <td>0.9400</td>
+                    </tr>
+        
+                </tbody>
+            </table>
+        </div>
+    </body>
+    </html>
+    
