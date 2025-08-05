@@ -1,9 +1,9 @@
 # config.yaml
 
-# # This section defines specific evaluation configurations.
-# # Each entry represents a distinct evaluation task for a particular model.
-# # The key for each entry (e.g., 'gpt4-mini-simple-qa') is a unique identifier for that run.
-# evaluation_runs:
+# This section defines specific evaluation configurations.
+# Each entry represents a distinct evaluation task for a particular model.
+# The key for each entry (e.g., 'gpt4-mini-simple-qa') is a unique identifier for that run.
+evaluation_runs:
 #   # Example: Evaluation for Claude 3 Haiku on simple_qa
 #   claude-3-haiku-simple-qa:
 #     # model: Specifies the full model identifier to be used for this evaluation.
@@ -34,7 +34,6 @@
 #       # - hmmt_feb_2023
 #       # - hmmt_feb_2024
 #       # - hmmt_feb_2025
-
 
   # Evaluation for GPT-4.1 Mini on MMLU
   gpt4-mini-mmlu:
