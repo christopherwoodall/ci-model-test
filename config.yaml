@@ -16,13 +16,13 @@ evaluation_runs:
     # Refer to OpenBench Evals documentation for available benchmarks:
     # https://github.com/groq/openbench/tree/main/src/openbench/evals
     evals:
+      - humaneval
       - mmlu
+      - musr
+      - openbookqa
+      - simpleqa
       # - gpqa_diamond
-      # - humaneval
-      # - openbookqa
-      # - musr
       # - supergpqa
-      - simpleqa       # Requires OPENAI_API_KEY
       # - aime_2023_I
       # - aime_2023_II
       # - aime_2024
@@ -35,26 +35,38 @@ evaluation_runs:
       # - hmmt_feb_2024
       # - hmmt_feb_2025
 
-  # Evaluation for GPT-4.1 Mini on MMLU
+  # Evaluation for GPT-4.1 Mini
   gpt4-mini-mmlu:
     model: openrouter/openai/gpt-4.1-mini
-    limit: 10 # Increased limit for a more comprehensive MMLU evaluation
+    limit: 10
     json: true
     evals:
+      - humaneval
       - mmlu
+      - musr
+      - openbookqa
+      - simpleqa
 
-  # Evaluation for GPT-4.1 Nano on musr
+  # Evaluation for GPT-4.1 Nano
   gpt4-nano-musr:
     model: openrouter/openai/gpt-4.1-nano
-    limit: 20
+    limit: 10
     json: true
     evals:
+      - humaneval
+      - mmlu
       - musr
+      - openbookqa
+      - simpleqa
 
   # Evaluation for Qwen 3 (30B)
   qwen3-30b-simpleqa:
     model: openrouter/qwen/qwen3-30b-a3b-instruct-2507
-    limit: 15
+    limit: 10
     json: true
     evals:
+      - humaneval
+      - mmlu
+      - musr
       - openbookqa
+      - simpleqa
