@@ -3,90 +3,100 @@ import json
 import glob
 from datetime import datetime
 
-def load_json_files(logs_path='logs'):
+
+def load_json_files(logs_path="logs"):
     """Load all JSON files from the logs directory."""
-    json_files = glob.glob(os.path.join(logs_path, '*.json'))
+    json_files = glob.glob(os.path.join(logs_path, "*.json"))
     report_data = []
-    
+
     for file_path in json_files:
-        with open(file_path, 'r') as f:
+        with open(file_path, "r") as f:
             try:
                 data = json.load(f)
                 report_data.append(data)
             except json.JSONDecodeError:
                 print(f"Warning: Could not decode JSON from {file_path}")
                 continue
-                
+
     return report_data
+
 
 def convert_to_database_format(report_data):
     """Convert the report data to a database-friendly format."""
     database_entries = []
-    
+
     for item in report_data:
-        model = item.get('eval', {}).get('model', 'N/A')
-        timestamp = item.get('eval', {}).get('created', 'N/A')
-        eval_name = item.get('eval', {}).get('task', 'N/A')
-        
+        model = item.get("eval", {}).get("model", "N/A")
+        timestamp = item.get("eval", {}).get("created", "N/A")
+        eval_name = item.get("eval", {}).get("task", "N/A")
+
         # Parse timestamp if it's not 'N/A'
-        if timestamp != 'N/A':
+        if timestamp != "N/A":
             try:
                 # Handle different timestamp formats
                 if isinstance(timestamp, str):
-                    parsed_timestamp = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
+                    parsed_timestamp = datetime.fromisoformat(
+                        timestamp.replace("Z", "+00:00")
+                    )
                 else:
                     parsed_timestamp = datetime.fromtimestamp(timestamp)
                 formatted_timestamp = parsed_timestamp.isoformat()
             except Exception:
                 formatted_timestamp = timestamp
         else:
-            formatted_timestamp = 'N/A'
-        
+            formatted_timestamp = "N/A"
+
         # Extract score and additional metrics
-        score_val = 'Error'
+        score_val = "Error"
         additional_metrics = {}
-        if item.get('status') != 'error':
+        if item.get("status") != "error":
             try:
                 # Primary accuracy score
-                score_val = item['results']['scores'][0]['metrics']['accuracy']['value']
-                
+                score_val = item["results"]["scores"][0]["metrics"]["accuracy"]["value"]
+
                 # Additional metrics
-                metrics = item['results']['scores'][0]['metrics']
+                metrics = item["results"]["scores"][0]["metrics"]
                 for metric_name, metric_data in metrics.items():
-                    if metric_name != 'accuracy':  # Skip the main accuracy metric
-                        additional_metrics[metric_name] = metric_data['value']
+                    if metric_name != "accuracy":  # Skip the main accuracy metric
+                        additional_metrics[metric_name] = metric_data["value"]
             except (KeyError, IndexError):
                 pass
-        
+
         # Model usage data
-        model_usage = item.get('stats', {}).get('model_usage', {})
+        model_usage = item.get("stats", {}).get("model_usage", {})
         total_input_tokens = 0
         total_output_tokens = 0
         total_tokens = 0
-        
+
         for model_key, usage_data in model_usage.items():
-            total_input_tokens += usage_data.get('input_tokens', 0)
-            total_output_tokens += usage_data.get('output_tokens', 0)
-            total_tokens += usage_data.get('total_tokens', 0)
-            
-        database_entries.append({
-            'model': model,
-            'timestamp': formatted_timestamp,
-            'eval_name': eval_name,
-            'score': score_val if isinstance(score_val, (int, float)) else score_val,
-            'additional_metrics': additional_metrics,
-            'total_input_tokens': total_input_tokens,
-            'total_output_tokens': total_output_tokens,
-            'total_tokens': total_tokens
-        })
-        
+            total_input_tokens += usage_data.get("input_tokens", 0)
+            total_output_tokens += usage_data.get("output_tokens", 0)
+            total_tokens += usage_data.get("total_tokens", 0)
+
+        database_entries.append(
+            {
+                "model": model,
+                "timestamp": formatted_timestamp,
+                "eval_name": eval_name,
+                "score": (
+                    score_val if isinstance(score_val, (int, float)) else score_val
+                ),
+                "additional_metrics": additional_metrics,
+                "total_input_tokens": total_input_tokens,
+                "total_output_tokens": total_output_tokens,
+                "total_tokens": total_tokens,
+            }
+        )
+
     return database_entries
 
-def save_to_json_file(data, output_path='docs/database.json'):
+
+def save_to_json_file(data, output_path="docs/database.json"):
     """Save the database entries to a JSON file."""
-    with open(output_path, 'w') as f:
+    with open(output_path, "w") as f:
         json.dump(data, f, indent=2)
     print(f"Database saved to {output_path}")
+
 
 def generate_html_page():
     """Generate an HTML page to display the data."""
@@ -359,10 +369,11 @@ def generate_html_page():
     </script>
 </body>
 </html>"""
-    
-    with open('docs/index.html', 'w') as f:
+
+    with open("docs/index.html", "w") as f:
         f.write(html_code)
     print("HTML page saved to docs/index.html")
+
 
 def generate_css():
     """Generate CSS for the HTML page."""
@@ -556,33 +567,35 @@ def generate_css():
     padding: 8px;
   }
 }"""
-    
-    with open('docs/ReportPage.css', 'w') as f:
+
+    with open("docs/ReportPage.css", "w") as f:
         f.write(css_code)
     print("CSS file saved to docs/ReportPage.css")
+
 
 def main():
     """Main function to orchestrate the build process."""
     # Load JSON files
     report_data = load_json_files()
-    
+
     if not report_data:
         print("No data found to generate a report.")
         return
-    
+
     # Convert to database format
     database_entries = convert_to_database_format(report_data)
-    
+
     # Save to JSON file (this will be our "database")
     save_to_json_file(database_entries)
-    
+
     # Generate HTML page
     generate_html_page()
-    
+
     # Generate CSS
     generate_css()
-    
+
     print("Build process completed successfully!")
+
 
 if __name__ == "__main__":
     main()
