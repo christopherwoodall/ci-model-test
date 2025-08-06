@@ -48,9 +48,9 @@ serve: build ## Serve the site locally
 
 
 .PHONY: build
-build: ## Build the database and React components
+build: ## Build the database, HTML page, and chart page
 -	python build_pages.py
-
+-	python build_chart.py
 
 .PHONY: clean
 clean: ## Clean generated files
