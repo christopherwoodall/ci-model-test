@@ -22,12 +22,15 @@ def prepare_chart_data(data):
     """Prepare data for the chart visualization."""
     if not data:
         return [], []
-
+    
     # Group data by model and eval_name for comparison
     model_scores = {}
     models = set()
     evals = set()
-
+    
+    print("Processing data entries...")
+    entry_count = 0
+    
     for item in data:
         model = item.get("model", "Unknown Model")
         eval_name = item.get("eval_name", "Unknown Eval")
@@ -35,8 +38,10 @@ def prepare_chart_data(data):
         
         # Skip error entries
         if score == "Error":
+            print(f"Skipping error entry for model {model}, eval {eval_name}")
             continue
             
+        entry_count += 1
         models.add(model)
         evals.add(eval_name)
         
@@ -47,7 +52,20 @@ def prepare_chart_data(data):
             model_scores[model][eval_name] = []
             
         model_scores[model][eval_name].append(score)
-
+    
+    print(f"Processed {entry_count} valid entries")
+    print(f"Found {len(models)} unique models and {len(evals)} unique evaluation tasks")
+    
+    # Show detailed breakdown
+    for model in model_scores:
+        for eval_name in model_scores[model]:
+            scores = model_scores[model][eval_name]
+            if len(scores) > 1:
+                avg_score = sum(scores) / len(scores)
+                print(f"Model {model} on {eval_name}: {len(scores)} tests, scores={scores}, avg={avg_score:.4f}")
+            elif len(scores) == 1:
+                print(f"Model {model} on {eval_name}: 1 test, score={scores[0]}")
+    
     # Prepare chart data
     chart_labels = sorted(list(models))
     eval_names = sorted(list(evals))
@@ -58,9 +76,12 @@ def prepare_chart_data(data):
         scores = []
         for model in chart_labels:
             if model in model_scores and eval_name in model_scores[model]:
+                model_scores_list = model_scores[model][eval_name]
                 # Average multiple scores for the same model/eval combination
-                avg_score = sum(model_scores[model][eval_name]) / len(model_scores[model][eval_name])
+                avg_score = sum(model_scores_list) / len(model_scores_list)
                 scores.append(round(avg_score, 4))
+                if len(model_scores_list) > 1:
+                    print(f"Averaging {len(model_scores_list)} scores for {model} on {eval_name}: {avg_score:.4f}")
             else:
                 scores.append(0)
         datasets.append({
@@ -68,9 +89,8 @@ def prepare_chart_data(data):
             "data": scores,
             "borderWidth": 1
         })
-
+    
     return chart_labels, datasets
-
 
 def generate_chart_html(labels, datasets, output_path="docs/chart.html"):
     """Generate an HTML file with interactive charts using Chart.js."""
@@ -163,7 +183,8 @@ def generate_chart_html(labels, datasets, output_path="docs/chart.html"):
         
         <div class="description">
             <p>This chart shows the performance scores of different models across various evaluation tasks. 
-            Higher scores indicate better performance. Use the filters below to customize the view.</p>
+            Higher scores indicate better performance. When multiple tests exist for the same model and evaluation, 
+            the scores are averaged to provide a single representative value. Use the filters below to customize the view.</p>
         </div>
         
         <div class="controls">
