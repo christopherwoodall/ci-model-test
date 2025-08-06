@@ -48,7 +48,7 @@ jobs:
       - name: Generate report
         if: steps.eval.outputs.push == 'true'
         run: |
-          python report_generator.py
+          python build_pages.py
 
       - name: Push changes
         if: steps.eval.outputs.push == 'true'
