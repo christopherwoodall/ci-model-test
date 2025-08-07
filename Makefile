@@ -76,3 +76,4 @@ clean-logs: ## Clean log files
 -   grep -rnil "BadRequestError" ./logs/ | xargs -r rm -f
 -   grep -rnil "AuthenticationError" ./logs/ | xargs -r rm -f
 -   grep -rnil "OpenRouterError" ./logs/ | xargs -r rm -f
+-   grep -rnil "JSONDecodeError" ./logs/ | xargs -r rm -f
