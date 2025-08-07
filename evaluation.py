@@ -173,7 +173,8 @@ def main():
                 # Wait for all futures to complete
                 for future in concurrent.futures.as_completed(futures):
                     try:
-                        future.result()  # This will raise any exceptions from the thread
+                        # This will raise any exceptions from the thread
+                        future.result()
                     except Exception as e:
                         print(f"Evaluation failed with exception: {e}")
 
