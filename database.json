@@ -1,5 +1,17 @@
 [
   {
+    "model": "openrouter/anthropic/claude-opus-4.1",
+    "timestamp": "2025-08-07T12:22:05-05:00",
+    "eval_name": "openbench/musr",
+    "score": 0.76,
+    "additional_metrics": {
+      "stderr": 0.06101187572589322
+    },
+    "total_input_tokens": 66989,
+    "total_output_tokens": 12601,
+    "total_tokens": 79590
+  },
+  {
     "model": "openrouter/openai/gpt-4.1-mini",
     "timestamp": "2025-08-06T02:48:27+00:00",
     "eval_name": "mmlu",
@@ -68,6 +80,18 @@
     "total_tokens": 25187
   },
   {
+    "model": "openrouter/openai/gpt-4.1",
+    "timestamp": "2025-08-07T12:21:26-05:00",
+    "eval_name": "openbench/openbookqa",
+    "score": 0.96,
+    "additional_metrics": {
+      "stderr": 0.027994168488950606
+    },
+    "total_input_tokens": 4303,
+    "total_output_tokens": 150,
+    "total_tokens": 4453
+  },
+  {
     "model": "openrouter/openai/gpt-4.1-nano",
     "timestamp": "2025-08-05T01:36:06+00:00",
     "eval_name": "openbench/musr",
@@ -118,6 +142,42 @@
     "total_input_tokens": 59724,
     "total_output_tokens": 150,
     "total_tokens": 59874
+  },
+  {
+    "model": "openrouter/openai/gpt-4.1",
+    "timestamp": "2025-08-07T12:11:37-05:00",
+    "eval_name": "openbench/openbookqa",
+    "score": 0.98,
+    "additional_metrics": {
+      "stderr": 0.02
+    },
+    "total_input_tokens": 4303,
+    "total_output_tokens": 150,
+    "total_tokens": 4453
+  },
+  {
+    "model": "openrouter/openai/gpt-oss-120b",
+    "timestamp": "2025-08-07T12:18:20-05:00",
+    "eval_name": "openbench/openbookqa",
+    "score": 0.92,
+    "additional_metrics": {
+      "stderr": 0.03875617133214439
+    },
+    "total_input_tokens": 7451,
+    "total_output_tokens": 6350,
+    "total_tokens": 13801
+  },
+  {
+    "model": "openrouter/openai/gpt-oss-120b",
+    "timestamp": "2025-08-07T11:57:54-05:00",
+    "eval_name": "openbench/openbookqa",
+    "score": 0.94,
+    "additional_metrics": {
+      "stderr": 0.033926691677251195
+    },
+    "total_input_tokens": 7361,
+    "total_output_tokens": 6147,
+    "total_tokens": 13508
   },
   {
     "model": "openrouter/openai/gpt-oss-20b",
@@ -206,6 +266,18 @@
     "total_tokens": 31960
   },
   {
+    "model": "openrouter/openai/gpt-4.1-nano",
+    "timestamp": "2025-08-07T17:27:15+00:00",
+    "eval_name": "openbench/musr",
+    "score": 0.6,
+    "additional_metrics": {
+      "stderr": 0.06998542122237651
+    },
+    "total_input_tokens": 59724,
+    "total_output_tokens": 150,
+    "total_tokens": 59874
+  },
+  {
     "model": "openrouter/anthropic/claude-3-haiku",
     "timestamp": "2025-08-07T00:01:32+00:00",
     "eval_name": "openbench/musr",
@@ -216,6 +288,16 @@
     "total_input_tokens": 66989,
     "total_output_tokens": 350,
     "total_tokens": 67339
+  },
+  {
+    "model": "openrouter/qwen/qwen3-30b-a3b-instruct-2507",
+    "timestamp": "2025-08-07T17:27:35+00:00",
+    "eval_name": "simpleqa",
+    "score": "Error",
+    "additional_metrics": {},
+    "total_input_tokens": 18033,
+    "total_output_tokens": 1931,
+    "total_tokens": 19964
   },
   {
     "model": "openrouter/openai/gpt-4.1-nano",
@@ -234,6 +316,38 @@
     "total_tokens": 22667
   },
   {
+    "model": "openrouter/openai/gpt-4.1-mini",
+    "timestamp": "2025-08-07T17:26:58+00:00",
+    "eval_name": "mmlu",
+    "score": 0.92,
+    "additional_metrics": {
+      "stderr": 0.03875617133214439,
+      "std": 0.27404751561786966,
+      "stem_accuracy": 0.92,
+      "stem_stderr": 0.03875617133214439,
+      "stem_std": 0.27404751561786966
+    },
+    "total_input_tokens": 5347,
+    "total_output_tokens": 19171,
+    "total_tokens": 24518
+  },
+  {
+    "model": "openrouter/openai/gpt-4.1-nano",
+    "timestamp": "2025-08-07T17:27:15+00:00",
+    "eval_name": "mmlu",
+    "score": 0.86,
+    "additional_metrics": {
+      "stderr": 0.0495695759225642,
+      "std": 0.3505098327538656,
+      "stem_accuracy": 0.86,
+      "stem_stderr": 0.0495695759225642,
+      "stem_std": 0.3505098327538656
+    },
+    "total_input_tokens": 5347,
+    "total_output_tokens": 17406,
+    "total_tokens": 22753
+  },
+  {
     "model": "openrouter/openai/gpt-4.1-nano",
     "timestamp": "2025-08-06T02:50:02+00:00",
     "eval_name": "openbench/musr",
@@ -246,6 +360,16 @@
     "total_tokens": 59874
   },
   {
+    "model": "openrouter/openai/gpt-oss-20b",
+    "timestamp": "2025-08-07T12:02:20-05:00",
+    "eval_name": "simpleqa",
+    "score": "Error",
+    "additional_metrics": {},
+    "total_input_tokens": 95,
+    "total_output_tokens": 444,
+    "total_tokens": 539
+  },
+  {
     "model": "openrouter/openai/gpt-4.1-nano",
     "timestamp": "2025-08-04T23:30:24+00:00",
     "eval_name": "openbench/musr",
@@ -256,6 +380,18 @@
     "total_input_tokens": 24066,
     "total_output_tokens": 60,
     "total_tokens": 24126
+  },
+  {
+    "model": "openrouter/openai/gpt-oss-20b",
+    "timestamp": "2025-08-07T12:00:10-05:00",
+    "eval_name": "openbench/musr",
+    "score": 0.72,
+    "additional_metrics": {
+      "stderr": 0.06414269805898185
+    },
+    "total_input_tokens": 62687,
+    "total_output_tokens": 34699,
+    "total_tokens": 97386
   },
   {
     "model": "openrouter/anthropic/claude-3-haiku",
@@ -286,6 +422,22 @@
     "total_tokens": 1389
   },
   {
+    "model": "openrouter/qwen/qwen3-30b-a3b-instruct-2507",
+    "timestamp": "2025-08-07T17:27:24+00:00",
+    "eval_name": "mmlu",
+    "score": 0.94,
+    "additional_metrics": {
+      "stderr": 0.033926691677251195,
+      "std": 0.23989793748209526,
+      "stem_accuracy": 0.94,
+      "stem_stderr": 0.033926691677251195,
+      "stem_std": 0.23989793748209526
+    },
+    "total_input_tokens": 5487,
+    "total_output_tokens": 23039,
+    "total_tokens": 28526
+  },
+  {
     "model": "openrouter/anthropic/claude-3-haiku",
     "timestamp": "2025-08-05T03:21:55+00:00",
     "eval_name": "openbench/musr",
@@ -296,6 +448,16 @@
     "total_input_tokens": 13253,
     "total_output_tokens": 70,
     "total_tokens": 13323
+  },
+  {
+    "model": "openrouter/openai/o3",
+    "timestamp": "2025-08-07T12:20:36-05:00",
+    "eval_name": "simpleqa",
+    "score": "Error",
+    "additional_metrics": {},
+    "total_input_tokens": 0,
+    "total_output_tokens": 0,
+    "total_tokens": 0
   },
   {
     "model": "openrouter/openai/gpt-oss-20b",
@@ -399,6 +561,24 @@
   },
   {
     "model": "openrouter/anthropic/claude-3-haiku",
+    "timestamp": "2025-08-07T17:26:57+00:00",
+    "eval_name": "simpleqa",
+    "score": 0.1,
+    "additional_metrics": {
+      "stderr": 0.04285714285714286,
+      "is_correct": 0.1,
+      "is_incorrect": 0.14,
+      "is_not_attempted": 0.76,
+      "is_given_attempted": 0.24000000000000002,
+      "accuracy_given_attempted": 0.41666666666666663,
+      "f1": 0.16129032258064518
+    },
+    "total_input_tokens": 76059,
+    "total_output_tokens": 5969,
+    "total_tokens": 82028
+  },
+  {
+    "model": "openrouter/anthropic/claude-3-haiku",
     "timestamp": "2025-08-05T03:22:03+00:00",
     "eval_name": "simpleqa",
     "score": 0.2,
@@ -478,6 +658,18 @@
     "total_input_tokens": 72265,
     "total_output_tokens": 1699,
     "total_tokens": 73964
+  },
+  {
+    "model": "openrouter/openai/gpt-oss-20b",
+    "timestamp": "2025-08-07T17:28:10+00:00",
+    "eval_name": "openbench/musr",
+    "score": 0.74,
+    "additional_metrics": {
+      "stderr": 0.06266203485560375
+    },
+    "total_input_tokens": 62615,
+    "total_output_tokens": 27192,
+    "total_tokens": 89807
   },
   {
     "model": "openrouter/anthropic/claude-3-haiku",
@@ -564,6 +756,22 @@
     "total_tokens": 24126
   },
   {
+    "model": "openrouter/openai/gpt-oss-20b",
+    "timestamp": "2025-08-07T17:28:00+00:00",
+    "eval_name": "mmlu",
+    "score": 0.92,
+    "additional_metrics": {
+      "stderr": 0.03875617133214439,
+      "std": 0.27404751561786966,
+      "stem_accuracy": 0.92,
+      "stem_stderr": 0.03875617133214439,
+      "stem_std": 0.27404751561786966
+    },
+    "total_input_tokens": 8253,
+    "total_output_tokens": 27057,
+    "total_tokens": 35310
+  },
+  {
     "model": "openrouter/openai/gpt-4.1-mini",
     "timestamp": "2025-08-07T00:04:41+00:00",
     "eval_name": "openbench/openbookqa",
@@ -592,6 +800,16 @@
     "total_input_tokens": 14392,
     "total_output_tokens": 323,
     "total_tokens": 14715
+  },
+  {
+    "model": "openrouter/anthropic/claude-opus-4.1",
+    "timestamp": "2025-08-07T12:22:13-05:00",
+    "eval_name": "simpleqa",
+    "score": "Error",
+    "additional_metrics": {},
+    "total_input_tokens": 293,
+    "total_output_tokens": 830,
+    "total_tokens": 1123
   },
   {
     "model": "openrouter/openai/gpt-oss-120b",
@@ -626,6 +844,22 @@
     "total_tokens": 7244
   },
   {
+    "model": "openrouter/anthropic/claude-3-haiku",
+    "timestamp": "2025-08-07T17:26:57+00:00",
+    "eval_name": "mmlu",
+    "score": 0.48,
+    "additional_metrics": {
+      "stderr": 0.07137140569598169,
+      "std": 0.5046720495044483,
+      "stem_accuracy": 0.48,
+      "stem_stderr": 0.07137140569598169,
+      "stem_std": 0.5046720495044483
+    },
+    "total_input_tokens": 5867,
+    "total_output_tokens": 7225,
+    "total_tokens": 13092
+  },
+  {
     "model": "openrouter/openai/gpt-4.1-mini",
     "timestamp": "2025-08-05T03:22:08+00:00",
     "eval_name": "mmlu",
@@ -640,6 +874,18 @@
     "total_input_tokens": 1077,
     "total_output_tokens": 5071,
     "total_tokens": 6148
+  },
+  {
+    "model": "openrouter/openai/gpt-oss-120b",
+    "timestamp": "2025-08-07T17:27:42+00:00",
+    "eval_name": "openbench/musr",
+    "score": 0.84,
+    "additional_metrics": {
+      "stderr": 0.05237229365663817
+    },
+    "total_input_tokens": 62786,
+    "total_output_tokens": 15641,
+    "total_tokens": 78427
   },
   {
     "model": "openrouter/anthropic/claude-3-haiku",
@@ -668,6 +914,18 @@
     "total_input_tokens": 5347,
     "total_output_tokens": 20520,
     "total_tokens": 25867
+  },
+  {
+    "model": "openrouter/openai/gpt-oss-120b",
+    "timestamp": "2025-08-07T12:18:20-05:00",
+    "eval_name": "openbench/musr",
+    "score": 0.76,
+    "additional_metrics": {
+      "stderr": 0.061011875725893214
+    },
+    "total_input_tokens": 62893,
+    "total_output_tokens": 14273,
+    "total_tokens": 77166
   },
   {
     "model": "openrouter/openai/gpt-4.1-mini",
@@ -778,6 +1036,22 @@
     "total_tokens": 59874
   },
   {
+    "model": "openrouter/openai/gpt-oss-120b",
+    "timestamp": "2025-08-07T17:27:42+00:00",
+    "eval_name": "mmlu",
+    "score": 0.92,
+    "additional_metrics": {
+      "stderr": 0.03875617133214439,
+      "std": 0.27404751561786966,
+      "stem_accuracy": 0.92,
+      "stem_stderr": 0.03875617133214439,
+      "stem_std": 0.27404751561786966
+    },
+    "total_input_tokens": 8325,
+    "total_output_tokens": 20691,
+    "total_tokens": 29016
+  },
+  {
     "model": "openrouter/qwen/qwen3-30b-a3b-instruct-2507",
     "timestamp": "2025-08-06T00:05:20+00:00",
     "eval_name": "simpleqa",
@@ -811,6 +1085,36 @@
   },
   {
     "model": "openrouter/openai/gpt-4.1-mini",
+    "timestamp": "2025-08-07T17:27:09+00:00",
+    "eval_name": "openbench/openbookqa",
+    "score": 0.96,
+    "additional_metrics": {
+      "stderr": 0.027994168488950606
+    },
+    "total_input_tokens": 4303,
+    "total_output_tokens": 150,
+    "total_tokens": 4453
+  },
+  {
+    "model": "openrouter/openai/gpt-oss-20b",
+    "timestamp": "2025-08-07T17:28:18+00:00",
+    "eval_name": "simpleqa",
+    "score": 0.1,
+    "additional_metrics": {
+      "stderr": 0.04285714285714286,
+      "is_correct": 0.1,
+      "is_incorrect": 0.84,
+      "is_not_attempted": 0.06,
+      "is_given_attempted": 0.94,
+      "accuracy_given_attempted": 0.10638297872340427,
+      "f1": 0.10309278350515465
+    },
+    "total_input_tokens": 75435,
+    "total_output_tokens": 131178,
+    "total_tokens": 206613
+  },
+  {
+    "model": "openrouter/openai/gpt-4.1-mini",
     "timestamp": "2025-08-06T00:02:51+00:00",
     "eval_name": "openbench/musr",
     "score": 0.62,
@@ -820,6 +1124,18 @@
     "total_input_tokens": 59724,
     "total_output_tokens": 150,
     "total_tokens": 59874
+  },
+  {
+    "model": "openrouter/qwen/qwen3-30b-a3b-instruct-2507",
+    "timestamp": "2025-08-07T17:27:33+00:00",
+    "eval_name": "openbench/openbookqa",
+    "score": 0.9,
+    "additional_metrics": {
+      "stderr": 0.04285714285714286
+    },
+    "total_input_tokens": 4472,
+    "total_output_tokens": 200,
+    "total_tokens": 4672
   },
   {
     "model": "openrouter/openai/gpt-4.1-nano",
@@ -844,6 +1160,22 @@
     "total_input_tokens": 24066,
     "total_output_tokens": 60,
     "total_tokens": 24126
+  },
+  {
+    "model": "openrouter/openai/gpt-oss-20b",
+    "timestamp": "2025-08-07T11:59:11-05:00",
+    "eval_name": "mmlu",
+    "score": 0.94,
+    "additional_metrics": {
+      "stderr": 0.033926691677251195,
+      "std": 0.23989793748209526,
+      "stem_accuracy": 0.94,
+      "stem_stderr": 0.033926691677251195,
+      "stem_std": 0.23989793748209526
+    },
+    "total_input_tokens": 8253,
+    "total_output_tokens": 28974,
+    "total_tokens": 37227
   },
   {
     "model": "openrouter/openai/gpt-4.1-mini",
@@ -942,6 +1274,22 @@
     "total_tokens": 5811
   },
   {
+    "model": "openrouter/openai/o3",
+    "timestamp": "2025-08-07T12:19:37-05:00",
+    "eval_name": "mmlu",
+    "score": 0.06,
+    "additional_metrics": {
+      "stderr": 0.033926691677251195,
+      "std": 0.23989793748209523,
+      "stem_accuracy": 0.06,
+      "stem_stderr": 0.033926691677251195,
+      "stem_std": 0.23989793748209523
+    },
+    "total_input_tokens": 263,
+    "total_output_tokens": 2229,
+    "total_tokens": 2492
+  },
+  {
     "model": "openrouter/anthropic/claude-3-haiku",
     "timestamp": "2025-08-06T02:47:33+00:00",
     "eval_name": "mmlu",
@@ -974,6 +1322,18 @@
     "total_tokens": 30018
   },
   {
+    "model": "openrouter/openai/gpt-4.1",
+    "timestamp": "2025-08-07T12:20:56-05:00",
+    "eval_name": "openbench/musr",
+    "score": 0.6,
+    "additional_metrics": {
+      "stderr": 0.06998542122237651
+    },
+    "total_input_tokens": 59724,
+    "total_output_tokens": 150,
+    "total_tokens": 59874
+  },
+  {
     "model": "openrouter/openai/gpt-oss-20b",
     "timestamp": "2025-08-06T02:54:41+00:00",
     "eval_name": "openbench/openbookqa",
@@ -984,6 +1344,30 @@
     "total_input_tokens": 7566,
     "total_output_tokens": 7609,
     "total_tokens": 15175
+  },
+  {
+    "model": "openrouter/openai/gpt-4.1-mini",
+    "timestamp": "2025-08-07T17:27:06+00:00",
+    "eval_name": "openbench/musr",
+    "score": 0.66,
+    "additional_metrics": {
+      "stderr": 0.0676726816132972
+    },
+    "total_input_tokens": 59724,
+    "total_output_tokens": 150,
+    "total_tokens": 59874
+  },
+  {
+    "model": "openrouter/openai/gpt-oss-120b",
+    "timestamp": "2025-08-07T11:56:58-05:00",
+    "eval_name": "openbench/musr",
+    "score": 0.78,
+    "additional_metrics": {
+      "stderr": 0.05917804336345136
+    },
+    "total_input_tokens": 62813,
+    "total_output_tokens": 13882,
+    "total_tokens": 76695
   },
   {
     "model": "openrouter/openai/gpt-oss-120b",
@@ -1010,6 +1394,18 @@
     "total_tokens": 1050
   },
   {
+    "model": "openrouter/openai/gpt-oss-120b",
+    "timestamp": "2025-08-07T17:27:51+00:00",
+    "eval_name": "openbench/openbookqa",
+    "score": 0.92,
+    "additional_metrics": {
+      "stderr": 0.03875617133214439
+    },
+    "total_input_tokens": 7296,
+    "total_output_tokens": 5630,
+    "total_tokens": 12926
+  },
+  {
     "model": "openrouter/openai/gpt-oss-20b",
     "timestamp": "2025-08-07T00:09:11+00:00",
     "eval_name": "simpleqa",
@@ -1018,6 +1414,18 @@
     "total_input_tokens": 70019,
     "total_output_tokens": 85269,
     "total_tokens": 155288
+  },
+  {
+    "model": "openrouter/openai/gpt-oss-20b",
+    "timestamp": "2025-08-07T12:01:37-05:00",
+    "eval_name": "openbench/openbookqa",
+    "score": 0.96,
+    "additional_metrics": {
+      "stderr": 0.027994168488950606
+    },
+    "total_input_tokens": 7185,
+    "total_output_tokens": 7734,
+    "total_tokens": 14919
   },
   {
     "model": "openrouter/anthropic/claude-3-haiku",
@@ -1034,6 +1442,44 @@
     "total_input_tokens": 1177,
     "total_output_tokens": 2173,
     "total_tokens": 3350
+  },
+  {
+    "model": "openrouter/openai/o3",
+    "timestamp": "2025-08-07T12:03:19-05:00",
+    "eval_name": "openbench/musr",
+    "score": "Error",
+    "additional_metrics": {},
+    "total_input_tokens": 0,
+    "total_output_tokens": 0,
+    "total_tokens": 0
+  },
+  {
+    "model": "openrouter/openai/gpt-oss-20b",
+    "timestamp": "2025-08-07T17:28:16+00:00",
+    "eval_name": "openbench/openbookqa",
+    "score": 0.98,
+    "additional_metrics": {
+      "stderr": 0.02
+    },
+    "total_input_tokens": 7242,
+    "total_output_tokens": 7245,
+    "total_tokens": 14487
+  },
+  {
+    "model": "openrouter/openai/gpt-oss-20b",
+    "timestamp": "2025-08-07T12:18:20-05:00",
+    "eval_name": "mmlu",
+    "score": 0.9,
+    "additional_metrics": {
+      "stderr": 0.04285714285714286,
+      "std": 0.30304576336566325,
+      "stem_accuracy": 0.9,
+      "stem_stderr": 0.04285714285714286,
+      "stem_std": 0.30304576336566325
+    },
+    "total_input_tokens": 8244,
+    "total_output_tokens": 24866,
+    "total_tokens": 33110
   },
   {
     "model": "openrouter/qwen/qwen3-30b-a3b-instruct-2507",
@@ -1060,6 +1506,16 @@
     "total_tokens": 4453
   },
   {
+    "model": "openrouter/openai/gpt-oss-20b",
+    "timestamp": "2025-08-07T12:19:28-05:00",
+    "eval_name": "simpleqa",
+    "score": "Error",
+    "additional_metrics": {},
+    "total_input_tokens": 199,
+    "total_output_tokens": 782,
+    "total_tokens": 981
+  },
+  {
     "model": "openrouter/anthropic/claude-3-haiku",
     "timestamp": "2025-08-04T18:03:41-05:00",
     "eval_name": "simpleqa",
@@ -1076,6 +1532,22 @@
     "total_input_tokens": 15223,
     "total_output_tokens": 1284,
     "total_tokens": 16507
+  },
+  {
+    "model": "openrouter/openai/gpt-4.1",
+    "timestamp": "2025-08-07T12:20:40-05:00",
+    "eval_name": "mmlu",
+    "score": 0.88,
+    "additional_metrics": {
+      "stderr": 0.04642307659791976,
+      "std": 0.3282607226593159,
+      "stem_accuracy": 0.88,
+      "stem_stderr": 0.04642307659791976,
+      "stem_std": 0.3282607226593159
+    },
+    "total_input_tokens": 5347,
+    "total_output_tokens": 14336,
+    "total_tokens": 19683
   },
   {
     "model": "openrouter/qwen/qwen3-30b-a3b-instruct-2507",
@@ -1158,6 +1630,34 @@
     "total_tokens": 122675
   },
   {
+    "model": "openrouter/openai/o3",
+    "timestamp": "2025-08-07T12:03:50-05:00",
+    "eval_name": "openbench/openbookqa",
+    "score": "Error",
+    "additional_metrics": {},
+    "total_input_tokens": 0,
+    "total_output_tokens": 0,
+    "total_tokens": 0
+  },
+  {
+    "model": "openrouter/openai/gpt-4.1-mini",
+    "timestamp": "2025-08-07T17:27:10+00:00",
+    "eval_name": "simpleqa",
+    "score": 0.18,
+    "additional_metrics": {
+      "stderr": 0.054883922035138706,
+      "is_correct": 0.18,
+      "is_incorrect": 0.8,
+      "is_not_attempted": 0.02,
+      "is_given_attempted": 0.98,
+      "accuracy_given_attempted": 0.1836734693877551,
+      "f1": 0.1818181818181818
+    },
+    "total_input_tokens": 72617,
+    "total_output_tokens": 2050,
+    "total_tokens": 74667
+  },
+  {
     "model": "openrouter/qwen/qwen3-30b-a3b-instruct-2507",
     "timestamp": "2025-08-07T00:06:46+00:00",
     "eval_name": "openbench/openbookqa",
@@ -1168,6 +1668,26 @@
     "total_input_tokens": 4472,
     "total_output_tokens": 200,
     "total_tokens": 4672
+  },
+  {
+    "model": "openrouter/openai/gpt-oss-120b",
+    "timestamp": "2025-08-07T11:58:39-05:00",
+    "eval_name": "simpleqa",
+    "score": "Error",
+    "additional_metrics": {},
+    "total_input_tokens": 482,
+    "total_output_tokens": 2182,
+    "total_tokens": 2664
+  },
+  {
+    "model": "openrouter/openai/gpt-4.1",
+    "timestamp": "2025-08-07T12:21:28-05:00",
+    "eval_name": "simpleqa",
+    "score": "Error",
+    "additional_metrics": {},
+    "total_input_tokens": 154,
+    "total_output_tokens": 457,
+    "total_tokens": 611
   },
   {
     "model": "openrouter/openai/gpt-oss-120b",
@@ -1206,6 +1726,18 @@
     "total_input_tokens": 24238,
     "total_output_tokens": 1799,
     "total_tokens": 26037
+  },
+  {
+    "model": "openrouter/anthropic/claude-3-haiku",
+    "timestamp": "2025-08-07T17:27:00+00:00",
+    "eval_name": "openbench/openbookqa",
+    "score": 0.84,
+    "additional_metrics": {
+      "stderr": 0.05237229365663817
+    },
+    "total_input_tokens": 4859,
+    "total_output_tokens": 350,
+    "total_tokens": 5209
   },
   {
     "model": "openrouter/openai/gpt-4.1-mini",
@@ -1346,6 +1878,24 @@
     "total_tokens": 28594
   },
   {
+    "model": "openrouter/openai/gpt-oss-120b",
+    "timestamp": "2025-08-07T17:27:59+00:00",
+    "eval_name": "simpleqa",
+    "score": 0.22,
+    "additional_metrics": {
+      "stderr": 0.059178043363451366,
+      "is_correct": 0.22,
+      "is_incorrect": 0.74,
+      "is_not_attempted": 0.04,
+      "is_given_attempted": 0.96,
+      "accuracy_given_attempted": 0.22916666666666669,
+      "f1": 0.22448979591836735
+    },
+    "total_input_tokens": 76629,
+    "total_output_tokens": 39098,
+    "total_tokens": 115727
+  },
+  {
     "model": "openrouter/openai/gpt-oss-20b",
     "timestamp": "2025-08-05T18:10:39+00:00",
     "eval_name": "simpleqa",
@@ -1428,6 +1978,18 @@
     "total_tokens": 74641
   },
   {
+    "model": "openrouter/openai/gpt-4.1-nano",
+    "timestamp": "2025-08-07T17:27:17+00:00",
+    "eval_name": "openbench/openbookqa",
+    "score": 0.92,
+    "additional_metrics": {
+      "stderr": 0.03875617133214439
+    },
+    "total_input_tokens": 4303,
+    "total_output_tokens": 150,
+    "total_tokens": 4453
+  },
+  {
     "model": "openrouter/openai/gpt-oss-20b",
     "timestamp": "2025-08-05T18:10:19+00:00",
     "eval_name": "openbench/musr",
@@ -1438,6 +2000,16 @@
     "total_input_tokens": 62948,
     "total_output_tokens": 17339,
     "total_tokens": 80287
+  },
+  {
+    "model": "openrouter/openai/gpt-oss-120b",
+    "timestamp": "2025-08-07T12:18:22-05:00",
+    "eval_name": "simpleqa",
+    "score": "Error",
+    "additional_metrics": {},
+    "total_input_tokens": 383,
+    "total_output_tokens": 1419,
+    "total_tokens": 1802
   },
   {
     "model": "openrouter/qwen/qwen3-30b-a3b-instruct-2507",
@@ -1484,6 +2056,18 @@
     "total_tokens": 12685
   },
   {
+    "model": "openrouter/anthropic/claude-3-haiku",
+    "timestamp": "2025-08-07T17:26:59+00:00",
+    "eval_name": "openbench/musr",
+    "score": 0.7,
+    "additional_metrics": {
+      "stderr": 0.06546536707079771
+    },
+    "total_input_tokens": 66989,
+    "total_output_tokens": 350,
+    "total_tokens": 67339
+  },
+  {
     "model": "openrouter/qwen/qwen3-30b-a3b-instruct-2507",
     "timestamp": "2025-08-05T03:23:23+00:00",
     "eval_name": "simpleqa",
@@ -1502,6 +2086,18 @@
     "total_tokens": 16235
   },
   {
+    "model": "openrouter/openai/o3",
+    "timestamp": "2025-08-07T12:20:12-05:00",
+    "eval_name": "openbench/musr",
+    "score": 0.0,
+    "additional_metrics": {
+      "stderr": 0.0
+    },
+    "total_input_tokens": 0,
+    "total_output_tokens": 0,
+    "total_tokens": 0
+  },
+  {
     "model": "openrouter/openai/gpt-oss-120b",
     "timestamp": "2025-08-05T18:08:26+00:00",
     "eval_name": "mmlu",
@@ -1518,6 +2114,68 @@
     "total_tokens": 27780
   },
   {
+    "model": "openrouter/openai/o3",
+    "timestamp": "2025-08-07T12:02:51-05:00",
+    "eval_name": "mmlu",
+    "score": "Error",
+    "additional_metrics": {},
+    "total_input_tokens": 0,
+    "total_output_tokens": 0,
+    "total_tokens": 0
+  },
+  {
+    "model": "openrouter/openai/gpt-oss-120b",
+    "timestamp": "2025-08-07T12:18:18-05:00",
+    "eval_name": "mmlu",
+    "score": 0.92,
+    "additional_metrics": {
+      "stderr": 0.03875617133214439,
+      "std": 0.27404751561786966,
+      "stem_accuracy": 0.92,
+      "stem_stderr": 0.03875617133214439,
+      "stem_std": 0.27404751561786966
+    },
+    "total_input_tokens": 8441,
+    "total_output_tokens": 18041,
+    "total_tokens": 26482
+  },
+  {
+    "model": "openrouter/openai/gpt-4.1",
+    "timestamp": "2025-08-07T12:10:49-05:00",
+    "eval_name": "openbench/musr",
+    "score": 0.62,
+    "additional_metrics": {
+      "stderr": 0.06934092056863769
+    },
+    "total_input_tokens": 59724,
+    "total_output_tokens": 150,
+    "total_tokens": 59874
+  },
+  {
+    "model": "openrouter/openai/gpt-oss-20b",
+    "timestamp": "2025-08-07T12:19:08-05:00",
+    "eval_name": "openbench/musr",
+    "score": 0.72,
+    "additional_metrics": {
+      "stderr": 0.06414269805898185
+    },
+    "total_input_tokens": 62615,
+    "total_output_tokens": 25316,
+    "total_tokens": 87931
+  },
+  {
+    "model": "openrouter/openai/gpt-oss-20b",
+    "timestamp": "2025-08-07T12:19:25-05:00",
+    "eval_name": "openbench/openbookqa",
+    "score": 0.92,
+    "additional_metrics": {
+      "stderr": 0.03875617133214439
+    },
+    "total_input_tokens": 7197,
+    "total_output_tokens": 7810,
+    "total_tokens": 15007
+  },
+  {
     "model": "openrouter/openai/gpt-4.1-nano",
     "timestamp": "2025-08-05T03:22:50+00:00",
     "eval_name": "openbench/openbookqa",
@@ -1528,6 +2186,16 @@
     "total_input_tokens": 880,
     "total_output_tokens": 30,
     "total_tokens": 910
+  },
+  {
+    "model": "openrouter/openai/o3",
+    "timestamp": "2025-08-07T12:04:19-05:00",
+    "eval_name": "simpleqa",
+    "score": "Error",
+    "additional_metrics": {},
+    "total_input_tokens": 0,
+    "total_output_tokens": 0,
+    "total_tokens": 0
   },
   {
     "model": "openrouter/openai/gpt-4.1-nano",
@@ -1552,6 +2220,16 @@
     "total_input_tokens": 4303,
     "total_output_tokens": 150,
     "total_tokens": 4453
+  },
+  {
+    "model": "openrouter/openai/gpt-4.1",
+    "timestamp": "2025-08-07T12:04:48-05:00",
+    "eval_name": "mmlu",
+    "score": "Error",
+    "additional_metrics": {},
+    "total_input_tokens": 5266,
+    "total_output_tokens": 13619,
+    "total_tokens": 18885
   },
   {
     "model": "openrouter/anthropic/claude-3-haiku",
@@ -1630,6 +2308,52 @@
     "total_tokens": 82717
   },
   {
+    "model": "openrouter/anthropic/claude-opus-4.1",
+    "timestamp": "2025-08-07T12:21:47-05:00",
+    "eval_name": "mmlu",
+    "score": 0.94,
+    "additional_metrics": {
+      "stderr": 0.033926691677251195,
+      "std": 0.23989793748209526,
+      "stem_accuracy": 0.94,
+      "stem_stderr": 0.033926691677251195,
+      "stem_std": 0.23989793748209526
+    },
+    "total_input_tokens": 5867,
+    "total_output_tokens": 23976,
+    "total_tokens": 29843
+  },
+  {
+    "model": "openrouter/openai/gpt-4.1-nano",
+    "timestamp": "2025-08-07T17:27:22+00:00",
+    "eval_name": "simpleqa",
+    "score": 0.06,
+    "additional_metrics": {
+      "stderr": 0.033926691677251195,
+      "is_correct": 0.06,
+      "is_incorrect": 0.94,
+      "is_not_attempted": 0.0,
+      "is_given_attempted": 1.0,
+      "accuracy_given_attempted": 0.06,
+      "f1": 0.06
+    },
+    "total_input_tokens": 72416,
+    "total_output_tokens": 1851,
+    "total_tokens": 74267
+  },
+  {
+    "model": "openrouter/qwen/qwen3-30b-a3b-instruct-2507",
+    "timestamp": "2025-08-07T17:27:25+00:00",
+    "eval_name": "openbench/musr",
+    "score": 0.62,
+    "additional_metrics": {
+      "stderr": 0.06934092056863769
+    },
+    "total_input_tokens": 60408,
+    "total_output_tokens": 200,
+    "total_tokens": 60608
+  },
+  {
     "model": "openrouter/openai/gpt-4.1-mini",
     "timestamp": "2025-08-04T23:29:38+00:00",
     "eval_name": "mmlu",
@@ -1690,6 +2414,16 @@
     "total_tokens": 12830
   },
   {
+    "model": "openrouter/openai/gpt-4.1",
+    "timestamp": "2025-08-07T12:12:22-05:00",
+    "eval_name": "simpleqa",
+    "score": "Error",
+    "additional_metrics": {},
+    "total_input_tokens": 140,
+    "total_output_tokens": 260,
+    "total_tokens": 400
+  },
+  {
     "model": "openrouter/openai/gpt-oss-20b",
     "timestamp": "2025-08-07T00:08:15+00:00",
     "eval_name": "mmlu",
@@ -1704,6 +2438,18 @@
     "total_input_tokens": 8506,
     "total_output_tokens": 27115,
     "total_tokens": 35621
+  },
+  {
+    "model": "openrouter/openai/o3",
+    "timestamp": "2025-08-07T12:20:25-05:00",
+    "eval_name": "openbench/openbookqa",
+    "score": 0.04,
+    "additional_metrics": {
+      "stderr": 0.027994168488950606
+    },
+    "total_input_tokens": 168,
+    "total_output_tokens": 210,
+    "total_tokens": 378
   },
   {
     "model": "openrouter/openai/gpt-oss-120b",
@@ -1722,6 +2468,22 @@
     "total_input_tokens": 77289,
     "total_output_tokens": 33395,
     "total_tokens": 110684
+  },
+  {
+    "model": "openrouter/openai/gpt-oss-120b",
+    "timestamp": "2025-08-07T11:56:00-05:00",
+    "eval_name": "mmlu",
+    "score": 0.94,
+    "additional_metrics": {
+      "stderr": 0.033926691677251195,
+      "std": 0.23989793748209526,
+      "stem_accuracy": 0.94,
+      "stem_stderr": 0.033926691677251195,
+      "stem_std": 0.23989793748209526
+    },
+    "total_input_tokens": 8429,
+    "total_output_tokens": 18135,
+    "total_tokens": 26564
   },
   {
     "model": "openrouter/openai/gpt-oss-20b",
@@ -1796,5 +2558,17 @@
     "total_input_tokens": 73071,
     "total_output_tokens": 91279,
     "total_tokens": 164350
+  },
+  {
+    "model": "openrouter/anthropic/claude-opus-4.1",
+    "timestamp": "2025-08-07T12:22:09-05:00",
+    "eval_name": "openbench/openbookqa",
+    "score": 0.98,
+    "additional_metrics": {
+      "stderr": 0.02
+    },
+    "total_input_tokens": 4859,
+    "total_output_tokens": 503,
+    "total_tokens": 5362
   }
 ]
