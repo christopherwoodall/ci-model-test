@@ -48,6 +48,7 @@ jobs:
       - name: Generate report
         if: steps.eval.outputs.push == 'true'
         run: |
+          make clean-logs
           make build
 
       - name: Push changes
