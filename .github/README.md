@@ -1,6 +1,12 @@
 # CI Model Test
 Benchmark models using OpenRouter and [OpenBench](https://github.com/groq/openbench) from a Github Workflow.
 
+
+![Results](https://raw.githubusercontent.com/christopherwoodall/ci-model-test/main/.github/docs/results.png)
+
+![Charts](https://raw.githubusercontent.com/christopherwoodall/ci-model-test/main/.github/docs/charts.png)
+
+
 ## Installation
 1. Add your OpenRouter API key to your GitHub secrets as `OPENROUTER_API_KEY`.
 2. Enable Github Pages for the repository.
