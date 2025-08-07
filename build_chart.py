@@ -1,6 +1,5 @@
 import json
 import os
-from datetime import datetime
 
 
 def load_database_file(database_path="docs/database.json"):
@@ -22,54 +21,56 @@ def prepare_chart_data(data):
     """Prepare data for the chart visualization."""
     if not data:
         return [], []
-    
+
     # Group data by model and eval_name for comparison
     model_scores = {}
     models = set()
     evals = set()
-    
+
     print("Processing data entries...")
     entry_count = 0
-    
+
     for item in data:
         model = item.get("model", "Unknown Model")
         eval_name = item.get("eval_name", "Unknown Eval")
         score = item.get("score", 0)
-        
+
         # Skip error entries
         if score == "Error":
             print(f"Skipping error entry for model {model}, eval {eval_name}")
             continue
-            
+
         entry_count += 1
         models.add(model)
         evals.add(eval_name)
-        
+
         if model not in model_scores:
             model_scores[model] = {}
-            
+
         if eval_name not in model_scores[model]:
             model_scores[model][eval_name] = []
-            
+
         model_scores[model][eval_name].append(score)
-    
+
     print(f"Processed {entry_count} valid entries")
     print(f"Found {len(models)} unique models and {len(evals)} unique evaluation tasks")
-    
+
     # Show detailed breakdown
     for model in model_scores:
         for eval_name in model_scores[model]:
             scores = model_scores[model][eval_name]
             if len(scores) > 1:
                 avg_score = sum(scores) / len(scores)
-                print(f"Model {model} on {eval_name}: {len(scores)} tests, scores={scores}, avg={avg_score:.4f}")
+                print(
+                    f"Model {model} on {eval_name}: {len(scores)} tests, scores={scores}, avg={avg_score:.4f}"
+                )
             elif len(scores) == 1:
                 print(f"Model {model} on {eval_name}: 1 test, score={scores[0]}")
-    
+
     # Prepare chart data
     chart_labels = sorted(list(models))
     eval_names = sorted(list(evals))
-    
+
     # For each eval, create a dataset
     datasets = []
     for eval_name in eval_names:
@@ -81,16 +82,15 @@ def prepare_chart_data(data):
                 avg_score = sum(model_scores_list) / len(model_scores_list)
                 scores.append(round(avg_score, 4))
                 if len(model_scores_list) > 1:
-                    print(f"Averaging {len(model_scores_list)} scores for {model} on {eval_name}: {avg_score:.4f}")
+                    print(
+                        f"Averaging {len(model_scores_list)} scores for {model} on {eval_name}: {avg_score:.4f}"
+                    )
             else:
                 scores.append(0)
-        datasets.append({
-            "label": eval_name,
-            "data": scores,
-            "borderWidth": 1
-        })
-    
+        datasets.append({"label": eval_name, "data": scores, "borderWidth": 1})
+
     return chart_labels, datasets
+
 
 def generate_chart_html(labels, datasets, output_path="docs/chart.html"):
     """Generate an HTML file with interactive charts using Chart.js."""
@@ -403,7 +403,7 @@ def generate_chart_html(labels, datasets, output_path="docs/chart.html"):
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     with open(output_path, "w") as f:
         f.write(html_content)
-    
+
     print(f"Chart HTML saved to {output_path}")
 
 
@@ -411,21 +411,21 @@ def main():
     """Main function to generate the performance charts."""
     # Load data from database
     data = load_database_file()
-    
+
     if not data:
         print("No data available to generate charts.")
         return
-    
+
     # Prepare chart data
     labels, datasets = prepare_chart_data(data)
-    
+
     if not labels or not datasets:
         print("No valid data to display in charts.")
         return
-    
+
     # Generate the HTML chart
     generate_chart_html(labels, datasets)
-    
+
     print("Chart generation completed successfully!")
 
 
