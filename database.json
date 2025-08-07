@@ -1160,6 +1160,19 @@
     "total_tokens": 18546
   },
   {
+    "model": "openrouter/openai/gpt-5-chat",
+    "timestamp": "2025-08-07T14:03:17-05:00",
+    "eval_name": "brumo_2025",
+    "score": 0.4666666666666667,
+    "additional_metrics": {
+      "std": 0.507416263404925,
+      "stderr": 0.09264111117062017
+    },
+    "total_input_tokens": 2829,
+    "total_output_tokens": 56661,
+    "total_tokens": 59490
+  },
+  {
     "model": "openrouter/openai/gpt-4.1-mini",
     "timestamp": "2025-08-05T02:43:54+00:00",
     "eval_name": "mmlu",
@@ -1260,6 +1273,19 @@
     "total_tokens": 10871
   },
   {
+    "model": "openrouter/openai/gpt-5-chat",
+    "timestamp": "2025-08-07T14:03:22-05:00",
+    "eval_name": "hmmt_feb_2025",
+    "score": 0.23333333333333334,
+    "additional_metrics": {
+      "std": 0.43018306715207627,
+      "stderr": 0.07854032324531728
+    },
+    "total_input_tokens": 1866,
+    "total_output_tokens": 54456,
+    "total_tokens": 56322
+  },
+  {
     "model": "openrouter/anthropic/claude-sonnet-4",
     "timestamp": "2025-08-07T12:51:53-05:00",
     "eval_name": "openbench/musr",
@@ -1282,16 +1308,6 @@
     "total_input_tokens": 60408,
     "total_output_tokens": 200,
     "total_tokens": 60608
-  },
-  {
-    "model": "openrouter/openai/gpt-oss-20b",
-    "timestamp": "2025-08-06T00:07:54+00:00",
-    "eval_name": "simpleqa",
-    "score": "Error",
-    "additional_metrics": {},
-    "total_input_tokens": 71719,
-    "total_output_tokens": 82516,
-    "total_tokens": 154235
   },
   {
     "model": "openrouter/openai/gpt-4.1-mini",
@@ -1518,6 +1534,19 @@
     "total_tokens": 73934
   },
   {
+    "model": "openrouter/openai/gpt-5",
+    "timestamp": "2025-08-07T14:03:23-05:00",
+    "eval_name": "hmmt_feb_2025",
+    "score": 0.36666666666666664,
+    "additional_metrics": {
+      "std": 0.4901325178535609,
+      "stderr": 0.08948554539839962
+    },
+    "total_input_tokens": 1845,
+    "total_output_tokens": 123624,
+    "total_tokens": 125469
+  },
+  {
     "model": "openrouter/anthropic/claude-opus-4.1",
     "timestamp": "2025-08-07T12:51:52-05:00",
     "eval_name": "openbench/openbookqa",
@@ -1710,16 +1739,6 @@
     "total_input_tokens": 7296,
     "total_output_tokens": 5630,
     "total_tokens": 12926
-  },
-  {
-    "model": "openrouter/openai/gpt-oss-20b",
-    "timestamp": "2025-08-07T00:09:11+00:00",
-    "eval_name": "simpleqa",
-    "score": "Error",
-    "additional_metrics": {},
-    "total_input_tokens": 70019,
-    "total_output_tokens": 85269,
-    "total_tokens": 155288
   },
   {
     "model": "openrouter/qwen/qwen3-30b-a3b-instruct-2507",
@@ -1916,6 +1935,19 @@
     "total_input_tokens": 22321,
     "total_output_tokens": 1251,
     "total_tokens": 23572
+  },
+  {
+    "model": "openrouter/openai/gpt-5",
+    "timestamp": "2025-08-07T14:13:46-05:00",
+    "eval_name": "brumo_2025",
+    "score": 0.4666666666666667,
+    "additional_metrics": {
+      "std": 0.507416263404925,
+      "stderr": 0.09264111117062017
+    },
+    "total_input_tokens": 2543,
+    "total_output_tokens": 111409,
+    "total_tokens": 113952
   },
   {
     "model": "openrouter/openai/gpt-oss-120b",
@@ -2734,16 +2766,6 @@
     "total_tokens": 0
   },
   {
-    "model": "openrouter/openai/gpt-4.1",
-    "timestamp": "2025-08-07T12:04:48-05:00",
-    "eval_name": "mmlu",
-    "score": "Error",
-    "additional_metrics": {},
-    "total_input_tokens": 5266,
-    "total_output_tokens": 13619,
-    "total_tokens": 18885
-  },
-  {
     "model": "openrouter/anthropic/claude-3-haiku",
     "timestamp": "2025-08-04T18:06:37-05:00",
     "eval_name": "simpleqa",
@@ -3106,16 +3128,6 @@
     "total_input_tokens": 4472,
     "total_output_tokens": 200,
     "total_tokens": 4672
-  },
-  {
-    "model": "openrouter/openai/gpt-oss-20b",
-    "timestamp": "2025-08-06T02:54:51+00:00",
-    "eval_name": "simpleqa",
-    "score": "Error",
-    "additional_metrics": {},
-    "total_input_tokens": 73071,
-    "total_output_tokens": 91279,
-    "total_tokens": 164350
   },
   {
     "model": "openrouter/anthropic/claude-opus-4.1",
