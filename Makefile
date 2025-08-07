@@ -58,6 +58,7 @@ clean: ## Clean generated files
 -	rm -f docs/ReportPage.js
 -	rm -f docs/ReportPage.css
 -   grep -rnil "RuntimeError('BadRequestError" ./logs/ | xargs -r rm -f
+-   grep -rnil "AuthenticationError" ./logs/ | xargs -r rm -f
 -	@echo "Cleaned generated files"
 
 
