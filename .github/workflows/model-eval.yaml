@@ -50,6 +50,7 @@ jobs:
         run: |
           grep -rnil "BadRequestError" ./logs/ | xargs -r rm -f
           grep -rnil "AuthenticationError" ./logs/ | xargs -r rm -f
+          grep -rnil "OpenRouterError" ./logs/ | xargs -r rm -f
           make build
 
       - name: Push changes
