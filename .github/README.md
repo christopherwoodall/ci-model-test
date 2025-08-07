@@ -4,7 +4,7 @@ Benchmark models using OpenRouter and [OpenBench](https://github.com/groq/openbe
 
 ![Results](https://raw.githubusercontent.com/christopherwoodall/ci-model-test/main/.github/docs/results.png)
 
-![Charts](https://raw.githubusercontent.com/christopherwoodall/ci-model-test/main/.github/docs/charts.png)
+![Charts](https://raw.githubusercontent.com/christopherwoodall/ci-model-test/main/.github/docs/chart.png)
 
 
 ## Installation
