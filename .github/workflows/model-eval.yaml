@@ -48,7 +48,8 @@ jobs:
       - name: Generate report
         if: steps.eval.outputs.push == 'true'
         run: |
-          make clean-logs
+          grep -rnil "BadRequestError" ./logs/ | xargs -r rm -f
+          grep -rnil "AuthenticationError" ./logs/ | xargs -r rm -f
           make build
 
       - name: Push changes
