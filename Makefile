@@ -57,6 +57,7 @@ clean: ## Clean generated files
 -	rm -f docs/database.json
 -	rm -f docs/ReportPage.js
 -	rm -f docs/ReportPage.css
+-   grep -rnil "RuntimeError('BadRequestError" ./logs/ | xargs -r rm -f
 -	@echo "Cleaned generated files"
 
 
