@@ -137,7 +137,9 @@ def main():
             print("\n--- Starting Evaluation Runs ---")
 
             futures = []
-            with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+            with concurrent.futures.ThreadPoolExecutor(
+                max_workers=max_workers
+            ) as executor:
                 for run_name, run_config in config["evaluation_runs"].items():
                     print(f"\n--- Processing Evaluation Run: {run_name} ---")
 
@@ -176,7 +178,9 @@ def main():
                         print(f"Evaluation failed with exception: {e}")
 
         else:
-            print("  No 'evaluation_runs' section found or it is malformed in config.yaml.")
+            print(
+                "  No 'evaluation_runs' section found or it is malformed in config.yaml."
+            )
 
     except FileNotFoundError as e:
         print(f"Fatal Error: {e}")
