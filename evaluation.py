@@ -3,6 +3,7 @@ import yaml
 import os
 import subprocess
 import datetime
+import concurrent.futures
 
 
 def load_config(config_path):
@@ -111,6 +112,7 @@ def run_evaluation(model_name, eval_name, limit, json_output):
 def main():
     """
     Main function to parse arguments and run evaluations based on config.
+    Runs all evaluations in parallel using threads.
     """
     parser = argparse.ArgumentParser(
         description="Run model evaluations based on a configuration file."
@@ -125,37 +127,56 @@ def main():
     args = parser.parse_args()
     config_file_path = args.config
 
-    print(f"Loading configuration from: {config_file_path}")
+    max_workers = 5
 
+    print(f"Loading configuration from: {config_file_path}")
     try:
         config = load_config(config_file_path)
 
         if "evaluation_runs" in config and isinstance(config["evaluation_runs"], dict):
             print("\n--- Starting Evaluation Runs ---")
-            for run_name, run_config in config["evaluation_runs"].items():
-                print(f"\n--- Processing Evaluation Run: {run_name} ---")
 
-                model_name = run_config.get("model")
-                limit = run_config.get("limit")
-                json_output = run_config.get("json", False)
-                evals_list = run_config.get("evals")
+            futures = []
+            with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+                for run_name, run_config in config["evaluation_runs"].items():
+                    print(f"\n--- Processing Evaluation Run: {run_name} ---")
 
-                if not all([model_name, limit, evals_list]):
-                    print(
-                        f"  Skipping run '{run_name}' due to missing 'model', 'limit', or 'evals' configuration."
-                    )
-                    continue
+                    model_name = run_config.get("model")
+                    limit = run_config.get("limit")
+                    json_output = run_config.get("json", False)
+                    evals_list = run_config.get("evals")
 
-                if not isinstance(evals_list, list):
-                    print(f"  Skipping run '{run_name}': 'evals' must be a list.")
-                    continue
+                    if not all([model_name, limit, evals_list]):
+                        print(
+                            f"  Skipping run '{run_name}' due to missing 'model', 'limit', or 'evals' configuration."
+                        )
+                        continue
 
-                for eval_name in evals_list:
-                    run_evaluation(model_name, eval_name, limit, json_output)
+                    if not isinstance(evals_list, list):
+                        print(f"  Skipping run '{run_name}': 'evals' must be a list.")
+                        continue
+
+                    for eval_name in evals_list:
+                        # Submit each evaluation as a future
+                        futures.append(
+                            executor.submit(
+                                run_evaluation,
+                                model_name,
+                                eval_name,
+                                limit,
+                                json_output,
+                            )
+                        )
+
+                # Wait for all futures to complete
+                for future in concurrent.futures.as_completed(futures):
+                    try:
+                        future.result()  # This will raise any exceptions from the thread
+                    except Exception as e:
+                        print(f"Evaluation failed with exception: {e}")
+
         else:
-            print(
-                "  No 'evaluation_runs' section found or it is malformed in config.yaml."
-            )
+            print("  No 'evaluation_runs' section found or it is malformed in config.yaml.")
 
     except FileNotFoundError as e:
         print(f"Fatal Error: {e}")
