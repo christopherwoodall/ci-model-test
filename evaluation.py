@@ -58,7 +58,7 @@ def run_evaluation(model_name, eval_name, limit, json_output):
         logfile_name = f"results_{sanitized_model_name}_{eval_name}_{timestamp}"
 
         command.extend(["--logfile", logfile_name])
-        command.append("--json")
+        command.append(["--log-format", "json"])
 
     print(f"Executing command: {' '.join(command)}")
 
