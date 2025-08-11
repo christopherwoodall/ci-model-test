@@ -124,6 +124,16 @@
     "total_tokens": 27941
   },
   {
+    "model": "openrouter/openai/gpt-oss-20b",
+    "timestamp": "2025-08-11T00:01:44+00:00",
+    "eval_name": "simpleqa",
+    "score": "Error",
+    "additional_metrics": {},
+    "total_input_tokens": 54750,
+    "total_output_tokens": 72509,
+    "total_tokens": 127259
+  },
+  {
     "model": "openrouter/qwen/qwen3-30b-a3b-instruct-2507",
     "timestamp": "2025-08-06T02:50:28+00:00",
     "eval_name": "mmlu",
@@ -138,6 +148,22 @@
     "total_input_tokens": 5487,
     "total_output_tokens": 22211,
     "total_tokens": 27698
+  },
+  {
+    "model": "openrouter/openai/gpt-oss-20b",
+    "timestamp": "2025-08-11T00:01:22+00:00",
+    "eval_name": "mmlu",
+    "score": 0.92,
+    "additional_metrics": {
+      "stderr": 0.03875617133214439,
+      "std": 0.27404751561786966,
+      "stem_accuracy": 0.92,
+      "stem_stderr": 0.03875617133214439,
+      "stem_std": 0.27404751561786966
+    },
+    "total_input_tokens": 8400,
+    "total_output_tokens": 27411,
+    "total_tokens": 35811
   },
   {
     "model": "openrouter/openai/gpt-oss-20b",
@@ -730,6 +756,18 @@
     "total_tokens": 13302
   },
   {
+    "model": "openrouter/openai/gpt-oss-20b",
+    "timestamp": "2025-08-11T00:01:43+00:00",
+    "eval_name": "openbench/openbookqa",
+    "score": 0.94,
+    "additional_metrics": {
+      "stderr": 0.033926691677251195
+    },
+    "total_input_tokens": 7254,
+    "total_output_tokens": 7836,
+    "total_tokens": 15090
+  },
+  {
     "model": "openrouter/openai/gpt-oss-120b",
     "timestamp": "2025-08-07T00:07:44+00:00",
     "eval_name": "simpleqa",
@@ -1038,6 +1076,22 @@
     "total_input_tokens": 5347,
     "total_output_tokens": 17164,
     "total_tokens": 22511
+  },
+  {
+    "model": "openrouter/openai/gpt-oss-120b",
+    "timestamp": "2025-08-11T00:01:22+00:00",
+    "eval_name": "mmlu",
+    "score": 0.94,
+    "additional_metrics": {
+      "stderr": 0.033926691677251195,
+      "std": 0.23989793748209526,
+      "stem_accuracy": 0.94,
+      "stem_stderr": 0.033926691677251195,
+      "stem_std": 0.23989793748209526
+    },
+    "total_input_tokens": 8438,
+    "total_output_tokens": 18787,
+    "total_tokens": 27225
   },
   {
     "model": "openrouter/openai/gpt-oss-20b",
@@ -2215,6 +2269,18 @@
     "total_tokens": 1389
   },
   {
+    "model": "openrouter/openai/gpt-oss-120b",
+    "timestamp": "2025-08-11T00:01:30+00:00",
+    "eval_name": "openbench/openbookqa",
+    "score": 0.94,
+    "additional_metrics": {
+      "stderr": 0.033926691677251195
+    },
+    "total_input_tokens": 7418,
+    "total_output_tokens": 5929,
+    "total_tokens": 13347
+  },
+  {
     "model": "openrouter/openai/gpt-oss-20b",
     "timestamp": "2025-08-10T00:01:54+00:00",
     "eval_name": "simpleqa",
@@ -2263,6 +2329,18 @@
     "total_input_tokens": 66989,
     "total_output_tokens": 350,
     "total_tokens": 67339
+  },
+  {
+    "model": "openrouter/openai/gpt-oss-120b",
+    "timestamp": "2025-08-11T00:01:28+00:00",
+    "eval_name": "openbench/musr",
+    "score": 0.74,
+    "additional_metrics": {
+      "stderr": 0.06266203485560375
+    },
+    "total_input_tokens": 62784,
+    "total_output_tokens": 14076,
+    "total_tokens": 76860
   },
   {
     "model": "openrouter/openai/gpt-4.1-mini",
@@ -2840,6 +2918,24 @@
     "total_tokens": 79453
   },
   {
+    "model": "openrouter/openai/gpt-oss-120b",
+    "timestamp": "2025-08-11T00:01:21+00:00",
+    "eval_name": "simpleqa",
+    "score": 0.16,
+    "additional_metrics": {
+      "stderr": 0.05237229365663816,
+      "is_correct": 0.16,
+      "is_incorrect": 0.84,
+      "is_not_attempted": 0.0,
+      "is_given_attempted": 1.0,
+      "accuracy_given_attempted": 0.16,
+      "f1": 0.16
+    },
+    "total_input_tokens": 76997,
+    "total_output_tokens": 29271,
+    "total_tokens": 106268
+  },
+  {
     "model": "openrouter/anthropic/claude-3-haiku",
     "timestamp": "2025-08-05T00:31:26+00:00",
     "eval_name": "simpleqa",
@@ -2896,6 +2992,18 @@
     "total_input_tokens": 1077,
     "total_output_tokens": 5408,
     "total_tokens": 6485
+  },
+  {
+    "model": "openrouter/openai/gpt-oss-20b",
+    "timestamp": "2025-08-11T00:01:42+00:00",
+    "eval_name": "openbench/musr",
+    "score": 0.72,
+    "additional_metrics": {
+      "stderr": 0.06414269805898185
+    },
+    "total_input_tokens": 61381,
+    "total_output_tokens": 24533,
+    "total_tokens": 85914
   },
   {
     "model": "openrouter/qwen/qwen3-30b-a3b-instruct-2507",
