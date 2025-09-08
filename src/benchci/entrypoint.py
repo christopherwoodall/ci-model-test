@@ -6,10 +6,12 @@ def run_evaluation(config_file_path):
     benchci.evaluation.run_evaluation(config_file_path)
 
 
-def build_pages(): ...
+def build_pages():
+    benchci.pages.build_pages()
 
 
-def build_charts(): ...
+def build_charts():
+    benchci.charts.build_charts()
 
 
 def main():
@@ -28,28 +30,19 @@ def main():
 
     page_parser = subparsers.add_parser("build-pages", help="Build HTML pages")
     page_parser.set_defaults(func=build_pages)
-    page_parser.add_argument(
-        "--config",
-        type=str,
-        default="config.yaml",
-        help="Path to the YAML configuration file",
-    )
 
     chart_parser = subparsers.add_parser("build-charts", help="Build charts")
     chart_parser.set_defaults(func=build_charts)
-    chart_parser.add_argument(
-        "--config",
-        type=str,
-        default="config.yaml",
-        help="Path to the YAML configuration file",
-    )
 
     args = parser.parse_args()
 
     config_file_path = args.config if hasattr(args, "config") else "config.yaml"
 
     if hasattr(args, "func"):
-        args.func(config_file_path)
+        if args.func == run_evaluation:
+            args.func(config_file_path)
+        else:
+            args.func()
     else:
         parser.print_help()
 
