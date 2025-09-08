@@ -407,7 +407,7 @@ def generate_chart_html(labels, datasets, output_path="docs/chart.html"):
     print(f"Chart HTML saved to {output_path}")
 
 
-def main():
+def build_charts():
     """Main function to generate the performance charts."""
     # Load data from database
     data = load_database_file()
@@ -427,7 +427,3 @@ def main():
     generate_chart_html(labels, datasets)
 
     print("Chart generation completed successfully!")
-
-
-if __name__ == "__main__":
-    main()
