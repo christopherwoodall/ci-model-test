@@ -2,8 +2,8 @@ import benchci
 import argparse
 
 
-def run_evaluation():
-    benchci.evaluation.run_evaluation()
+def run_evaluation(config_file_path):
+    benchci.evaluation.run_evaluation(config_file_path)
 
 
 def build_pages(): ...
