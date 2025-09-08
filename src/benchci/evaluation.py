@@ -1,9 +1,11 @@
 import os
+
+# import concurrent.futures
 import yaml
-import argparse
+
+# import argparse
 import datetime
 import subprocess
-import concurrent.futures
 
 
 def load_config(config_path):
@@ -28,7 +30,18 @@ def load_config(config_path):
     return config
 
 
-def run_evaluation(model_name, eval_name, limit, json_output):
+def run_evaluation(config_path):
+    config = load_config(config_path)
+
+    model_name = config.get("model_name", "default_model")
+    eval_name = config.get("eval_name", "default_eval")
+    limit = config.get("limit", 5)
+    json_output = config.get("json_output", False)
+
+    _run_evaluation(model_name, eval_name, limit, json_output)
+
+
+def _run_evaluation(model_name, eval_name, limit, json_output):
     """
     Constructs and executes the bench eval command.
     """
@@ -63,6 +76,13 @@ def run_evaluation(model_name, eval_name, limit, json_output):
     print(f"Executing command: {' '.join(command)}")
 
     try:
+        """
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+        TODO: Import `openbench` and use its API directly instead of subprocess.
+
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        """
         # Execute the command. `check=True` will raise a CalledProcessError for non-zero exit codes.
         # `capture_output=True` captures stdout and stderr.
         # `text=True` decodes stdout/stderr as text.
@@ -109,90 +129,90 @@ def run_evaluation(model_name, eval_name, limit, json_output):
         raise
 
 
-def main():
-    """
-    Main function to parse arguments and run evaluations based on config.
-    Runs all evaluations in parallel using threads.
-    """
-    parser = argparse.ArgumentParser(
-        description="Run model evaluations based on a configuration file."
-    )
-    parser.add_argument(
-        "--config",
-        type=str,
-        default="config.yaml",
-        help="Path to the YAML configuration file (default: config.yaml)",
-    )
+# def main():
+#     """
+#     Main function to parse arguments and run evaluations based on config.
+#     Runs all evaluations in parallel using threads.
+#     """
+#     parser = argparse.ArgumentParser(
+#         description="Run model evaluations based on a configuration file."
+#     )
+#     parser.add_argument(
+#         "--config",
+#         type=str,
+#         default="config.yaml",
+#         help="Path to the YAML configuration file (default: config.yaml)",
+#     )
 
-    args = parser.parse_args()
-    config_file_path = args.config
+#     args = parser.parse_args()
+#     config_file_path = args.config
 
-    max_workers = 5
+#     max_workers = 5
 
-    print(f"Loading configuration from: {config_file_path}")
-    try:
-        config = load_config(config_file_path)
+#     print(f"Loading configuration from: {config_file_path}")
+#     try:
+#         config = load_config(config_file_path)
 
-        if "evaluation_runs" in config and isinstance(config["evaluation_runs"], dict):
-            print("\n--- Starting Evaluation Runs ---")
+#         if "evaluation_runs" in config and isinstance(config["evaluation_runs"], dict):
+#             print("\n--- Starting Evaluation Runs ---")
 
-            futures = []
-            with concurrent.futures.ThreadPoolExecutor(
-                max_workers=max_workers
-            ) as executor:
-                for run_name, run_config in config["evaluation_runs"].items():
-                    print(f"\n--- Processing Evaluation Run: {run_name} ---")
+#             futures = []
+#             with concurrent.futures.ThreadPoolExecutor(
+#                 max_workers=max_workers
+#             ) as executor:
+#                 for run_name, run_config in config["evaluation_runs"].items():
+#                     print(f"\n--- Processing Evaluation Run: {run_name} ---")
 
-                    model_name = run_config.get("model")
-                    limit = run_config.get("limit")
-                    json_output = run_config.get("json", False)
-                    evals_list = run_config.get("evals")
+#                     model_name = run_config.get("model")
+#                     limit = run_config.get("limit")
+#                     json_output = run_config.get("json", False)
+#                     evals_list = run_config.get("evals")
 
-                    if not all([model_name, limit, evals_list]):
-                        print(
-                            f"  Skipping run '{run_name}' due to missing 'model', 'limit', or 'evals' configuration."
-                        )
-                        continue
+#                     if not all([model_name, limit, evals_list]):
+#                         print(
+#                             f"  Skipping run '{run_name}' due to missing 'model', 'limit', or 'evals' configuration."
+#                         )
+#                         continue
 
-                    if not isinstance(evals_list, list):
-                        print(f"  Skipping run '{run_name}': 'evals' must be a list.")
-                        continue
+#                     if not isinstance(evals_list, list):
+#                         print(f"  Skipping run '{run_name}': 'evals' must be a list.")
+#                         continue
 
-                    for eval_name in evals_list:
-                        # Submit each evaluation as a future
-                        futures.append(
-                            executor.submit(
-                                run_evaluation,
-                                model_name,
-                                eval_name,
-                                limit,
-                                json_output,
-                            )
-                        )
+#                     for eval_name in evals_list:
+#                         # Submit each evaluation as a future
+#                         futures.append(
+#                             executor.submit(
+#                                 run_evaluation,
+#                                 model_name,
+#                                 eval_name,
+#                                 limit,
+#                                 json_output,
+#                             )
+#                         )
 
-                # Wait for all futures to complete
-                for future in concurrent.futures.as_completed(futures):
-                    try:
-                        # This will raise any exceptions from the thread
-                        future.result()
-                    except Exception as e:
-                        print(f"Evaluation failed with exception: {e}")
+#                 # Wait for all futures to complete
+#                 for future in concurrent.futures.as_completed(futures):
+#                     try:
+#                         # This will raise any exceptions from the thread
+#                         future.result()
+#                     except Exception as e:
+#                         print(f"Evaluation failed with exception: {e}")
 
-        else:
-            print(
-                "  No 'evaluation_runs' section found or it is malformed in config.yaml."
-            )
+#         else:
+#             print(
+#                 "  No 'evaluation_runs' section found or it is malformed in config.yaml."
+#             )
 
-    except FileNotFoundError as e:
-        print(f"Fatal Error: {e}")
-        exit(1)
-    except yaml.YAMLError as e:
-        print(f"Fatal Error parsing YAML file: {e}")
-        exit(1)
-    except Exception as e:
-        print(f"An unexpected fatal error occurred: {e}")
-        exit(1)
+#     except FileNotFoundError as e:
+#         print(f"Fatal Error: {e}")
+#         exit(1)
+#     except yaml.YAMLError as e:
+#         print(f"Fatal Error parsing YAML file: {e}")
+#         exit(1)
+#     except Exception as e:
+#         print(f"An unexpected fatal error occurred: {e}")
+#         exit(1)
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
