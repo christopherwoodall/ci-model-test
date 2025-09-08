@@ -1,8 +1,8 @@
-import argparse
-import yaml
 import os
-import subprocess
+import yaml
+import argparse
 import datetime
+import subprocess
 import concurrent.futures
 
 

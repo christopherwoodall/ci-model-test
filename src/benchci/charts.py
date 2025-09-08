@@ -1,5 +1,5 @@
-import json
 import os
+import json
 
 
 def load_database_file(database_path="docs/database.json"):
