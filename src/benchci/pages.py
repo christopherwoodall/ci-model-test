@@ -573,7 +573,7 @@ def generate_css():
     print("CSS file saved to docs/ReportPage.css")
 
 
-def main():
+def build_pages():
     """Main function to orchestrate the build process."""
     # Load JSON files
     report_data = load_json_files()
@@ -595,7 +595,3 @@ def main():
     generate_css()
 
     print("Build process completed successfully!")
-
-
-if __name__ == "__main__":
-    main()
