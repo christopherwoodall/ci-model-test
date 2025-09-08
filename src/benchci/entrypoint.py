@@ -1,8 +1,10 @@
 import argparse
 
+import benchci
+
 
 def run_evaluation():
-    ...
+    benchci.evaluation.run_evaluation()
 
 
 def build_pages():
@@ -17,6 +19,7 @@ def main():
     parser = argparse.ArgumentParser(description="BenchCI Command Line Interface")
     subparsers = parser.add_subparsers(dest="command")
 
+    # TODO: Pass config file to each command
     eval_parser = subparsers.add_parser("evaluate", help="Run evaluations")
     eval_parser.set_defaults(func=run_evaluation)
 
