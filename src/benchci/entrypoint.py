@@ -18,6 +18,7 @@ def main():
 
     eval_parser = subparsers.add_parser("evaluate", help="Run evaluations")
     eval_parser.set_defaults(func=run_evaluation)
+    # TODO: Should we set this to the top level `parser`?
     eval_parser.add_argument(
         "--config",
         type=str,
