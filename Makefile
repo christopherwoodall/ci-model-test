@@ -48,9 +48,17 @@ serve: build ## Serve the site locally
 
 
 .PHONY: build
-build: ## Build the database, HTML page, and chart page
--	python build_pages.py
--	python build_chart.py
+build: ## Build the application
+-	pip install wheel
+-	pip install --upgrade pip wheel
+-	pip install --editable ".[developer]"
+-	hatch build --clean --target wheel
+
+# .PHONY: build
+# build: ## Build the database, HTML page, and chart page
+# -	python build_pages.py
+# -	python build_chart.py
+
 
 .PHONY: clean
 clean: ## Clean generated files
