@@ -24,7 +24,7 @@ dependencies = [
     "anthropic",
     "black",
     "openai",
-    "openbench @ git+https://github.com/christopherwoodall/openbench.git@support-json-output",
+    "openbench",
     "ruff",
 ]
 
