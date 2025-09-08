@@ -36,10 +36,9 @@ def main():
 
     args = parser.parse_args()
 
-    config_file_path = args.config if hasattr(args, "config") else "config.yaml"
-
     if hasattr(args, "func"):
         if args.func == run_evaluation:
+            config_file_path = args.config if hasattr(args, "config") else "config.yaml"
             args.func(config_file_path)
         else:
             args.func()
