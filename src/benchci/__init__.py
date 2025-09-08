@@ -1,4 +1,5 @@
 # ruff: noqa
+# fmt: off
 # Configure clean imports for the package
 # See: https://hynek.me/articles/testing-packaging/
 
@@ -11,10 +12,10 @@ __all__ = [
     "evaluation",
         "run_evaluation",
         "load_config",
-
+    
     "pages",
         "build_pages",
-
+    
     "charts",
         "build_charts",
 ]
