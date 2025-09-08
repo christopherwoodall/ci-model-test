@@ -1,3 +1,4 @@
+# ruff: noqa: B007 E501
 import os
 import glob
 import json
