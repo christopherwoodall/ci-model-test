@@ -46,10 +46,9 @@ def main():
     args = parser.parse_args()
 
     config_file_path = args.config if hasattr(args, "config") else "config.yaml"
-    config = benchci.evaluation.load_config(config_file_path)
 
     if hasattr(args, "func"):
-        args.func()
+        args.func(config_file_path)
     else:
         parser.print_help()
 
