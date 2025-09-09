@@ -1,8 +1,8 @@
 name: Model Evaluation CI/CD
 
 on:
-  schedule:
-    - cron: '0 0 * * *'   # Runs daily at midnight UTC (1 PM PDT)
+  # schedule:
+  #   - cron: '0 0 * * *'   # Runs daily at midnight UTC (1 PM PDT)
   workflow_dispatch:      # Allows manual triggering
 
 jobs:
