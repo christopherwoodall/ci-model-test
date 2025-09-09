@@ -9,7 +9,7 @@ evaluation_runs:
     # model: Specifies the full model identifier to be used for this evaluation.
     model: openrouter/openai/gpt-oss-120b
     # limit: The maximum number of evaluation examples to run. Useful for quick tests.
-    limit: 50
+    limit: "5"
     # json: If true, the evaluation results will be output in JSON format.
     json: true
     # evals: A list of OpenBench evaluation names to run.
@@ -38,7 +38,7 @@ evaluation_runs:
   # Evaluation for OpenAI GPT-OSS 20B on multiple benchmarks
   openai-gpt-oss-20B:
     model: openrouter/openai/gpt-oss-20b
-    limit: 50
+    limit: "5"
     json: true
     evals:
       - mmlu
