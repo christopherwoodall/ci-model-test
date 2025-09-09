@@ -1,55 +1,55 @@
-# name: Generate Pages & Charts
+name: Generate Pages & Charts
 
-# on:
-#   schedule:
-#     - cron: '0 0 * * *'   # Runs daily at midnight UTC
-#   workflow_dispatch:      # Allows manual triggering
+on:
+  schedule:
+    - cron: '0 0 * * *'   # Runs daily at midnight UTC
+  workflow_dispatch:      # Allows manual triggering
 
-# jobs:
-#   generate-pages:
-#     runs-on: ubuntu-latest
+jobs:
+  generate-pages:
+    runs-on: ubuntu-latest
 
-#     permissions:
-#       contents: write
+    permissions:
+      contents: write
 
-#     steps:
-#       - name: Checkout repository
-#         uses: actions/checkout@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-#       - name: Set up Python
-#         uses: actions/setup-python@v5
-#         with:
-#           python-version: '3.11'
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-#       - name: Install dependencies
-#         run: |
-#           python -m pip install --upgrade pip
-#           make install
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          make install
 
-#       - name: Generate report (pages/charts)
-#         run: |
-#           grep -rnil "BadRequestError" ./logs/ | xargs -r rm -f
-#           grep -rnil "AuthenticationError" ./logs/ | xargs -r rm -f
-#           grep -rnil "OpenRouterError" ./logs/ | xargs -r rm -f
-#           make build
+      - name: Generate report (pages/charts)
+        run: |
+          grep -rnil "BadRequestError" ./logs/ | xargs -r rm -f
+          grep -rnil "AuthenticationError" ./logs/ | xargs -r rm -f
+          grep -rnil "OpenRouterError" ./logs/ | xargs -r rm -f
+          make build
 
-#       - name: Push changes
-#         run: |
-#           git config --global user.name "github-actions[bot]"
-#           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-#           git pull
+          git pull
 
-#           if git status --porcelain | grep -q '\.json$\|\.html$\|\.png$\|\.svg$'; then
-#             git add .
-#             git commit -m "Automated: Update pages and charts"
-#             git push
-#           else
-#             echo "No new files to commit."
-#           fi
+          if git status --porcelain | grep -q '\.json$\|\.html$\|\.png$\|\.svg$'; then
+            git add .
+            git commit -m "Automated: Update pages and charts"
+            git push
+          else
+            echo "No new files to commit."
+          fi
 
-#       - name: Deploy to GitHub Pages
-#         uses: peaceiris/actions-gh-pages@v3
-#         with:
-#           github_token: ${{ secrets.GITHUB_TOKEN }}
-#           publish_dir: ./docs
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs

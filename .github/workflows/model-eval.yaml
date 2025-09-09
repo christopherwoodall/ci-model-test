@@ -1,77 +1,77 @@
-# name: Model Evaluation CI/CD
+name: Model Evaluation CI/CD
 
-# on:
-#   schedule:
-#     - cron: '0 0 * * *'   # Runs daily at midnight UTC (1 PM PDT)
-#   workflow_dispatch:      # Allows manual triggering
+on:
+  schedule:
+    - cron: '0 0 * * *'   # Runs daily at midnight UTC (1 PM PDT)
+  workflow_dispatch:      # Allows manual triggering
 
-# jobs:
-#   evaluate-models:
-#     runs-on: ubuntu-latest
+jobs:
+  evaluate-models:
+    runs-on: ubuntu-latest
 
-#     permissions:
-#       contents: write
+    permissions:
+      contents: write
 
-#     steps:
-#       - name: Checkout repository
-#         uses: actions/checkout@v4
-#         with:
-#           ref: ${{ github.head_ref }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
 
-#       - name: Set up Python
-#         uses: actions/setup-python@v5
-#         with:
-#           python-version: '3.11'
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-#       - name: Install dependencies
-#         run: |
-#           python -m pip install --upgrade pip
-#           make install
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          make install
 
-#       # - name: Patch dependencies
-#       #   run: |
-#       #     for pkg in inspect_ai openbench; do
-#       #       pkg_path=$(python -c "import $pkg; print('/'.join($pkg.__file__.split('/')[:-1]))")
-#       #       find "$pkg_path" -type f -name "*.py" \
-#       #         -exec sed -i 's|https://api.openai.com/v1|https://openrouter.ai/api/v1|g' {} +
-#       #     done
+      # - name: Patch dependencies
+      #   run: |
+      #     for pkg in inspect_ai openbench; do
+      #       pkg_path=$(python -c "import $pkg; print('/'.join($pkg.__file__.split('/')[:-1]))")
+      #       find "$pkg_path" -type f -name "*.py" \
+      #         -exec sed -i 's|https://api.openai.com/v1|https://openrouter.ai/api/v1|g' {} +
+      #     done
 
-#       - name: Run model evaluation
-#         id: eval
-#         env:
-#           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-#           OPENAI_BASE_URL: https://openrouter.ai/api/v1
-#         run: |
-#             make eval           
-#             echo "push=true" >> $GITHUB_OUTPUT
+      - name: Run model evaluation
+        id: eval
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENAI_BASE_URL: https://openrouter.ai/api/v1
+        run: |
+            make eval           
+            echo "push=true" >> $GITHUB_OUTPUT
 
-#       - name: Generate report
-#         if: steps.eval.outputs.push == 'true'
-#         run: |
-#           grep -rnil "BadRequestError" ./logs/ | xargs -r rm -f
-#           grep -rnil "AuthenticationError" ./logs/ | xargs -r rm -f
-#           grep -rnil "OpenRouterError" ./logs/ | xargs -r rm -f
-#           make build
+      - name: Generate report
+        if: steps.eval.outputs.push == 'true'
+        run: |
+          grep -rnil "BadRequestError" ./logs/ | xargs -r rm -f
+          grep -rnil "AuthenticationError" ./logs/ | xargs -r rm -f
+          grep -rnil "OpenRouterError" ./logs/ | xargs -r rm -f
+          make build
 
-#       - name: Push changes
-#         if: steps.eval.outputs.push == 'true'
-#         run: |
-#           git config --global user.name "github-actions[bot]"
-#           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Push changes
+        if: steps.eval.outputs.push == 'true'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-#           git pull
+          git pull
 
-#           if git status --porcelain | grep -q '\.json$'; then
-#             git add .
-#             git commit -m "Automated: Add model evaluation results"
-#             git push
-#           else
-#             echo "No new files to commit."
-#           fi
+          if git status --porcelain | grep -q '\.json$'; then
+            git add .
+            git commit -m "Automated: Add model evaluation results"
+            git push
+          else
+            echo "No new files to commit."
+          fi
 
-#       - name: Deploy to GitHub Pages
-#         if: steps.eval.outputs.push == 'true'
-#         uses: peaceiris/actions-gh-pages@v3
-#         with:
-#           github_token: ${{ secrets.GITHUB_TOKEN }}
-#           publish_dir: ./docs
+      - name: Deploy to GitHub Pages
+        if: steps.eval.outputs.push == 'true'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
