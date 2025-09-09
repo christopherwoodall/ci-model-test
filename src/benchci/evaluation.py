@@ -30,11 +30,13 @@ def load_config(config_path):
 def run_evaluation(config_path):
     config = load_config(config_path)
 
+    ## TODO
     # model_name = config.get("model_name", "default_model")
     # eval_name = config.get("eval_name", "default_eval")
     # limit = config.get("limit", 5)
     # json_output = config.get("json_output", False)
 
+    ## TODO
     # # Add JSON flag and logfile if required
     # if json_output:
     #     # Generate a logfile name using Python's datetime for portability
@@ -45,6 +47,17 @@ def run_evaluation(config_path):
     #     )
     #     logfile_name = f"results_{sanitized_model_name}_{eval_name}_{timestamp}"
 
+    ## TODO
+    # for run_name, run_config in config["evaluation_runs"].items():
+    #     print(f"\n--- Processing Evaluation Run: {run_name} ---")
+
+    #     model_name = run_config.get("model")
+    #     limit = run_config.get("limit")
+    #     json_output = run_config.get("json", False)
+    #     evals_list = run_config.get("evals")
+
+    ## TODO
+    # for eval_name in evals_list:
     openbench.run_eval(
         benchmarks=["mmlu"],
         model=["openrouter/openai/gpt-oss-20b"],
