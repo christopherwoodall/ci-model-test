@@ -1,0 +1,157 @@
+[build-system]
+requires = ["hatchling>=1.11.0"]
+build-backend = "hatchling.build"
+
+
+[project.scripts]
+benchci = "benchci.entrypoint:main"
+
+[project]
+requires-python = ">=3.10"
+version = "0.0.1"
+name        = "benchci"
+description = "Benchmarks in CI."
+readme      = ".github/README.md"
+license     = "MIT"
+
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Environment :: Console",
+    "Programming Language :: Python :: 3",
+]
+
+dependencies = [
+    "anthropic",
+    "openai >= 1.99.7",
+    "openbench @ git+https://github.com/christopherwoodall/openbench.git@export-run-eval-method",
+]
+
+[project.optional-dependencies]
+developer = [
+    "bandit[toml]",
+    "black",
+    "hatch",
+    "mypy",
+    "pytest",
+    "pytest-cov",
+    "ruff",
+]
+
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+
+[tool.hatch.build]
+ignore-vcs = false
+reproducible = true
+directory = "dist"
+sources = ["src"]
+include = ["src/", "LICENSE", "pyproject.toml", ".github/README.md"]
+
+
+# Good overview of ruff's configuration options here:
+#   https://gist.github.com/carloshbcabral/b99510d4b1fc1c2765f07f3eb1f5f844
+#   https://docs.astral.sh/ruff/configuration/
+[tool.ruff]
+src = [
+    ".",
+    "src"
+]
+exclude =[
+    "*.ipynb",
+]
+target-version = "py311"
+respect-gitignore = true
+output-format = "full"
+show-fixes = true
+fix = true
+line-length = 127
+indent-width = 4
+
+
+[tool.ruff.lint]
+exclude = ["*.ipynb"]
+fixable = ["ALL"]
+extend-select = ["I", "B", "Q"]
+select = [
+    # "C901",  # McCabe complexity
+    "E",
+    "F"
+]
+task-tags = ["TODO", "FIXME", "XXX"]
+ignore = []
+
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+
+[tool.ruff.lint.isort]
+lines-after-imports = 2
+length-sort-straight = true
+length-sort = true
+no-sections = true
+
+
+[tool.ruff.lint.flake8-quotes]
+docstring-quotes = "double"
+inline-quotes = "double"
+multiline-quotes = "double"
+
+
+[tool.ruff.lint.flake8-bandit]
+check-typed-exception = false
+
+
+[tool.ruff.format]
+exclude = ["*.ipynb"]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
+skip-magic-trailing-comma = false
+docstring-code-format = true
+
+
+[tool.flake8]
+max_line_length = 127
+count = true
+max_complexity = 15
+statistics = true
+exclude = []
+
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-ra -q -v"
+python_files = "test_*.py"
+
+
+# General scanning options
+# https://bandit.readthedocs.io/en/latest/config.html
+[tool.bandit]
+targets = ["src/"]
+exclude_dirs = [
+    ".venv/",
+    "venv/",
+    "tests/",
+    ".github/",
+    "*__pycache__/",
+    ".git/",
+    ".mypy_cache/",
+    ".ruff_cache/",
+    "*.egg-info/",
+]
+recursive = true        # Whether to scan recursively (usually true)
+output_format = "html"  # Output format (e.g., json, html, txt)
+output_file = "bandit_report.html" # Output file path
+
+tests = [
+    # "B101", # Use of assert
+    # "B301", # pickle module
+]
+skips = [
+    "B110", # Skip 'Try, Except, Pass' issues
+    "B112", # Skip 'Try, Except, Continue' issues
+]

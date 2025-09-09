@@ -47,10 +47,23 @@ serve: build ## Serve the site locally
 -	cd docs && python -m http.server 8000
 
 
+.PHONY: install
+install: ## Install dependencies (if needed)
+-	pip install -e .
+
+
 .PHONY: build
 build: ## Build the database, HTML page, and chart page
--	python build_pages.py
--	python build_chart.py
+-	benchci build-pages
+-	benchci build-charts
+
+# .PHONY: build
+# build: ## Build the application
+# -	pip install wheel
+# -	pip install --upgrade pip wheel
+# -	pip install --editable ".[developer]"
+# -	hatch build --clean --target wheel
+
 
 .PHONY: clean
 clean: ## Clean generated files
@@ -60,14 +73,9 @@ clean: ## Clean generated files
 -	@echo "Cleaned generated files"
 
 
-.PHONY: install
-install: ## Install dependencies (if needed)
--	pip install -r requirements.txt
-
-
 .PHONY: eval
 eval: ## Run evaluations (if needed)
--	python evaluation.py --config config.yaml
+-	benchci evaluate
 
 
 .PHONY: clean-logs
