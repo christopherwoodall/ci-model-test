@@ -49,6 +49,9 @@ def run_single_eval(model_name, eval_name, limit):
 
 
 def run_evaluation(config_path, max_workers=4):
+    """
+    Runs evaluations based on the provided configuration file.
+    """
     config = load_config(config_path)
 
     tasks = []
