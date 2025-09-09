@@ -1,6 +1,7 @@
 import os
 import yaml
 import openbench
+
 # import datetime
 # import subprocess
 
@@ -59,11 +60,13 @@ def run_evaluation(config_path):
     ## TODO
     # for eval_name in evals_list:
     openbench.run_eval(
+        # display=openbench._cli.eval_command.DisplayFormat.NONE,
         benchmarks=["mmlu"],
         model=["openrouter/openai/gpt-oss-20b"],
-        limit=5,
-        log_format="json",
+        limit="5",
+        log_format=openbench._cli.eval_command.LogFormat.JSON,
         # logfile = logfile_name,
         # model_base_url = "https://openrouter.ai/api/v1",
         # model_role = "grader_model=openrouter/openai/gpt-4.1-mini",
+        debug=True,
     )
