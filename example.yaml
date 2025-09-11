@@ -47,7 +47,7 @@ evaluation_runs:
       - simpleqa
 
   # # Evaluation for Qwen 3 (30B)
-  # qwen3-30b-simpleqa:
+  # openrouter-qwen3-30b:
   #   model: openrouter/qwen/qwen3-30b-a3b-instruct-2507
   #   limit: 50
   #   json: true
@@ -59,7 +59,7 @@ evaluation_runs:
   #     # - simpleqa
 
   # # Evaluation for GPT-4.1 Nano
-  # gpt4-nano-musr:
+  # openrouter-gpt4-nano:
   #   model: openrouter/openai/gpt-4.1-nano
   #   limit: 50
   #   json: true
