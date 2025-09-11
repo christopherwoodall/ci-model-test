@@ -20,7 +20,7 @@ def main():
 
     eval_parser = subparsers.add_parser("evaluate", help="Run evaluations")
     eval_parser.set_defaults(func=run_evaluation)
-    # TODO: Should we set this to the top level `parser`?
+    # TODO: Should this be set to the top level `parser`?
     eval_parser.add_argument(
         "--config",
         type=str,
@@ -38,8 +38,7 @@ def main():
 
     if hasattr(args, "func"):
         if args.func == run_evaluation:
-            config_file_path = args.config if hasattr(args, "config") else "config.yaml"
-            args.func(config_file_path)
+            args.func(args.config)
         else:
             args.func()
     else:
