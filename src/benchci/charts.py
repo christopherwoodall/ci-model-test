@@ -2,7 +2,7 @@ import os
 import json
 
 
-def load_database_file(database_path="docs/database.json"):
+def load_database_file(database_path="reports/database.json"):
     """Load the database JSON file containing model evaluation data."""
     try:
         with open(database_path, "r") as f:
@@ -92,7 +92,7 @@ def prepare_chart_data(data):
     return chart_labels, datasets
 
 
-def generate_chart_html(labels, datasets, output_path="docs/chart.html"):
+def generate_chart_html(labels, datasets, output_path="reports/chart.html"):
     """Generate an HTML file with interactive charts using Chart.js."""
     # Convert data to JSON for JavaScript
     labels_json = json.dumps(labels)

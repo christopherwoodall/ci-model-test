@@ -93,7 +93,7 @@ def convert_to_database_format(report_data):
     return database_entries
 
 
-def save_to_json_file(data, output_path="docs/database.json"):
+def save_to_json_file(data, output_path="reports/database.json"):
     """Save the database entries to a JSON file."""
     with open(output_path, "w") as f:
         json.dump(data, f, indent=2)
@@ -109,7 +109,7 @@ def generate_html_page():
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Model Evaluation Report</title>
-    <link rel="stylesheet" href="ReportPage.css">
+    <link rel="stylesheet" href="report.css">
 </head>
 <body>
     <div class="report-container">
@@ -373,9 +373,9 @@ def generate_html_page():
 </body>
 </html>"""
 
-    with open("docs/index.html", "w") as f:
+    with open("reports/index.html", "w") as f:
         f.write(html_code)
-    print("HTML page saved to docs/index.html")
+    print("HTML page saved to reports/index.html")
 
 
 def generate_css():
@@ -572,9 +572,9 @@ def generate_css():
   }
 }"""
 
-    with open("docs/ReportPage.css", "w") as f:
+    with open("reports/ReportPage.css", "w") as f:
         f.write(css_code)
-    print("CSS file saved to docs/ReportPage.css")
+    print("CSS file saved to reports/report.css")
 
 
 def build_pages():
