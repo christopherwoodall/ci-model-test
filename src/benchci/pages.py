@@ -1,7 +1,6 @@
 # ruff: noqa: B007 E501
-import os
-from pathlib import Path
 import json
+from pathlib import Path
 from datetime import datetime
 
 
@@ -27,7 +26,7 @@ def convert_to_database_format(report_data):
     database_entries = []
 
     # TODO - This needs to be reworked. Use iter (see compat.py) so that
-    #        we're not loading every file into memory. 
+    #        we're not loading every file into memory.
     for item in report_data:
         model = item.get("eval", {}).get("model", "N/A")
         timestamp = item.get("eval", {}).get("created", "N/A")

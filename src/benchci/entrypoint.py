@@ -15,7 +15,7 @@ def build_charts():
 
 
 def compat_logs():
-    benchi.compat.compat_logs()
+    benchci.compat.compat_logs()
 
 
 def main():

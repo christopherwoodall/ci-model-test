@@ -4,13 +4,13 @@ Issue: Logs can be large and hard to check-in without using git-lfs.
 Solution: Once it is determined that the logs need to be compacted,
           this script can be ran to remove evaluation content (e.g.
           chat completions/responses) so that only the metrics
-          remain. This is a destructive operation - the content of 
+          remain. This is a destructive operation - the content of
           the evaluations will be lost.
 
 Process:
     1. log directory is scanned.
     2. filter out any files that do not end with `_compat`.
-    3. Read, modify, and write back the file contents. (remove all eval data leaving only metrics) 
+    3. Read, modify, and write back the file contents. (remove all eval data leaving only metrics)
     4. rename the file prepending `_compat`.
 
 Considerations:
@@ -21,9 +21,8 @@ Considerations:
     * All generated assets (html, css, js) should be templated.
 """
 
-from pathlib import Path
 import json
-
+from pathlib import Path
 
 
 def iter_json_files(logs_path="./logs/"):
@@ -32,22 +31,33 @@ def iter_json_files(logs_path="./logs/"):
     logs_dir = Path(logs_path)
 
     for file_path in logs_dir.glob("*.json"):
-        try:
-            with file_path.open("r", encoding="utf-8") as f:
-                yield json.load(f)
-        except json.JSONDecodeError:
-            print(f"Warning: Could not decode JSON from {file_path}")
-            continue
+        yield file_path
 
 
 def compat_logs():
     # TODO - Better define output paths (config.yaml?) - evaluation.py:28
     for record in iter_json_files("./logs/"):
-        # if "_compat" in record.filename: pass
+        try:
+            with record.open("r", encoding="utf-8") as f:
+                record_json = json.load(f)
+        except json.JSONDecodeError:
+            print(f"Warning: Could not decode JSON from {record}")
+            continue
 
-        # record_json = json.loads(record.read())
-        # extraction/removal logic
-        # write back the file
-        # rename the file
+        # If the file is already compat, skip it
+        if "_compat" in record.name:
+            continue
 
-        print(record)
+        # Remove evaluation content from the JSON
+        if "samples" in record_json:
+            del record_json["samples"]
+
+        # Write the modified JSON back to the file
+        with record.open("w", encoding="utf-8") as f:
+            json.dump(record_json, f)
+
+        # Rename the file to prepend "_compat"
+        compat_rename = record.with_name(f"{record.stem}_compat{record.suffix}")
+        record.rename(compat_rename)
+
+        print(f"Processed {record} and saved compacted version as {compat_rename}")
