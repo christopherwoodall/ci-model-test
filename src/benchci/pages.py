@@ -1,6 +1,7 @@
 # ruff: noqa: B007 E501
 import json
 import yaml
+from jinja2 import Template
 from pathlib import Path
 from datetime import datetime
 
@@ -79,6 +80,7 @@ def convert_to_database_format(report_data):
         database_entries.append(
             {
                 "model": model,
+                "model_key": model_key,
                 "timestamp": formatted_timestamp,
                 "eval_name": eval_name,
                 "score": (
@@ -94,293 +96,29 @@ def convert_to_database_format(report_data):
     return database_entries
 
 
-def save_to_json_file(data, output_path="reports/database.json"):
+def save_to_json_file(data, reports_path):
     """Save the database entries to a JSON file."""
-    with open(output_path, "w") as f:
+    with open(f"{reports_path}/database.json", "w") as f:
         json.dump(data, f, indent=2)
-    print(f"Database saved to {output_path}")
+    print(f"Database saved to {reports_path}")
 
 
-def generate_html_page():
-    """Generate an HTML page to display the data."""
-    # TODO - use jinja
-    # from jinja2 import Template
-    # html_template = Template(Path("templates/report_html.j2").read_text())
-    # html_rendered = html_template.render()
+def generate_html_page(reports_path):
+    """Generate an HTML page to display the data using Jinja2."""
+    template_path = Path("templates/report_html.j2")
+    html_template = Template(template_path.read_text(encoding="utf-8"))
 
-    html_code = """<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Model Evaluation Report</title>
-    <link rel="stylesheet" href="report.css">
-</head>
-<body>
-    <div class="report-container">
-        <h1>Model Evaluation Report</h1>
-        
-        <div class="filters">
-            <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Search models or evals...">
-            </div>
-            
-            <div class="filter-dropdowns">
-                <select id="modelFilter">
-                    <option value="">All Models</option>
-                </select>
-                
-                <select id="evalFilter">
-                    <option value="">All Evals</option>
-                </select>
-                
-                <button id="clearFilters">Clear Filters</button>
-            </div>
-        </div>
-        
-        <div class="results-info">
-            Showing <span id="resultCount">0</span> results
-        </div>
-        
-        <table class="report-table">
-            <thead>
-                <tr>
-                    <th data-sort="model">Model</th>
-                    <th data-sort="timestamp">Timestamp</th>
-                    <th data-sort="eval_name">Eval Name</th>
-                    <th data-sort="score">Score</th>
-                    <th data-sort="total_tokens">Total Tokens</th>
-                    <th>Details</th>
-                </tr>
-            </thead>
-            <tbody id="reportTableBody">
-                <!-- Data will be populated by JavaScript -->
-            </tbody>
-        </table>
-    </div>
-    
-    <script>
-        // Load data from database.json
-        fetch('database.json')
-            .then(response => response.json())
-            .then(data => {
-                // Populate filter dropdowns
-                const uniqueModels = [...new Set(data.map(item => item.model))];
-                const uniqueEvals = [...new Set(data.map(item => item.eval_name))];
-                
-                const modelFilter = document.getElementById('modelFilter');
-                const evalFilter = document.getElementById('evalFilter');
-                
-                uniqueModels.forEach(model => {
-                    const option = document.createElement('option');
-                    option.value = model;
-                    option.textContent = model;
-                    modelFilter.appendChild(option);
-                });
-                
-                uniqueEvals.forEach(evalName => {
-                    const option = document.createElement('option');
-                    option.value = evalName;
-                    option.textContent = evalName;
-                    evalFilter.appendChild(option);
-                });
-                
-                // Store original data
-                window.originalData = data;
-                window.filteredData = [...data];
-                
-                // Render initial table
-                renderTable(data);
-                
-                // Set up event listeners
-                setupEventListeners();
-            })
-            .catch(error => console.error('Error loading data:', error));
-            
-        function setupEventListeners() {
-            // Search functionality
-            document.getElementById('searchInput').addEventListener('input', function(e) {
-                applyFilters();
-            });
-            
-            // Model filter
-            document.getElementById('modelFilter').addEventListener('change', function(e) {
-                applyFilters();
-            });
-            
-            // Eval filter
-            document.getElementById('evalFilter').addEventListener('change', function(e) {
-                applyFilters();
-            });
-            
-            // Clear filters
-            document.getElementById('clearFilters').addEventListener('click', function() {
-                document.getElementById('searchInput').value = '';
-                document.getElementById('modelFilter').value = '';
-                document.getElementById('evalFilter').value = '';
-                window.filteredData = [...window.originalData];
-                renderTable(window.filteredData);
-            });
-            
-            // Sort functionality
-            document.querySelectorAll('th[data-sort]').forEach(th => {
-                th.addEventListener('click', function() {
-                    const sortKey = this.getAttribute('data-sort');
-                    sortTable(sortKey);
-                });
-            });
-        }
-        
-        function applyFilters() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const selectedModel = document.getElementById('modelFilter').value;
-            const selectedEval = document.getElementById('evalFilter').value;
-            
-            let result = window.originalData;
-            
-            // Apply search filter
-            if (searchTerm) {
-                result = result.filter(item => {
-                    return (
-                        item.model.toLowerCase().includes(searchTerm) ||
-                        item.eval_name.toLowerCase().includes(searchTerm)
-                    );
-                });
-            }
-            
-            // Apply model filter
-            if (selectedModel) {
-                result = result.filter(item => item.model === selectedModel);
-            }
-            
-            // Apply eval filter
-            if (selectedEval) {
-                result = result.filter(item => item.eval_name === selectedEval);
-            }
-            
-            window.filteredData = result;
-            renderTable(result);
-        }
-        
-        function sortTable(sortKey) {
-            const sortedData = [...window.filteredData].sort((a, b) => {
-                let aValue = a[sortKey];
-                let bValue = b[sortKey];
-                
-                // Special handling for timestamp column
-                if (sortKey === 'timestamp') {
-                    aValue = new Date(aValue).getTime();
-                    bValue = new Date(bValue).getTime();
-                } else {
-                    // Try numeric comparison for score
-                    const aNum = parseFloat(aValue);
-                    const bNum = parseFloat(bValue);
-                    if (!isNaN(aNum) && !isNaN(bNum)) {
-                        aValue = aNum;
-                        bValue = bNum;
-                    }
-                }
-                
-                if (aValue < bValue) {
-                    return -1;
-                }
-                if (aValue > bValue) {
-                    return 1;
-                }
-                return 0;
-            });
-            
-            window.filteredData = sortedData;
-            renderTable(sortedData);
-        }
-        
-        function renderTable(data) {
-            const tableBody = document.getElementById('reportTableBody');
-            tableBody.innerHTML = '';
-            
-            document.getElementById('resultCount').textContent = data.length;
-            
-            data.forEach((item, index) => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${item.model}</td>
-                    <td>${new Date(item.timestamp).toLocaleString()}</td>
-                    <td>${item.eval_name}</td>
-                    <td>${typeof item.score === 'number' ? item.score.toFixed(4) : item.score}</td>
-                    <td>${item.total_tokens?.toLocaleString() || 'N/A'}</td>
-                    <td><button class="details-btn" data-index="${index}">Show Details</button></td>
-                `;
-                tableBody.appendChild(row);
-            });
-            
-            // Add event listeners to detail buttons
-            document.querySelectorAll('.details-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const index = this.getAttribute('data-index');
-                    showDetails(index);
-                });
-            });
-        }
-        
-        function showDetails(index) {
-            const item = window.filteredData[index];
-            const details = `
-                <div class="modal">
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <h2>Details for ${item.model} - ${item.eval_name}</h2>
-                        <div class="metrics-grid">
-                            <div class="metric-card">
-                                <h3>Token Usage</h3>
-                                <p><strong>Input:</strong> ${item.total_input_tokens?.toLocaleString() || 'N/A'}</p>
-                                <p><strong>Output:</strong> ${item.total_output_tokens?.toLocaleString() || 'N/A'}</p>
-                                <p><strong>Total:</strong> ${item.total_tokens?.toLocaleString() || 'N/A'}</p>
-                            </div>
-                            
-                            <div class="metric-card">
-                                <h3>Primary Metrics</h3>
-                                <p><strong>Score:</strong> ${typeof item.score === 'number' ? item.score.toFixed(4) : item.score}</p>
-                                ${item.additional_metrics?.stderr !== undefined ? 
-                                    `<p><strong>Std Error:</strong> ${item.additional_metrics.stderr.toFixed(6)}</p>` : ''}
-                            </div>
-                            
-                            ${Object.keys(item.additional_metrics || {}).length > 0 ? `
-                                <div class="metric-card">
-                                    <h3>Additional Metrics</h3>
-                                    ${Object.entries(item.additional_metrics).map(([key, value]) => 
-                                        `<p><strong>${key}:</strong> ${typeof value === 'number' ? value.toFixed(6) : value}</p>`
-                                    ).join('')}
-                                </div>
-                            ` : ''}
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            // Add modal to body
-            const modal = document.createElement('div');
-            modal.innerHTML = details;
-            document.body.appendChild(modal);
-            
-            // Add close functionality
-            modal.querySelector('.close').addEventListener('click', function() {
-                document.body.removeChild(modal);
-            });
-            
-            // Close when clicking outside
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    document.body.removeChild(modal);
-                }
-            });
-        }
-    </script>
-</body>
-</html>"""
+    html_rendered = html_template.render(
+        title="Model Evaluation Report",
+        css_file="report.css",
+        data_file="database.json",
+    )
 
-    with open("reports/index.html", "w") as f:
-        f.write(html_code)
-    print("HTML page saved to reports/index.html")
+    output_path = Path(f"{reports_path}/index.html")
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(html_rendered, encoding="utf-8")
+
+    print(f"HTML page saved to {output_path}")
 
 
 def generate_css():
@@ -586,7 +324,7 @@ def build_pages(config_file_path):
     """Main function to orchestrate the build process."""
     output_yaml = yaml.safe_load(Path(config_file_path).read_text())
     logs_path = output_yaml["evaluation"]["output"]["logs"]
-    # TODO - reports_path
+    reports_path = output_yaml["evaluation"]["output"]["reports"]
 
     # Load JSON files
     report_data = load_json_files(logs_path)
@@ -599,10 +337,10 @@ def build_pages(config_file_path):
     database_entries = convert_to_database_format(report_data)
 
     # Save to JSON file (this will be our "database")
-    save_to_json_file(database_entries)
+    save_to_json_file(database_entries, reports_path)
 
     # Generate HTML page
-    generate_html_page()
+    generate_html_page(reports_path)
 
     # Generate CSS
     generate_css()
