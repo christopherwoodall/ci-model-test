@@ -1,0 +1,229 @@
+{
+    "eval": {
+        "config": {
+            "epochs": 1,
+            "epochs_reducer": [
+                "mean"
+            ],
+            "fail_on_error": true,
+            "limit": 50,
+            "log_buffer": 10,
+            "log_images": true,
+            "log_realtime": true,
+            "log_samples": true,
+            "sandbox_cleanup": true,
+            "score_display": true
+        },
+        "created": "2025-08-06T00:04:17+00:00",
+        "dataset": {
+            "name": "simpleqa",
+            "sample_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50
+            ],
+            "samples": 4326,
+            "shuffled": false
+        },
+        "eval_id": "iYrL6j6uXeRvYvXrKbWAah",
+        "model": "openrouter/openai/gpt-4.1-nano",
+        "model_args": {},
+        "model_base_url": "https://openrouter.ai/api/v1",
+        "model_generate_config": {
+            "max_connections": 10,
+            "temperature": 0.6,
+            "timeout": 10000,
+            "top_p": 1.0
+        },
+        "model_roles": {
+            "grader_model": {
+                "args": {},
+                "base_url": "https://openrouter.ai/api/v1",
+                "config": {},
+                "model": "openrouter/openai/gpt-4.1-mini"
+            }
+        },
+        "packages": {
+            "inspect_ai": "0.3.115"
+        },
+        "revision": {
+            "commit": "5e03955",
+            "origin": "https://github.com/christopherwoodall/ci-model-test",
+            "type": "git"
+        },
+        "run_id": "VNxesBZaEEZQDtkGHSBZ7Z",
+        "scorers": [
+            {
+                "metadata": {},
+                "metrics": [
+                    {
+                        "name": "inspect_ai/accuracy",
+                        "options": {}
+                    },
+                    {
+                        "name": "inspect_ai/stderr",
+                        "options": {}
+                    },
+                    {
+                        "name": "openbench/simpleqa_metrics",
+                        "options": {}
+                    }
+                ],
+                "name": "simpleqa_scorer",
+                "options": {
+                    "model": "openai/gpt-4.1-2025-04-14"
+                }
+            }
+        ],
+        "task": "simpleqa",
+        "task_args": {
+            "grader_model": "openai/gpt-4.1-2025-04-14"
+        },
+        "task_args_passed": {},
+        "task_attribs": {},
+        "task_id": "SYDGxW7GVs3vvV9wNS4Yoo",
+        "task_registry_name": "openbench/simpleqa",
+        "task_version": 0
+    },
+    "plan": {
+        "config": {
+            "max_connections": 10,
+            "temperature": 0.6,
+            "timeout": 10000,
+            "top_p": 1.0
+        },
+        "name": "plan",
+        "steps": [
+            {
+                "params": {},
+                "solver": "generate"
+            }
+        ]
+    },
+    "results": {
+        "completed_samples": 50,
+        "scores": [
+            {
+                "metrics": {
+                    "accuracy": {
+                        "name": "accuracy",
+                        "params": {},
+                        "value": 0.08
+                    },
+                    "accuracy_given_attempted": {
+                        "name": "accuracy_given_attempted",
+                        "params": {},
+                        "value": 0.0816326530612245
+                    },
+                    "f1": {
+                        "name": "f1",
+                        "params": {},
+                        "value": 0.08080808080808083
+                    },
+                    "is_correct": {
+                        "name": "is_correct",
+                        "params": {},
+                        "value": 0.08
+                    },
+                    "is_given_attempted": {
+                        "name": "is_given_attempted",
+                        "params": {},
+                        "value": 0.98
+                    },
+                    "is_incorrect": {
+                        "name": "is_incorrect",
+                        "params": {},
+                        "value": 0.9
+                    },
+                    "is_not_attempted": {
+                        "name": "is_not_attempted",
+                        "params": {},
+                        "value": 0.02
+                    },
+                    "stderr": {
+                        "name": "stderr",
+                        "params": {},
+                        "value": 0.03875617133214439
+                    }
+                },
+                "name": "simpleqa_scorer",
+                "params": {
+                    "model": "openai/gpt-4.1-2025-04-14"
+                },
+                "scored_samples": 50,
+                "scorer": "simpleqa_scorer",
+                "unscored_samples": 0
+            }
+        ],
+        "total_samples": 50
+    },
+    "stats": {
+        "completed_at": "2025-08-06T00:04:25+00:00",
+        "model_usage": {
+            "openai/gpt-4.1-2025-04-14": {
+                "input_tokens": 70723,
+                "input_tokens_cache_read": 64000,
+                "output_tokens": 50,
+                "reasoning_tokens": 0,
+                "total_tokens": 70773
+            },
+            "openrouter/openai/gpt-4.1-nano": {
+                "input_tokens": 1542,
+                "input_tokens_cache_read": 0,
+                "output_tokens": 1649,
+                "reasoning_tokens": 0,
+                "total_tokens": 3191
+            }
+        },
+        "started_at": "2025-08-06T00:04:17+00:00"
+    },
+    "status": "success",
+    "version": 2
+}

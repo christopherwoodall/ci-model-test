@@ -1,0 +1,304 @@
+{
+    "eval": {
+        "config": {
+            "epochs": 1,
+            "epochs_reducer": [
+                "mean"
+            ],
+            "fail_on_error": true,
+            "limit": 20,
+            "log_buffer": 10,
+            "log_images": true,
+            "log_realtime": true,
+            "log_samples": true,
+            "sandbox_cleanup": true,
+            "score_display": true
+        },
+        "created": "2025-08-05T12:46:12-05:00",
+        "dataset": {
+            "location": "https:/openaipublic.blob.core.windows.net/simple-evals/mmlu.csv",
+            "name": "mmlu_simple_eval",
+            "sample_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20
+            ],
+            "samples": 14042,
+            "shuffled": false
+        },
+        "eval_id": "RPxyKctJWEkcyqVW4UiFoK",
+        "model": "openrouter/openai/gpt-oss-120b",
+        "model_args": {},
+        "model_base_url": "https://openrouter.ai/api/v1",
+        "model_generate_config": {
+            "max_connections": 10,
+            "temperature": 0.6,
+            "timeout": 10000,
+            "top_p": 1.0
+        },
+        "model_roles": {
+            "grader_model": {
+                "args": {},
+                "base_url": "https://openrouter.ai/api/v1",
+                "config": {},
+                "model": "openrouter/openai/gpt-4.1-mini"
+            }
+        },
+        "packages": {
+            "inspect_ai": "0.3.119"
+        },
+        "revision": {
+            "commit": "5fc645a",
+            "origin": "https://github.com/christopherwoodall/ci-model-test.git",
+            "type": "git"
+        },
+        "run_id": "9xotZpEDLTnGYHuwqi2unm",
+        "scorers": [
+            {
+                "metadata": {},
+                "metrics": [
+                    {
+                        "name": "openbench/grouped",
+                        "options": {
+                            "group_key": "category",
+                            "metric": [
+                                {
+                                    "name": "accuracy",
+                                    "params": {},
+                                    "type": "metric"
+                                },
+                                {
+                                    "name": "stderr",
+                                    "params": {},
+                                    "type": "metric"
+                                },
+                                {
+                                    "name": "std",
+                                    "params": {},
+                                    "type": "metric"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "name": "mmlu_simple_eval_scorer",
+                "options": {}
+            }
+        ],
+        "task": "mmlu",
+        "task_args": {
+            "language": "EN-US"
+        },
+        "task_args_passed": {},
+        "task_attribs": {},
+        "task_display_name": "mmlu",
+        "task_id": "GvoqQreRTWqAhxqivG7Ax6",
+        "task_registry_name": "openbench/mmlu",
+        "task_version": 0
+    },
+    "plan": {
+        "config": {
+            "max_connections": 10,
+            "temperature": 0.6,
+            "timeout": 10000,
+            "top_p": 1.0
+        },
+        "name": "plan",
+        "steps": [
+            {
+                "params": {},
+                "solver": "generate"
+            }
+        ]
+    },
+    "results": {
+        "completed_samples": 20,
+        "scores": [
+            {
+                "metrics": {
+                    "accuracy": {
+                        "name": "accuracy",
+                        "params": {
+                            "group_key": "category",
+                            "metric": [
+                                {
+                                    "name": "accuracy",
+                                    "params": {},
+                                    "type": "metric"
+                                },
+                                {
+                                    "name": "stderr",
+                                    "params": {},
+                                    "type": "metric"
+                                },
+                                {
+                                    "name": "std",
+                                    "params": {},
+                                    "type": "metric"
+                                }
+                            ]
+                        },
+                        "value": 0.95
+                    },
+                    "std": {
+                        "name": "std",
+                        "params": {
+                            "group_key": "category",
+                            "metric": [
+                                {
+                                    "name": "accuracy",
+                                    "params": {},
+                                    "type": "metric"
+                                },
+                                {
+                                    "name": "stderr",
+                                    "params": {},
+                                    "type": "metric"
+                                },
+                                {
+                                    "name": "std",
+                                    "params": {},
+                                    "type": "metric"
+                                }
+                            ]
+                        },
+                        "value": 0.22360679774997902
+                    },
+                    "stderr": {
+                        "name": "stderr",
+                        "params": {
+                            "group_key": "category",
+                            "metric": [
+                                {
+                                    "name": "accuracy",
+                                    "params": {},
+                                    "type": "metric"
+                                },
+                                {
+                                    "name": "stderr",
+                                    "params": {},
+                                    "type": "metric"
+                                },
+                                {
+                                    "name": "std",
+                                    "params": {},
+                                    "type": "metric"
+                                }
+                            ]
+                        },
+                        "value": 0.05000000000000001
+                    },
+                    "stem_accuracy": {
+                        "name": "stem_accuracy",
+                        "params": {
+                            "group_key": "category",
+                            "metric": [
+                                {
+                                    "name": "accuracy",
+                                    "params": {},
+                                    "type": "metric"
+                                },
+                                {
+                                    "name": "stderr",
+                                    "params": {},
+                                    "type": "metric"
+                                },
+                                {
+                                    "name": "std",
+                                    "params": {},
+                                    "type": "metric"
+                                }
+                            ]
+                        },
+                        "value": 0.95
+                    },
+                    "stem_std": {
+                        "name": "stem_std",
+                        "params": {
+                            "group_key": "category",
+                            "metric": [
+                                {
+                                    "name": "accuracy",
+                                    "params": {},
+                                    "type": "metric"
+                                },
+                                {
+                                    "name": "stderr",
+                                    "params": {},
+                                    "type": "metric"
+                                },
+                                {
+                                    "name": "std",
+                                    "params": {},
+                                    "type": "metric"
+                                }
+                            ]
+                        },
+                        "value": 0.22360679774997902
+                    },
+                    "stem_stderr": {
+                        "name": "stem_stderr",
+                        "params": {
+                            "group_key": "category",
+                            "metric": [
+                                {
+                                    "name": "accuracy",
+                                    "params": {},
+                                    "type": "metric"
+                                },
+                                {
+                                    "name": "stderr",
+                                    "params": {},
+                                    "type": "metric"
+                                },
+                                {
+                                    "name": "std",
+                                    "params": {},
+                                    "type": "metric"
+                                }
+                            ]
+                        },
+                        "value": 0.05000000000000001
+                    }
+                },
+                "name": "mmlu_simple_eval_scorer",
+                "params": {},
+                "scored_samples": 20,
+                "scorer": "mmlu_simple_eval_scorer",
+                "unscored_samples": 0
+            }
+        ],
+        "total_samples": 20
+    },
+    "stats": {
+        "completed_at": "2025-08-05T12:46:33-05:00",
+        "model_usage": {
+            "openrouter/openai/gpt-oss-120b": {
+                "input_tokens": 3385,
+                "input_tokens_cache_read": 0,
+                "output_tokens": 8614,
+                "total_tokens": 11999
+            }
+        },
+        "started_at": "2025-08-05T12:46:12-05:00"
+    },
+    "status": "success",
+    "version": 2
+}

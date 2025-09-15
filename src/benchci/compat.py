@@ -47,16 +47,16 @@ def compat_logs():
         # If the file is already compat, skip it
         if "_compat" in record.name:
             continue
+        
+        # TODO - Check if error exists in log and remove it?
 
         # Remove evaluation content from the JSON
-        if "samples" in record_json:
-            del record_json["samples"]
-        if "reductions" in record_json:
-            del record_json["reductions"]
+        record_json.pop("samples", None)
+        record_json.pop("reductions", None)
 
         # Write the modified JSON back to the file
         with record.open("w", encoding="utf-8") as f:
-            json.dump(record_json, f)
+            json.dump(record_json, f, indent=4, sort_keys=True, ensure_ascii=False)
 
         # Rename the file to prepend "_compat"
         compat_rename = record.with_name(f"{record.stem}_compat{record.suffix}")
