@@ -1,4 +1,4 @@
-# config.yaml
+# openrouter.yaml
 
 # This section defines specific evaluation configurations.
 # Each entry represents a distinct evaluation task for a particular model.

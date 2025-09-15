@@ -14,6 +14,10 @@ def build_charts():
     benchci.charts.build_charts()
 
 
+def compat_logs():
+    benchci.compat.compat_logs()
+
+
 def main():
     parser = argparse.ArgumentParser(description="BenchCI Command Line Interface")
     subparsers = parser.add_subparsers(dest="command")
@@ -33,6 +37,9 @@ def main():
 
     chart_parser = subparsers.add_parser("build-charts", help="Build charts")
     chart_parser.set_defaults(func=build_charts)
+
+    compat_parser = subparsers.add_parser("compat", help="Compat logs")
+    compat_parser.set_defaults(func=compat_logs)
 
     args = parser.parse_args()
 

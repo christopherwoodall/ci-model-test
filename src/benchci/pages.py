@@ -1,23 +1,22 @@
 # ruff: noqa: B007 E501
-import os
-import glob
 import json
+from pathlib import Path
 from datetime import datetime
 
 
-def load_json_files(logs_path="logs"):
+def load_json_files(logs_path="./logs/"):
     """Load all JSON files from the logs directory."""
-    json_files = glob.glob(os.path.join(logs_path, "*.json"))
+    logs_dir = Path(logs_path)
     report_data = []
 
-    for file_path in json_files:
-        with open(file_path, "r") as f:
-            try:
+    for file_path in logs_dir.glob("*.json"):
+        try:
+            with file_path.open("r", encoding="utf-8") as f:
                 data = json.load(f)
                 report_data.append(data)
-            except json.JSONDecodeError:
-                print(f"Warning: Could not decode JSON from {file_path}")
-                continue
+        except json.JSONDecodeError:
+            print(f"Warning: Could not decode JSON from {file_path}")
+            continue
 
     return report_data
 
@@ -26,6 +25,8 @@ def convert_to_database_format(report_data):
     """Convert the report data to a database-friendly format."""
     database_entries = []
 
+    # TODO - This needs to be reworked. Use iter (see compat.py) so that
+    #        we're not loading every file into memory.
     for item in report_data:
         model = item.get("eval", {}).get("model", "N/A")
         timestamp = item.get("eval", {}).get("created", "N/A")
@@ -101,6 +102,7 @@ def save_to_json_file(data, output_path="docs/database.json"):
 
 def generate_html_page():
     """Generate an HTML page to display the data."""
+    # TODO - use jinja
     html_code = """<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -378,6 +380,7 @@ def generate_html_page():
 
 def generate_css():
     """Generate CSS for the HTML page."""
+    # TODO - use jinja
     css_code = """/* Report Page Styles */
 
 .report-container {

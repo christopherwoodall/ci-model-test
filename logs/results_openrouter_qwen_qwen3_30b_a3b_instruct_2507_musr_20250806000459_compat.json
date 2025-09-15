@@ -1,0 +1,183 @@
+{
+    "eval": {
+        "config": {
+            "epochs": 1,
+            "epochs_reducer": [
+                "mean"
+            ],
+            "fail_on_error": true,
+            "limit": 50,
+            "log_buffer": 10,
+            "log_images": true,
+            "log_realtime": true,
+            "log_samples": true,
+            "sandbox_cleanup": true,
+            "score_display": true
+        },
+        "created": "2025-08-06T00:05:01+00:00",
+        "dataset": {
+            "location": "TAUR-Lab/MuSR",
+            "name": "TAUR-Lab/MuSR",
+            "sample_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50
+            ],
+            "samples": 250,
+            "shuffled": false
+        },
+        "eval_id": "FYkszQarj5DdztjwS5EixG",
+        "model": "openrouter/qwen/qwen3-30b-a3b-instruct-2507",
+        "model_args": {},
+        "model_base_url": "https://openrouter.ai/api/v1",
+        "model_generate_config": {
+            "max_connections": 10,
+            "temperature": 0.6,
+            "timeout": 10000,
+            "top_p": 1.0
+        },
+        "model_roles": {
+            "grader_model": {
+                "args": {},
+                "base_url": "https://openrouter.ai/api/v1",
+                "config": {},
+                "model": "openrouter/openai/gpt-4.1-mini"
+            }
+        },
+        "packages": {
+            "inspect_ai": "0.3.115"
+        },
+        "revision": {
+            "commit": "5e03955",
+            "origin": "https://github.com/christopherwoodall/ci-model-test",
+            "type": "git"
+        },
+        "run_id": "hEAKd74phAcoXiYxZPqiGt",
+        "scorers": [
+            {
+                "metadata": {},
+                "metrics": [
+                    {
+                        "name": "inspect_ai/accuracy",
+                        "options": {}
+                    },
+                    {
+                        "name": "inspect_ai/stderr",
+                        "options": {}
+                    }
+                ],
+                "name": "choice",
+                "options": {}
+            }
+        ],
+        "task": "openbench/musr",
+        "task_args": {
+            "subset": "murder_mysteries"
+        },
+        "task_args_passed": {},
+        "task_attribs": {},
+        "task_id": "4uXTEJSqYBcSPUDgJc52VF",
+        "task_registry_name": "openbench/musr",
+        "task_version": 0
+    },
+    "plan": {
+        "config": {
+            "max_connections": 10,
+            "temperature": 0.6,
+            "timeout": 10000,
+            "top_p": 1.0
+        },
+        "name": "plan",
+        "steps": [
+            {
+                "params": {},
+                "solver": "multiple_choice"
+            }
+        ]
+    },
+    "results": {
+        "completed_samples": 50,
+        "scores": [
+            {
+                "metrics": {
+                    "accuracy": {
+                        "name": "accuracy",
+                        "params": {},
+                        "value": 0.62
+                    },
+                    "stderr": {
+                        "name": "stderr",
+                        "params": {},
+                        "value": 0.06934092056863769
+                    }
+                },
+                "name": "choice",
+                "params": {},
+                "scored_samples": 50,
+                "scorer": "choice",
+                "unscored_samples": 0
+            }
+        ],
+        "total_samples": 50
+    },
+    "stats": {
+        "completed_at": "2025-08-06T00:05:08+00:00",
+        "model_usage": {
+            "openrouter/qwen/qwen3-30b-a3b-instruct-2507": {
+                "input_tokens": 60408,
+                "output_tokens": 200,
+                "total_tokens": 60608
+            }
+        },
+        "started_at": "2025-08-06T00:05:01+00:00"
+    },
+    "status": "success",
+    "version": 2
+}

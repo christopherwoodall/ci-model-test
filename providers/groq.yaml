@@ -1,4 +1,4 @@
-# config.yaml
+# groq.yaml
 
 evaluation_runs:
   groq-gpt-oss-120B:
