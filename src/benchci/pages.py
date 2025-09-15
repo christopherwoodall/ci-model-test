@@ -105,7 +105,7 @@ def save_to_json_file(data, reports_path):
 
 def generate_html_page(reports_path):
     """Generate an HTML page to display the data using Jinja2."""
-    template_path = Path("templates/report_html.j2")
+    template_path = Path(__file__).parent / "templates/report_html.j2"
     html_template = Template(template_path.read_text(encoding="utf-8"))
 
     html_rendered = html_template.render(
