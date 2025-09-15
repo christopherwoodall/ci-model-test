@@ -45,12 +45,14 @@ def compat_logs():
             continue
 
         # If the file is already compat, skip it
-        if "_compat" in record.name:
-            continue
+        # if "_compat" in record.name:
+        #     continue
 
         # Remove evaluation content from the JSON
         if "samples" in record_json:
             del record_json["samples"]
+        if "reductions" in record_json:
+            del record_json["reductions"]
 
         # Write the modified JSON back to the file
         with record.open("w", encoding="utf-8") as f:
