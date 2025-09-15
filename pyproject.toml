@@ -23,7 +23,8 @@ classifiers = [
 dependencies = [
     "anthropic",
     "openai >= 1.99.7",
-    "openbench @ git+https://github.com/christopherwoodall/openbench.git@export-run-eval-method",
+    "openbench",
+    "Jinja2",
 ]
 
 [project.optional-dependencies]
