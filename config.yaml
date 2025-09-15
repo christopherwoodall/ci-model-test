@@ -1,9 +1,16 @@
 # config.yaml
 
-# This section defines specific evaluation configurations.
-# Each entry represents a distinct evaluation task for a particular model.
-# The key for each entry (e.g., 'gpt4-mini-simple-qa') is a unique identifier for that run.
 evaluation_runs:
+# TODO - 
+# evaluation:
+#   output:
+#     logs: "./logs/"
+#     reports: "./docs/" # TODO - rename to "./reports/"
+#   runs:
+#      # This section defines specific evaluation configurations.
+#      # Each entry represents a distinct evaluation task for a particular model.
+#      # The key for each entry (e.g., 'gpt4-mini-simple-qa') is a unique identifier for that run.
+
   # Example: Evaluation for OpenAI GPT-OSS 120B on simple_qa
   openai-gpt-oss-120B:
     # model: Specifies the full model identifier to be used for this evaluation.
