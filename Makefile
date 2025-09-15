@@ -54,6 +54,7 @@ install: ## Install dependencies (if needed)
 
 .PHONY: build
 build: ## Build the database, HTML page, and chart page
+-   benchci compat
 -	benchci build-pages
 -	benchci build-charts
 
