@@ -57,7 +57,7 @@ def run_evaluation(config_path, max_workers=4):
 
     tasks = []
     with ProcessPoolExecutor(max_workers=max_workers) as executor:
-        for run_name, run_config in config["evaluation_runs"].items():
+        for run_name, run_config in config["evaluation"]["runs"].items():
             print(f"\n--- Processing Evaluation Run: {run_name} ---")
 
             model_name = run_config.get("model")

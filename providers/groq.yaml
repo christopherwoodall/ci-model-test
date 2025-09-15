@@ -1,93 +1,98 @@
 # groq.yaml
 
-evaluation_runs:
-  groq-gpt-oss-120B:
-    model: groq/gpt-oss-120b
-    # limit: "5"
-    json: true
-    evals:
-      - boolq
-      - simpleqa
-      # - healthbench
-      # - humaneval
-      # - jsonschemabench
-      # - math_500
-      # - mmlu
-      # - openai_mrcr_4n
-      # - cti_bench    
+evaluation:
+  output:
+    logs: "./logs/"
+    reports: "./reports/"
+  
+  runs:
+    groq-gpt-oss-120B:
+      model: groq/gpt-oss-120b
+      # limit: "5"
+      json: true
+      evals:
+        - boolq
+        - simpleqa
+        # - healthbench
+        # - humaneval
+        # - jsonschemabench
+        # - math_500
+        # - mmlu
+        # - openai_mrcr_4n
+        # - cti_bench    
 
-  # Evaluation for OpenAI GPT-OSS 20B on multiple benchmarks
-  groq-gpt-oss-20B:
-    model: groq/gpt-oss-20b
-    json: true
-    evals:
-      - boolq
-      - simpleqa
-      # - healthbench
-      # - humaneval
-      # - jsonschemabench
-      # - math_500
-      # - mmlu
-      # - openai_mrcr_4n
-      # - cti_bench    
+    # Evaluation for OpenAI GPT-OSS 20B on multiple benchmarks
+    groq-gpt-oss-20B:
+      model: groq/gpt-oss-20b
+      json: true
+      evals:
+        - boolq
+        - simpleqa
+        # - healthbench
+        # - humaneval
+        # - jsonschemabench
+        # - math_500
+        # - mmlu
+        # - openai_mrcr_4n
+        # - cti_bench    
 
-  # Evaluation for Qwen 3 (32B)
-  groq-qwen3-32B:
-    model: groq/qwen/qwen3-32b
-    json: true
-    evals:
-      - boolq
-      # # Fails due to the "Best VTuber Streamer" question.
-      # # - simpleqa
-      # - healthbench
-      # - humaneval
-      # - jsonschemabench
-      # - math_500
-      # - mmlu
-      # - openai_mrcr_4n
-      # - cti_bench
+    # Evaluation for Qwen 3 (32B)
+    groq-qwen3-32B:
+      model: groq/qwen/qwen3-32b
+      json: true
+      evals:
+        - boolq
+        # # Fails due to the "Best VTuber Streamer" question.
+        # # - simpleqa
+        # - healthbench
+        # - humaneval
+        # - jsonschemabench
+        # - math_500
+        # - mmlu
+        # - openai_mrcr_4n
+        # - cti_bench
 
-  # Evaluation for Kimi K2 (Instruct)
-  groq-kimi-k2:
-    model: groq/moonshotai/kimi-k2-instruct-0905
-    json: true
-    evals:
-      - boolq
-      - simpleqa
-      # - healthbench
-      # - humaneval
-      # - jsonschemabench
-      # - math_500
-      # - mmlu
-      # - openai_mrcr_4n
-      # - cti_bench    
+    # Evaluation for Kimi K2 (Instruct)
+    groq-kimi-k2:
+      model: groq/moonshotai/kimi-k2-instruct-0905
+      json: true
+      evals:
+        - boolq
+        - simpleqa
+        # - healthbench
+        # - humaneval
+        # - jsonschemabench
+        # - math_500
+        # - mmlu
+        # - openai_mrcr_4n
+        # - cti_bench    
 
-  # Evaluation for META LLAMA 4 (SCOUT)
-  groq-llama4-scout-17B:
-    model: groq/meta-llama/llama-4-scout-17b-16e-instruct
-    json: true
-    evals:
-      - boolq
-      - simpleqa
-      # - healthbench
-      # - humaneval
-      # - jsonschemabench
-      # - math_500
-      # - mmlu
-      # - openai_mrcr_4n
-      # - cti_bench    
+    # Evaluation for META LLAMA 4 (SCOUT)
+    groq-llama4-scout-17B:
+      model: groq/meta-llama/llama-4-scout-17b-16e-instruct
+      json: true
+      evals:
+        - boolq
+        - simpleqa
+        # - healthbench
+        # - humaneval
+        # - jsonschemabench
+        # - math_500
+        # - mmlu
+        # - openai_mrcr_4n
+        # - cti_bench    
 
-  # Evaluation for META LLAMA 3.3 (Versatile)
-  groq-llama3-3-70B:
-    model: groq/llama-3.3-70b-versatile
-    json: true
-    evals:
-      - boolq
-      - simpleqa
-      # - healthbench
-      # - humaneval
-      # - jsonschemabench
-      # - math_500
-      # - mmlu
-      # - openai_mrcr_4n
-      # - cti_bench
+    # Evaluation for META LLAMA 3.3 (Versatile)
+    groq-llama3-3-70B:
+      model: groq/llama-3.3-70b-versatile
+      json: true
+      evals:
+        - boolq
+        - simpleqa
+        # - healthbench
+        # - humaneval
+        # - jsonschemabench
+        # - math_500
+        # - mmlu
+        # - openai_mrcr_4n
+        # - cti_bench
