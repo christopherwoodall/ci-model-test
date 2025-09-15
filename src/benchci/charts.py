@@ -98,6 +98,7 @@ def generate_chart_html(labels, datasets, output_path="docs/chart.html"):
     labels_json = json.dumps(labels)
     datasets_json = json.dumps(datasets)
 
+    # TODO - Use jinja
     html_content = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
