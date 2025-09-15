@@ -1,8 +1,10 @@
 import os
 import json
+import yaml
+from pathlib import Path
 
 
-def load_database_file(database_path="reports/database.json"):
+def load_database_file(database_path):
     """Load the database JSON file containing model evaluation data."""
     try:
         with open(database_path, "r") as f:
@@ -408,10 +410,14 @@ def generate_chart_html(labels, datasets, output_path="reports/chart.html"):
     print(f"Chart HTML saved to {output_path}")
 
 
-def build_charts():
+def build_charts(config_file_path):
     """Main function to generate the performance charts."""
+    output_yaml = yaml.safe_load(Path(config_file_path).read_text())
+    # logs_path = output_yaml["evaluation"]["output"]["logs"]
+    reports_path = output_yaml["evaluation"]["output"]["reports"]
+
     # Load data from database
-    data = load_database_file()
+    data = load_database_file(reports_path + "/database.json")
 
     if not data:
         print("No data available to generate charts.")

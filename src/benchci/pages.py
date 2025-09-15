@@ -1,10 +1,11 @@
 # ruff: noqa: B007 E501
 import json
+import yaml
 from pathlib import Path
 from datetime import datetime
 
 
-def load_json_files(logs_path="./logs/"):
+def load_json_files(logs_path):
     """Load all JSON files from the logs directory."""
     logs_dir = Path(logs_path)
     report_data = []
@@ -577,10 +578,14 @@ def generate_css():
     print("CSS file saved to reports/report.css")
 
 
-def build_pages():
+def build_pages(config_file_path):
     """Main function to orchestrate the build process."""
+    output_yaml = yaml.safe_load(Path(config_file_path).read_text())
+    logs_path = output_yaml["evaluation"]["output"]["logs"]
+    # TODO - reports_path
+
     # Load JSON files
-    report_data = load_json_files()
+    report_data = load_json_files(logs_path)
 
     if not report_data:
         print("No data found to generate a report.")
