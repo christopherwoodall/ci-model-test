@@ -1,26 +1,3 @@
-"""
-Issue: Logs can be large and hard to check-in without using git-lfs.
-
-Solution: Once it is determined that the logs need to be compacted,
-          this script can be ran to remove evaluation content (e.g.
-          chat completions/responses) so that only the metrics
-          remain. This is a destructive operation - the content of
-          the evaluations will be lost.
-
-Process:
-    1. log directory is scanned.
-    2. filter out any files that do not end with `_compat`.
-    3. Read, modify, and write back the file contents. (remove all eval data leaving only metrics)
-    4. rename the file prepending `_compat`.
-
-Considerations:
-    * Better handling on the output directory. It is currently defined seperately in evaluation.py:28 and
-      pages.py:8. It would be nice if it was defined globally at initialization.
-    * This brings up the larger issue of how should the original runs be stored? Serialized in a database?
-      Added to an application directory? Tokens are cheap, delete and rerun?
-    * All generated assets (html, css, js) should be templated.
-"""
-
 import json
 from pathlib import Path
 
