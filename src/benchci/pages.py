@@ -315,7 +315,7 @@ def generate_css():
   }
 }"""
 
-    with open("reports/ReportPage.css", "w") as f:
+    with open("reports/report.css", "w") as f:
         f.write(css_code)
     print("CSS file saved to reports/report.css")
 
