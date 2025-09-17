@@ -42,6 +42,9 @@ def main():
     compat_parser = subparsers.add_parser("compat", help="Compat logs")
     compat_parser.set_defaults(func=compat_logs)
 
+    server_parser = subparsers.add_parser("serve", help="Serve reports")
+    server_parser.set_defaults(func=benchci.server.start_server)
+
     args = parser.parse_args()
 
     if hasattr(args, "func"):
