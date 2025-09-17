@@ -122,7 +122,7 @@ def build_charts(config_file_path):
     reports_path = output_yaml["evaluation"]["output"]["reports"]
 
     # Load data from database
-    data = load_database_file(reports_path + "/database.json")
+    data = load_database_file(str(Path(reports_path) / "database.json"))
 
     if not data:
         print("No data available to generate charts.")
