@@ -1,4 +1,3 @@
-# ruff: noqa: B007 E501
 import json
 import yaml
 from jinja2 import Template
@@ -72,7 +71,7 @@ def convert_to_database_format(report_data):
         total_output_tokens = 0
         total_tokens = 0
 
-        for model_key, usage_data in model_usage.items():
+        for _model_key, usage_data in model_usage.items():
             total_input_tokens += usage_data.get("input_tokens", 0)
             total_output_tokens += usage_data.get("output_tokens", 0)
             total_tokens += usage_data.get("total_tokens", 0)
@@ -80,7 +79,6 @@ def convert_to_database_format(report_data):
         database_entries.append(
             {
                 "model": model,
-                "model_key": model_key,
                 "timestamp": formatted_timestamp,
                 "eval_name": eval_name,
                 "score": (
