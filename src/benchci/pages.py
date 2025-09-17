@@ -121,203 +121,18 @@ def generate_html_page(reports_path):
     print(f"HTML page saved to {output_path}")
 
 
-def generate_css():
+def generate_css(reports_path):
     """Generate CSS for the HTML page."""
-    # TODO - use jinja
-    css_code = """/* Report Page Styles */
+    template_path = Path(__file__).parent / "templates/report_css.j2"
+    html_template = Template(template_path.read_text(encoding="utf-8"))
 
-.report-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  background: #fff;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  font-family: Arial, sans-serif;
-}
+    html_rendered = html_template.render()
 
-.report-container h1 {
-  text-align: center;
-  color: #444;
-  margin-bottom: 20px;
-}
+    output_path = Path(f"{reports_path}/report.css")
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(html_rendered, encoding="utf-8")
 
-.filters {
-  margin-bottom: 20px;
-}
-
-.search-container {
-  margin-bottom: 15px;
-}
-
-.search-container input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-  box-sizing: border-box;
-}
-
-.filter-dropdowns {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.filter-dropdowns select,
-.filter-dropdowns button {
-  padding: 8px 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 14px;
-  background: white;
-}
-
-.filter-dropdowns button {
-  background: #007bff;
-  color: white;
-  border: 1px solid #007bff;
-  cursor: pointer;
-}
-
-.filter-dropdowns button:hover {
-  background: #0056b3;
-}
-
-.results-info {
-  margin-bottom: 15px;
-  font-weight: bold;
-  color: #666;
-}
-
-.report-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-.report-table th,
-.report-table td {
-  padding: 12px;
-  border: 1px solid #ddd;
-  text-align: left;
-}
-
-.report-table th {
-  background-color: #f2f2f2;
-  cursor: pointer;
-  user-select: none;
-}
-
-.report-table th:hover {
-  background-color: #e0e0e0;
-}
-
-.report-table tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.report-table tr:hover {
-  background-color: #f1f1f1;
-}
-
-.report-table button {
-  padding: 6px 12px;
-  background: #28a745;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.report-table button:hover {
-  background: #218838;
-}
-
-/* Modal Styles */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 800px;
-  width: 90%;
-  max-height: 80vh;
-  overflow-y: auto;
-  position: relative;
-}
-
-.close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 24px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.metric-card {
-  background: #f8f9fa;
-  border: 1px solid #dee2e6;
-  border-radius: 6px;
-  padding: 15px;
-}
-
-.metric-card h3 {
-  margin-top: 0;
-  color: #495057;
-  border-bottom: 1px solid #dee2e6;
-  padding-bottom: 8px;
-}
-
-.metric-card p {
-  margin: 8px 0;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-  .filter-dropdowns {
-    flex-direction: column;
-  }
-  
-  .filter-dropdowns select,
-  .filter-dropdowns button {
-    width: 100%;
-  }
-  
-  .report-table {
-    font-size: 14px;
-  }
-  
-  .report-table th,
-  .report-table td {
-    padding: 8px;
-  }
-}"""
-
-    with open("reports/report.css", "w") as f:
-        f.write(css_code)
-    print("CSS file saved to reports/report.css")
+    print(f"CSS file saved to {output_path}")
 
 
 def build_pages(config_file_path):
@@ -343,6 +158,6 @@ def build_pages(config_file_path):
     generate_html_page(reports_path)
 
     # Generate CSS
-    generate_css()
+    generate_css(reports_path)
 
     print("Build process completed successfully!")
