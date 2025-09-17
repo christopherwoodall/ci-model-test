@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ css_file }}">
+</head>
+<body>
+    <div class="report-container">
+        <h1>{{ title }}</h1>
+        
+        <div class="filters">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search models or evals...">
+            </div>
+            
+            <div class="filter-dropdowns">
+                <select id="modelFilter">
+                    <option value="">All Models</option>
+                </select>
+                
+                <select id="evalFilter">
+                    <option value="">All Evals</option>
+                </select>
+                
+                <button id="clearFilters">Clear Filters</button>
+            </div>
+        </div>
+        
+        <div class="results-info">
+            Showing <span id="resultCount">0</span> results
+        </div>
+        
+        <table class="report-table">
+            <thead>
+                <tr>
+                    <th data-sort="model">Model</th>
+                    <th data-sort="timestamp">Timestamp</th>
+                    <th data-sort="eval_name">Eval Name</th>
+                    <th data-sort="score">Score</th>
+                    <th data-sort="total_tokens">Total Tokens</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody id="reportTableBody">
+                <!-- Data will be populated by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+    
+    <script>
+        // Load data from {{ data_file }}
+        fetch('{{ data_file }}')
+            .then(response => response.json())
+            .then(data => {
+                const uniqueModels = [...new Set(data.map(item => item.model))];
+                const uniqueEvals = [...new Set(data.map(item => item.eval_name))];
+                
+                const modelFilter = document.getElementById('modelFilter');
+                const evalFilter = document.getElementById('evalFilter');
+                
+                uniqueModels.forEach(model => {
+                    const option = document.createElement('option');
+                    option.value = model;
+                    option.textContent = model;
+                    modelFilter.appendChild(option);
+                });
+                
+                uniqueEvals.forEach(evalName => {
+                    const option = document.createElement('option');
+                    option.value = evalName;
+                    option.textContent = evalName;
+                    evalFilter.appendChild(option);
+                });
+                
+                window.originalData = data;
+                window.filteredData = [...data];
+                renderTable(data);
+                setupEventListeners();
+            })
+            .catch(error => console.error('Error loading data:', error));
+            
+        function setupEventListeners() {
+            document.getElementById('searchInput').addEventListener('input', applyFilters);
+            document.getElementById('modelFilter').addEventListener('change', applyFilters);
+            document.getElementById('evalFilter').addEventListener('change', applyFilters);
+            document.getElementById('clearFilters').addEventListener('click', () => {
+                document.getElementById('searchInput').value = '';
+                document.getElementById('modelFilter').value = '';
+                document.getElementById('evalFilter').value = '';
+                window.filteredData = [...window.originalData];
+                renderTable(window.filteredData);
+            });
+            document.querySelectorAll('th[data-sort]').forEach(th => {
+                th.addEventListener('click', () => sortTable(th.getAttribute('data-sort')));
+            });
+        }
+        
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const selectedModel = document.getElementById('modelFilter').value;
+            const selectedEval = document.getElementById('evalFilter').value;
+            
+            let result = window.originalData;
+            if (searchTerm) {
+                result = result.filter(item =>
+                    item.model.toLowerCase().includes(searchTerm) ||
+                    item.eval_name.toLowerCase().includes(searchTerm)
+                );
+            }
+            if (selectedModel) result = result.filter(item => item.model === selectedModel);
+            if (selectedEval) result = result.filter(item => item.eval_name === selectedEval);
+            
+            window.filteredData = result;
+            renderTable(result);
+        }
+        
+        function sortTable(sortKey) {
+            const sortedData = [...window.filteredData].sort((a, b) => {
+                let aValue = a[sortKey];
+                let bValue = b[sortKey];
+                if (sortKey === 'timestamp') {
+                    aValue = new Date(aValue).getTime();
+                    bValue = new Date(bValue).getTime();
+                } else {
+                    const aNum = parseFloat(aValue);
+                    const bNum = parseFloat(bValue);
+                    if (!isNaN(aNum) && !isNaN(bNum)) {
+                        aValue = aNum;
+                        bValue = bNum;
+                    }
+                }
+                return aValue < bValue ? -1 : aValue > bValue ? 1 : 0;
+            });
+            window.filteredData = sortedData;
+            renderTable(sortedData);
+        }
+        
+        function renderTable(data) {
+            const tableBody = document.getElementById('reportTableBody');
+            tableBody.innerHTML = '';
+            document.getElementById('resultCount').textContent = data.length;
+            
+            data.forEach((item, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.model}</td>
+                    <td>${new Date(item.timestamp).toLocaleString()}</td>
+                    <td>${item.eval_name}</td>
+                    <td>${typeof item.score === 'number' ? item.score.toFixed(4) : item.score}</td>
+                    <td>${item.total_tokens?.toLocaleString() || 'N/A'}</td>
+                    <td><button class="details-btn" data-index="${index}">Show Details</button></td>
+                `;
+                tableBody.appendChild(row);
+            });
+            
+            document.querySelectorAll('.details-btn').forEach(button => {
+                button.addEventListener('click', () => showDetails(button.getAttribute('data-index')));
+            });
+        }
+        
+        function showDetails(index) {
+            const item = window.filteredData[index];
+            const details = `
+                <div class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>Details for ${item.model} - ${item.eval_name}</h2>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <h3>Token Usage</h3>
+                                <p><strong>Input:</strong> ${item.total_input_tokens?.toLocaleString() || 'N/A'}</p>
+                                <p><strong>Output:</strong> ${item.total_output_tokens?.toLocaleString() || 'N/A'}</p>
+                                <p><strong>Total:</strong> ${item.total_tokens?.toLocaleString() || 'N/A'}</p>
+                            </div>
+                            <div class="metric-card">
+                                <h3>Primary Metrics</h3>
+                                <p><strong>Score:</strong> ${typeof item.score === 'number' ? item.score.toFixed(4) : item.score}</p>
+                                ${item.additional_metrics?.stderr !== undefined ? 
+                                    `<p><strong>Std Error:</strong> ${item.additional_metrics.stderr.toFixed(6)}</p>` : ''}
+                            </div>
+                            ${Object.keys(item.additional_metrics || {}).length > 0 ? `
+                                <div class="metric-card">
+                                    <h3>Additional Metrics</h3>
+                                    ${Object.entries(item.additional_metrics).map(([key, value]) => 
+                                        `<p><strong>${key}:</strong> ${typeof value === 'number' ? value.toFixed(6) : value}</p>`
+                                    ).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+            const modal = document.createElement('div');
+            modal.innerHTML = details;
+            document.body.appendChild(modal);
+            modal.querySelector('.close').addEventListener('click', () => document.body.removeChild(modal));
+            modal.addEventListener('click', e => { if (e.target === modal) document.body.removeChild(modal); });
+        }
+    </script>
+</body>
+</html>

@@ -1,8 +1,9 @@
 import json
+import yaml
 from pathlib import Path
 
 
-def iter_json_files(logs_path="./logs/"):
+def iter_json_files(logs_path):
     """Yield JSON objects from all JSON files in the logs directory."""
     # TODO - Better define output paths (config.yaml?) - evaluation.py:28
     logs_dir = Path(logs_path)
@@ -11,9 +12,11 @@ def iter_json_files(logs_path="./logs/"):
         yield file_path
 
 
-def compat_logs():
-    # TODO - Better define output paths (config.yaml?) - evaluation.py:28
-    for record in iter_json_files("./logs/"):
+def compat_logs(config_file_path):
+    output_yaml = yaml.safe_load(Path(config_file_path).read_text())
+    logs_path = output_yaml["evaluation"]["output"]["logs"]
+
+    for record in iter_json_files(logs_path=logs_path):
         # If the file is already compat, skip it
         if "_compat" in record.name:
             continue

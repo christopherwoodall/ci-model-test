@@ -44,7 +44,7 @@ lint: ## Lint the code
 serve: build ## Serve the site locally
 -	@echo "Serving site at http://localhost:8000"
 -	@echo "Press Ctrl+C to stop"
--	cd docs && python -m http.server 8000
+-	cd ./reports/ && python -m http.server 8000
 
 
 .PHONY: install
