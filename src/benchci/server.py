@@ -1,8 +1,8 @@
+import os
+import yaml
 import http.server
 import socketserver
 from pathlib import Path
-import yaml
-import os
 
 
 def start_server(config_file_path: str, port: int = 8000):
