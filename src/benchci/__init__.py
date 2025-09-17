@@ -3,12 +3,12 @@
 # Configure clean imports for the package
 # See: https://hynek.me/articles/testing-packaging/
 
-from . import compat, charts, evaluation, pages, serve
+from . import compat, charts, evaluation, pages, server
 from .compat import compat_logs
 from .charts import build_charts
 from .evaluation import load_config, run_evaluation
 from .pages import build_pages
-from .serve import serve_reports
+from .server import start_server
 
 
 __all__ = [
@@ -25,6 +25,6 @@ __all__ = [
     "pages",
         "build_pages",
 
-    "serve",
-        "serve_reports",
+    "server",
+        "start_server",
 ]
