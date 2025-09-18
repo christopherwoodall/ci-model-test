@@ -1,6 +1,6 @@
 import datetime
 import openbench
-from concurrent.futures import ProcessPoolExecutor, as_completed
+# from concurrent.futures import ProcessPoolExecutor
 
 
 def run_single_eval(model_name, eval_name, limit):
@@ -15,7 +15,7 @@ def run_single_eval(model_name, eval_name, limit):
     sanitized_model_name = model_name
     for char in ["/", "-", ".", ":"]:
         sanitized_model_name = sanitized_model_name.replace(char, "_")
-    
+
     timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
     logfile_name = f"results_{sanitized_model_name}_{eval_name}_{timestamp}"
 
@@ -40,28 +40,35 @@ def run_evaluation(config, max_workers=4):
     """
     Runs evaluations based on the provided configuration file.
     """
-    tasks = []
-    with ProcessPoolExecutor(max_workers=max_workers) as executor:
-        for run_name, run_config in config["evaluation"]["runs"].items():
-            print(f"\n--- Processing Evaluation Run: {run_name} ---")
+    for run_name, run_config in config["evaluation"]["runs"].items():
+        print(f"\n--- Processing Evaluation Run: {run_name} ---")
 
-            model_name = run_config.get("model")
-            limit = run_config.get("limit", 0)
-            evals_list = run_config.get("evals", [])
+        model_name = run_config.get("model")
+        limit = run_config.get("limit", 0)
+        evals_list = run_config.get("evals", [])
 
-            for eval_name in evals_list:
-                run_single_eval(model_name, eval_name, limit)
+        for eval_name in evals_list:
+            run_single_eval(model_name, eval_name, limit)
 
-        #     for eval_name in evals_list:
-        #         # Submit each eval to run in parallel
-        #         tasks.append(
-        #             executor.submit(run_single_eval, model_name, eval_name, limit)
-        #         )
+    # tasks = []
+    # with ProcessPoolExecutor(max_workers=max_workers) as executor:
+    #     for run_name, run_config in config["evaluation"]["runs"].items():
+    #         print(f"\n--- Processing Evaluation Run: {run_name} ---")
 
-        # # Gather results as they complete
-        # for future in as_completed(tasks):
-        #     try:
-        #         result = future.result()
-        #         print(result)
-        #     except Exception as e:
-        #         print(f"Task failed: {e}")
+    #         model_name = run_config.get("model")
+    #         limit = run_config.get("limit", 0)
+    #         evals_list = run_config.get("evals", [])
+
+    #         for eval_name in evals_list:
+    #             # Submit each eval to run in parallel
+    #             tasks.append(
+    #                 executor.submit(run_single_eval, model_name, eval_name, limit)
+    #             )
+
+    #     # Gather results as they complete
+    #     for future in as_completed(tasks):
+    #         try:
+    #             result = future.result()
+    #             print(result)
+    #         except Exception as e:
+    #             print(f"Task failed: {e}")
