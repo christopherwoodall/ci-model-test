@@ -32,10 +32,10 @@ def main():
     server_parser.set_defaults(func=benchci.server.start_server)
 
     args = parser.parse_args()
+    config = yaml.safe_load(Path(args.config).read_text())
 
     if hasattr(args, "func"):
-        config_yaml = yaml.safe_load(Path(args.config).read_text())
-        args.func(config_yaml)
+        args.func(config)
     else:
         parser.print_help()
 
