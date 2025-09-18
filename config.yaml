@@ -30,7 +30,7 @@ evaluation:
       model: openrouter/openai/gpt-oss-20b:free
       json: true
       evals:
-        - drop
+        # - drop
         - math_500
         - openbookqa
         - cti_bench
@@ -44,7 +44,7 @@ evaluation:
       model: openrouter/qwen/qwen3-235b-a22b:free
       json: true
       evals:
-        - drop
+        # - drop
         - math_500
         - openbookqa
         - cti_bench_ate
@@ -57,7 +57,7 @@ evaluation:
       model: openrouter/moonshotai/kimi-k2:free
       json: true
       evals:
-        - drop
+        # - drop
         - math_500
         - openbookqa
         - cti_bench_ate
@@ -70,7 +70,7 @@ evaluation:
       model: openrouter/meta-llama/llama-4-maverick:free
       json: true
       evals:
-        - drop
+        # - drop
         - math_500
         - openbookqa
         - cti_bench_ate
@@ -83,7 +83,7 @@ evaluation:
       model: openrouter/cognitivecomputations/dolphin-mistral-24b-venice-edition:free
       json: true
       evals:
-        - drop
+        # - drop
         - math_500
         - openbookqa
         - cti_bench_ate
@@ -96,7 +96,7 @@ evaluation:
       model: openrouter/mistralai/mistral-small-3.2-24b-instruct:free
       json: true
       evals:
-        - drop
+        # - drop
         - math_500
         - openbookqa
         - cti_bench_ate
@@ -109,7 +109,7 @@ evaluation:
       model: openrouter/google/gemini-2.0-flash-exp:free
       json: true
       evals:
-        - drop
+        # - drop
         - math_500
         - openbookqa
         - cti_bench_ate
@@ -122,7 +122,7 @@ evaluation:
       model: openrouter/nousresearch/deephermes-3-llama-3-8b-preview:free
       json: true
       evals:
-        - drop
+        # - drop
         - math_500
         - openbookqa
         - cti_bench_ate
@@ -135,7 +135,7 @@ evaluation:
       model: openrouter/deepseek/deepseek-r1-0528:free
       json: true
       evals:
-        - drop
+        # - drop
         - math_500
         - openbookqa
         - cti_bench_ate
