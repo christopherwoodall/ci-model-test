@@ -12,47 +12,40 @@ evaluation:
       json: true
       evals:
         # Spider diagram:
-        # programming
-        - humaneval
-        # math
-        - math_500
-        # art
-        - mmmu_art
-        # biology
-        - mmmu_biology
-        # electronics
-        - mmmu_electronics
-        # mechanical engineering
-        - mmmu_mechanical_engineering
-        # music
-        - mmmu_music
+        # reading comprehension
+        - drop
+        # # math
+        # - math_500
+        # science
+        - openbookqa
         # cybersecurity
-        - cti_bench
+        - cti_bench_ate
+        - cti_bench_mcq
+        - cti_bench_rcm
+        - cti_bench_vsp
 
     # # Evaluation for OpenAI GPT-OSS 20B
     # openai-gpt-oss-20B:
     #   model: openrouter/openai/gpt-oss-20b
     #   json: true
     #   evals:
-    #     - humaneval
+    #     - drop
     #     - math_500
-    #     - mmmu_art
-    #     - mmmu_biology
-    #     - mmmu_electronics
-    #     - mmmu_mechanical_engineering
-    #     - mmmu_music
-    #     - cti_bench
+    #     - openbookqa
+    #     - cti_bench_ate
+    #     - cti_bench_mcq
+    #     - cti_bench_rcm
+    #     - cti_bench_vsp
 
     # # Evaluation for Qwen 3 (30B)
     # openrouter-qwen3-30b:
     #   model: openrouter/qwen/qwen3-30b-a3b-instruct-2507
     #   json: true
     #   evals:
-    #     - humaneval
+    #     - drop
     #     - math_500
-    #     - mmmu_art
-    #     - mmmu_biology
-    #     - mmmu_electronics
-    #     - mmmu_mechanical_engineering
-    #     - mmmu_music
-    #     - cti_bench
+    #     - openbookqa
+    #     - cti_bench_ate
+    #     - cti_bench_mcq
+    #     - cti_bench_rcm
+    #     - cti_bench_vsp
