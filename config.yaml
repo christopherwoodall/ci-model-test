@@ -6,139 +6,156 @@ evaluation:
     reports: "./reports/"
 
   runs:
-    # # Evaluation for OpenAI GPT-OSS 120B
-    # openai-gpt-oss-120B:
-    #   model: openrouter/openai/gpt-oss-120b:free
-    #   json: true
-    #   evals:
-    #     # Spider diagram:
-    #     # reading comprehension
-    #     - drop
-    #     # # math
-    #     # - math_500
-    #     # science
-    #     - openbookqa
-    #     # cybersecurity
-    #     - cti_bench
-    #     - cti_bench_ate
-    #     - cti_bench_mcq
-    #     - cti_bench_rcm
-    #     - cti_bench_vsp
-
-    # Evaluation for OpenAI GPT-OSS 20B
-    openai-gpt-oss-20B:
-      model: openrouter/openai/gpt-oss-20b:free
+    # Evaluation for OpenAI GPT-OSS 120B
+    openai-gpt-oss-120B:
+      model: openrouter/openai/gpt-oss-120b:free
       json: true
       evals:
-        # - drop
+        # Spider diagram:
+        # reading comprehension
+        - drop
+        - detailbench
+        # # math
         - math_500
+        # science
         - openbookqa
+        # cybersecurity
         - cti_bench
         - cti_bench_ate
         - cti_bench_mcq
         - cti_bench_rcm
         - cti_bench_vsp
 
-    # Evaluation for Qwen3 A22B (235B)
-    openrouter-qwen3-a22b-235b:
-      model: openrouter/qwen/qwen3-235b-a22b:free
-      json: true
-      evals:
-        # - drop
-        - math_500
-        - openbookqa
-        - cti_bench_ate
-        - cti_bench_mcq
-        - cti_bench_rcm
-        - cti_bench_vsp
+    # # Evaluation for OpenAI GPT-OSS 20B
+    # openai-gpt-oss-20B:
+    #   model: openrouter/openai/gpt-oss-20b:free
+    #   json: true
+    #   evals:
+    #     # - drop
+    #     - detailbench
+    #     - math_500
+    #     - openbookqa
+    #     - cti_bench
+    #     - cti_bench_ate
+    #     - cti_bench_mcq
+    #     - cti_bench_rcm
+    #     - cti_bench_vsp
 
-    # Evaluation for Kimi K2 (32B)
-    openrouter-kimi-k2-32b:
-      model: openrouter/moonshotai/kimi-k2:free
-      json: true
-      evals:
-        # - drop
-        - math_500
-        - openbookqa
-        - cti_bench_ate
-        - cti_bench_mcq
-        - cti_bench_rcm
-        - cti_bench_vsp
+    # # Evaluation for Qwen3 A22B (235B)
+    # openrouter-qwen3-a22b-235b:
+    #   model: openrouter/qwen/qwen3-235b-a22b:free
+    #   json: true
+    #   evals:
+    #     # - drop
+    #     - detailbench
+    #     - math_500
+    #     - openbookqa
+    #     - cti_bench
+    #     - cti_bench_ate
+    #     - cti_bench_mcq
+    #     - cti_bench_rcm
+    #     - cti_bench_vsp
 
-    # Evaluation for Meta LLAMA 4 Maverick (17B)
-    openrouter-meta-llama4-maverick-17b:
-      model: openrouter/meta-llama/llama-4-maverick:free
-      json: true
-      evals:
-        # - drop
-        - math_500
-        - openbookqa
-        - cti_bench_ate
-        - cti_bench_mcq
-        - cti_bench_rcm
-        - cti_bench_vsp
+    # # Evaluation for Kimi K2 (32B)
+    # openrouter-kimi-k2-32b:
+    #   model: openrouter/moonshotai/kimi-k2:free
+    #   json: true
+    #   evals:
+    #     # - drop
+    #     - detailbench
+    #     - math_500
+    #     - openbookqa
+    #     - cti_bench
+    #     - cti_bench_ate
+    #     - cti_bench_mcq
+    #     - cti_bench_rcm
+    #     - cti_bench_vsp
 
-    # Evaluation for Venice (24B)
-    openrouter-venice-24b:
-      model: openrouter/cognitivecomputations/dolphin-mistral-24b-venice-edition:free
-      json: true
-      evals:
-        # - drop
-        - math_500
-        - openbookqa
-        - cti_bench_ate
-        - cti_bench_mcq
-        - cti_bench_rcm
-        - cti_bench_vsp
+    # # Evaluation for Meta LLAMA 4 Maverick (17B)
+    # openrouter-meta-llama4-maverick-17b:
+    #   model: openrouter/meta-llama/llama-4-maverick:free
+    #   json: true
+    #   evals:
+    #     # - drop
+    #     - detailbench
+    #     - math_500
+    #     - openbookqa
+    #     - cti_bench
+    #     - cti_bench_ate
+    #     - cti_bench_mcq
+    #     - cti_bench_rcm
+    #     - cti_bench_vsp
+
+    # # Evaluation for Venice (24B)
+    # openrouter-venice-24b:
+    #   model: openrouter/cognitivecomputations/dolphin-mistral-24b-venice-edition:free
+    #   json: true
+    #   evals:
+    #     # - drop
+    #     - detailbench
+    #     - math_500
+    #     - openbookqa
+    #     - cti_bench
+    #     - cti_bench_ate
+    #     - cti_bench_mcq
+    #     - cti_bench_rcm
+    #     - cti_bench_vsp
     
-    # Evaluation for Mistral Small 3.2 (24B)
-    openrouter-mistral-small-3-2-24b:
-      model: openrouter/mistralai/mistral-small-3.2-24b-instruct:free
-      json: true
-      evals:
-        # - drop
-        - math_500
-        - openbookqa
-        - cti_bench_ate
-        - cti_bench_mcq
-        - cti_bench_rcm
-        - cti_bench_vsp
+    # # Evaluation for Mistral Small 3.2 (24B)
+    # openrouter-mistral-small-3-2-24b:
+    #   model: openrouter/mistralai/mistral-small-3.2-24b-instruct:free
+    #   json: true
+    #   evals:
+    #     # - drop
+    #     - detailbench
+    #     - math_500
+    #     - openbookqa
+    #     - cti_bench
+    #     - cti_bench_ate
+    #     - cti_bench_mcq
+    #     - cti_bench_rcm
+    #     - cti_bench_vsp
   
-    # Evaluation for Google Gemini 2.0 Flash Experimental
-    openrouter-google-gemini-2-flash-experimental:
-      model: openrouter/google/gemini-2.0-flash-exp:free
-      json: true
-      evals:
-        # - drop
-        - math_500
-        - openbookqa
-        - cti_bench_ate
-        - cti_bench_mcq
-        - cti_bench_rcm
-        - cti_bench_vsp
+    # # Evaluation for Google Gemini 2.0 Flash Experimental
+    # openrouter-google-gemini-2-flash-experimental:
+    #   model: openrouter/google/gemini-2.0-flash-exp:free
+    #   json: true
+    #   evals:
+    #     # - drop
+    #     - detailbench
+    #     - math_500
+    #     - openbookqa
+    #     - cti_bench
+    #     - cti_bench_ate
+    #     - cti_bench_mcq
+    #     - cti_bench_rcm
+    #     - cti_bench_vsp
 
-    # Evaluation for Nous DeepHermes 3 Llama 3 8B
-    openrouter-nous-deephermes-3-llama-3-8b:
-      model: openrouter/nousresearch/deephermes-3-llama-3-8b-preview:free
-      json: true
-      evals:
-        # - drop
-        - math_500
-        - openbookqa
-        - cti_bench_ate
-        - cti_bench_mcq
-        - cti_bench_rcm
-        - cti_bench_vsp
-
-    # Evaluation for Deepseek R1 0528 (671B)
-    openrouter-deepseek-r1-0528-671b:
-      model: openrouter/deepseek/deepseek-r1-0528:free
-      json: true
-      evals:
-        # - drop
-        - math_500
-        - openbookqa
-        - cti_bench_ate
-        - cti_bench_mcq
-        - cti_bench_rcm
-        - cti_bench_vsp
+    # # Evaluation for Nous DeepHermes 3 Llama 3 8B
+    # openrouter-nous-deephermes-3-llama-3-8b:
+    #   model: openrouter/nousresearch/deephermes-3-llama-3-8b-preview:free
+    #   json: true
+    #   evals:
+    #     # - drop
+    #     - detailbench
+    #     - math_500
+    #     - openbookqa
+    #     - cti_bench
+    #     - cti_bench_ate
+    #     - cti_bench_mcq
+    #     - cti_bench_rcm
+    #     - cti_bench_vsp
+    # # Evaluation for Deepseek R1 0528 (671B)
+    # openrouter-deepseek-r1-0528-671b:
+    #   model: openrouter/deepseek/deepseek-r1-0528:free
+    #   json: true
+    #   evals:
+    #     # - drop
+    #     - detailbench
+    #     - math_500
+    #     - openbookqa
+    #     - cti_bench
+    #     - cti_bench_ate
+    #     - cti_bench_mcq
+    #     - cti_bench_rcm
+    #     - cti_bench_vsp
