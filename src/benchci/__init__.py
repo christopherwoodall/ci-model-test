@@ -6,7 +6,7 @@
 from . import compat, charts, evaluation, pages, server
 from .compat import compat_logs
 from .charts import build_charts
-from .evaluation import load_config, run_evaluation
+from .evaluation import run_evaluation
 from .pages import build_pages
 from .server import start_server
 
@@ -20,7 +20,6 @@ __all__ = [
 
     "evaluation",
         "run_evaluation",
-        "load_config",
     
     "pages",
         "build_pages",
