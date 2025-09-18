@@ -1,6 +1,6 @@
+import yaml
 import benchci
 import argparse
-import yaml
 from pathlib import Path
 
 
