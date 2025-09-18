@@ -1,5 +1,7 @@
 import benchci
 import argparse
+import yaml
+from pathlib import Path
 
 
 def main():
@@ -32,7 +34,8 @@ def main():
     args = parser.parse_args()
 
     if hasattr(args, "func"):
-        args.func(args.config)
+        config_yaml = yaml.safe_load(Path(args.config).read_text())
+        args.func(config_yaml)
     else:
         parser.print_help()
 

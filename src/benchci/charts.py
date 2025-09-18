@@ -1,5 +1,4 @@
 import json
-import yaml
 from jinja2 import Template
 from pathlib import Path
 
@@ -115,11 +114,9 @@ def generate_chart_html(labels, datasets, outputs_path="reports"):
     print(f"Chart HTML saved to {output_path}")
 
 
-def build_charts(config_file_path):
+def build_charts(config):
     """Main function to generate the performance charts."""
-    output_yaml = yaml.safe_load(Path(config_file_path).read_text())
-    # logs_path = output_yaml["evaluation"]["output"]["logs"]
-    reports_path = output_yaml["evaluation"]["output"]["reports"]
+    reports_path = config["evaluation"]["output"]["reports"]
 
     # Load data from database
     data = load_database_file(str(Path(reports_path) / "database.json"))

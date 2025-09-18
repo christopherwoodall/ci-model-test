@@ -1,20 +1,6 @@
-import os
-import yaml
 import datetime
 import openbench
 from concurrent.futures import ProcessPoolExecutor, as_completed
-
-
-def load_config(config_path):
-    """
-    Loads the configuration from a YAML file.
-    """
-    if not os.path.exists(config_path):
-        raise FileNotFoundError(f"Configuration file not found at: {config_path}")
-
-    with open(config_path, "r") as file:
-        config = yaml.safe_load(file)
-    return config
 
 
 def run_single_eval(model_name, eval_name, limit):
@@ -49,12 +35,10 @@ def run_single_eval(model_name, eval_name, limit):
     return f"Completed {eval_name} on {model_name}"
 
 
-def run_evaluation(config_path, max_workers=4):
+def run_evaluation(config, max_workers=4):
     """
     Runs evaluations based on the provided configuration file.
     """
-    config = load_config(config_path)
-
     tasks = []
     with ProcessPoolExecutor(max_workers=max_workers) as executor:
         for run_name, run_config in config["evaluation"]["runs"].items():

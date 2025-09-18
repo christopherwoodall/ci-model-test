@@ -1,5 +1,4 @@
 import json
-import yaml
 from jinja2 import Template
 from pathlib import Path
 from datetime import datetime
@@ -133,11 +132,10 @@ def generate_css(reports_path):
     print(f"CSS file saved to {output_path}")
 
 
-def build_pages(config_file_path):
+def build_pages(config):
     """Main function to orchestrate the build process."""
-    output_yaml = yaml.safe_load(Path(config_file_path).read_text())
-    logs_path = output_yaml["evaluation"]["output"]["logs"]
-    reports_path = output_yaml["evaluation"]["output"]["reports"]
+    logs_path = config["evaluation"]["output"]["logs"]
+    reports_path = config["evaluation"]["output"]["reports"]
 
     # Load JSON files
     report_data = load_json_files(logs_path)
