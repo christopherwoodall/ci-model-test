@@ -20,8 +20,6 @@ evaluation:
         - mmmu_art
         # biology
         - mmmu_biology
-        # chemistry
-        - mmmu_chemistry
         # electronics
         - mmmu_electronics
         # mechanical engineering
@@ -40,7 +38,6 @@ evaluation:
     #     - math_500
     #     - mmmu_art
     #     - mmmu_biology
-    #     - mmmu_chemistry
     #     - mmmu_electronics
     #     - mmmu_mechanical_engineering
     #     - mmmu_music
@@ -55,7 +52,6 @@ evaluation:
     #     - math_500
     #     - mmmu_art
     #     - mmmu_biology
-    #     - mmmu_chemistry
     #     - mmmu_electronics
     #     - mmmu_mechanical_engineering
     #     - mmmu_music
