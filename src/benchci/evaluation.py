@@ -1,20 +1,6 @@
-import os
-import yaml
 import datetime
 import openbench
 from concurrent.futures import ProcessPoolExecutor, as_completed
-
-
-def load_config(config_path):
-    """
-    Loads the configuration from a YAML file.
-    """
-    if not os.path.exists(config_path):
-        raise FileNotFoundError(f"Configuration file not found at: {config_path}")
-
-    with open(config_path, "r") as file:
-        config = yaml.safe_load(file)
-    return config
 
 
 def run_single_eval(model_name, eval_name, limit):
@@ -26,17 +12,18 @@ def run_single_eval(model_name, eval_name, limit):
     )
 
     # Generate logfile name with timestamp
+    sanitized_model_name = model_name
+    for char in ["/", "-", ".", ":"]:
+        sanitized_model_name = sanitized_model_name.replace(char, "_")
+
     timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
-    sanitized_model_name = (
-        model_name.replace("/", "_").replace("-", "_").replace(".", "_")
-    )
     logfile_name = f"results_{sanitized_model_name}_{eval_name}_{timestamp}"
 
     # Run the evaluation
     openbench.run_eval(
         display=openbench._cli.eval_command.DisplayType.NONE,
-        benchmarks=["mmlu"],
-        model=["openrouter/openai/gpt-oss-20b"],
+        benchmarks=[eval_name],
+        model=[model_name],
         # TODO: Fix limit error
         # limit=limit,
         log_format=openbench._cli.eval_command.LogFormat.JSON,
@@ -49,12 +36,10 @@ def run_single_eval(model_name, eval_name, limit):
     return f"Completed {eval_name} on {model_name}"
 
 
-def run_evaluation(config_path, max_workers=4):
+def run_evaluation(config, max_workers=4):
     """
     Runs evaluations based on the provided configuration file.
     """
-    config = load_config(config_path)
-
     tasks = []
     with ProcessPoolExecutor(max_workers=max_workers) as executor:
         for run_name, run_config in config["evaluation"]["runs"].items():

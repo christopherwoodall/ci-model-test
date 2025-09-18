@@ -1,5 +1,4 @@
 import json
-import yaml
 from pathlib import Path
 
 
@@ -12,9 +11,8 @@ def iter_json_files(logs_path):
         yield file_path
 
 
-def compat_logs(config_file_path):
-    output_yaml = yaml.safe_load(Path(config_file_path).read_text())
-    logs_path = output_yaml["evaluation"]["output"]["logs"]
+def compat_logs(config):
+    logs_path = config["evaluation"]["output"]["logs"]
 
     for record in iter_json_files(logs_path=logs_path):
         # If the file is already compat, skip it

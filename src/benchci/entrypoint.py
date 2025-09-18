@@ -1,5 +1,7 @@
+import yaml
 import benchci
 import argparse
+from pathlib import Path
 
 
 def main():
@@ -30,9 +32,10 @@ def main():
     server_parser.set_defaults(func=benchci.server.start_server)
 
     args = parser.parse_args()
+    config = yaml.safe_load(Path(args.config).read_text())
 
     if hasattr(args, "func"):
-        args.func(args.config)
+        args.func(config)
     else:
         parser.print_help()
 

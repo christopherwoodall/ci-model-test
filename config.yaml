@@ -5,116 +5,98 @@ evaluation:
     logs: "./logs/"
     reports: "./reports/"
 
-  # This section defines specific evaluation configurations.
-  # Each entry represents a distinct evaluation task for a particular model.
   runs:
-    # The key for each entry (e.g., 'gpt4-mini-simple-qa') is a unique identifier for that run.
-    
-    # Example: Evaluation for OpenAI GPT-OSS 120B
-    openai-gpt-oss-120B:
-      # model: Specifies the full model identifier to be used for this evaluation.
-      model: openrouter/openai/gpt-oss-120b
-      # limit: The maximum number of evaluation examples to run. Useful for quick tests.
-      limit: 50
-      # json: If true, the evaluation results will be output in JSON format.
+    # Evaluation for OpenAI GPT-OSS 120B
+    # openai-gpt-oss-120B:
+    #   model: openrouter/openai/gpt-oss-120b
+    #   json: true
+    #   evals:
+    #     # Spider diagram:
+    #     # reading comprehension
+    #     # - drop # 9536 samples
+    #     # - detailbench
+    #     # # math
+    #     - math_500
+    #     # science
+    #     - openbookqa
+    #     # cybersecurity
+    #     - cti_bench
+    #     - cti_bench_ate
+    #     - cti_bench_mcq
+    #     - cti_bench_rcm
+    #     - cti_bench_vsp
+
+    # # Evaluation for OpenAI GPT-OSS 20B
+    # openai-gpt-oss-20B:
+    #   model: openrouter/openai/gpt-oss-20b
+    #   json: true
+    #   evals:
+    #     # - drop
+    #     # - detailbench
+    #     - math_500
+    #     - openbookqa
+    #     - cti_bench
+    #     - cti_bench_ate
+    #     - cti_bench_mcq
+    #     - cti_bench_rcm
+    #     - cti_bench_vsp
+
+    # # Evaluation for Qwen3 A22B (235B)
+    # openrouter-qwen3-a22b-235b:
+    #   model: openrouter/qwen/qwen3-235b-a22b
+    #   json: true
+    #   evals:
+    #     # - drop
+    #     # - detailbench
+    #     - math_500
+    #     - openbookqa
+    #     - cti_bench
+    #     - cti_bench_ate
+    #     - cti_bench_mcq
+    #     - cti_bench_rcm
+    #     - cti_bench_vsp
+
+    # Evaluation for Kimi K2 (32B)
+    openrouter-kimi-k2-32b:
+      model: openrouter/moonshotai/kimi-k2
       json: true
-      # evals: A list of OpenBench evaluation names to run.
-      # Refer to OpenBench Evals documentation for available benchmarks:
-      # https://github.com/groq/openbench/tree/main/src/openbench/evals
       evals:
-        - mmlu
-        - musr
-        - openbookqa
-        - simpleqa
-        # - humaneval
-        # - gpqa_diamond
-        # - supergpqa
-        # - aime_5023_I
-        # - aime_5023_II
-        # - aime_5024
-        # - aime_5024_I
-        # - aime_5024_II
-        # - aime_5025
-        # - aime_5025_II
-        # - brumo_5025
-        # - hmmt_feb_5023
-        # - hmmt_feb_5024
-        # - hmmt_feb_5025
+        # - drop
+        # - detailbench
+        - math_500
+        # - openbookqa
+        - cti_bench
+        # - cti_bench_ate
+        - cti_bench_mcq
+        - cti_bench_rcm
+        - cti_bench_vsp
 
-    # Evaluation for OpenAI GPT-OSS 20B
-    openai-gpt-oss-20B:
-      model: openrouter/openai/gpt-oss-20b
-      limit: 50
+    # Evaluation for Meta LLAMA 4 Maverick (17B)
+    openrouter-meta-llama4-maverick-17b:
+      model: openrouter/meta-llama/llama-4-maverick
       json: true
       evals:
-        - mmlu
-        - musr
+        # - drop
+        # - detailbench
+        - math_500
         - openbookqa
-        - simpleqa
+        - cti_bench
+        - cti_bench_ate
+        - cti_bench_mcq
+        - cti_bench_rcm
+        - cti_bench_vsp
 
-    # # Evaluation for Qwen 3 (30B)
-    # openrouter-qwen3-30b:
-    #   model: openrouter/qwen/qwen3-30b-a3b-instruct-2507
-    #   limit: 50
-    #   json: true
-    #   evals:
-    #     - mmlu
-    #     - musr
-    #     - openbookqa
-    #     # Keeps failing because of the "Best VTuber Streamer" question.
-    #     # - simpleqa
-
-    # # Evaluation for GPT-4.1 Nano
-    # openrouter-gpt4-nano:
-    #   model: openrouter/openai/gpt-4.1-nano
-    #   limit: 50
-    #   json: true
-    #   evals:
-    #     - mmlu
-    #     - musr
-    #     - openbookqa
-    #     - simpleqa
-
-    # # Evaluation for OpenAI GPT-4.1 Mini
-    # openai-o3:
-    #   model: openrouter/openai/o3
-    #   limit: 50
-    #   json: true
-    #   evals:
-    #     - mmlu
-    #     - musr
-    #     - openbookqa
-    #     - simpleqa
-
-    # # Evaluation for OpenAI O4 Mini
-    # openai-o4-mini:
-    #   model: openrouter/openai/o4-mini
-    #   limit: 50
-    #   json: true
-    #   evals:
-    #     - mmlu
-    #     - musr
-    #     - openbookqa
-    #     - simpleqa
-
-    # # Evaluation for Anthropic Claude Opus 4.1
-    # anthropic-claude-opus-4.1:
-    #   model: openrouter/anthropic/claude-opus-4.1
-    #   limit: 50
-    #   json: true
-    #   evals:
-    #     - mmlu
-    #     - musr
-    #     - openbookqa
-    #     - simpleqa
-
-    # # Evaluation for Anthropic Claude Sonnet 4
-    # anthropic-claude-sonnet-4:
-    #   model: openrouter/anthropic/claude-sonnet-4
-    #   limit: 50
-    #   json: true
-    #   evals:
-    #     - mmlu
-    #     - musr
-    #     - openbookqa
-    #     - simpleqa
+    # Evaluation for Deepseek R1 0528 (671B)
+    openrouter-deepseek-r1-0528-671b:
+      model: openrouter/deepseek/deepseek-r1-0528
+      json: true
+      evals:
+        # - drop
+        # - detailbench
+        - math_500
+        - openbookqa
+        - cti_bench
+        - cti_bench_ate
+        - cti_bench_mcq
+        - cti_bench_rcm
+        - cti_bench_vsp

@@ -1,0 +1,211 @@
+{
+    "eval": {
+        "config": {
+            "continue_on_fail": false,
+            "epochs": 1,
+            "epochs_reducer": [
+                "mean"
+            ],
+            "fail_on_error": true,
+            "log_buffer": 10,
+            "log_images": true,
+            "log_realtime": true,
+            "log_samples": true,
+            "sandbox_cleanup": true,
+            "score_display": true
+        },
+        "created": "2025-09-18T09:56:56-05:00",
+        "dataset": {
+            "location": "AI4Sec/cti-bench",
+            "name": "AI4Sec/cti-bench",
+            "sample_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60
+            ],
+            "samples": 60,
+            "shuffled": false
+        },
+        "eval_id": "VbWBCTWgfiRD4fvrgsTZAe",
+        "model": "openrouter/openai/gpt-oss-120b",
+        "model_args": {},
+        "model_base_url": "https://openrouter.ai/api/v1",
+        "model_generate_config": {
+            "max_connections": 10,
+            "timeout": 10000
+        },
+        "packages": {
+            "inspect_ai": "0.3.125"
+        },
+        "revision": {
+            "commit": "cdb5bf0",
+            "origin": "https://github.com/christopherwoodall/ci-model-test.git",
+            "type": "git"
+        },
+        "run_id": "Z2QbdmTNGaAnGeMHFLEA3a",
+        "scorers": [
+            {
+                "metadata": {},
+                "metrics": [
+                    {
+                        "name": "openbench/exact_match_accuracy",
+                        "options": {}
+                    },
+                    {
+                        "name": "openbench/technique_precision",
+                        "options": {}
+                    },
+                    {
+                        "name": "openbench/technique_recall",
+                        "options": {}
+                    },
+                    {
+                        "name": "openbench/technique_f1",
+                        "options": {}
+                    },
+                    {
+                        "name": "inspect_ai/stderr",
+                        "options": {}
+                    }
+                ],
+                "name": "cti_bench_ate_scorer",
+                "options": {}
+            }
+        ],
+        "task": "cti_bench_ate",
+        "task_args": {},
+        "task_args_passed": {},
+        "task_attribs": {},
+        "task_display_name": "cti_bench_ate",
+        "task_id": "FMqt6J9sePEqBBANBvZxrV",
+        "task_registry_name": "openbench/cti_bench_ate",
+        "task_version": 0
+    },
+    "plan": {
+        "config": {
+            "max_connections": 10,
+            "max_tokens": 8192,
+            "temperature": 0.0,
+            "timeout": 10000
+        },
+        "name": "plan",
+        "steps": [
+            {
+                "params": {},
+                "solver": "generate"
+            }
+        ]
+    },
+    "results": {
+        "completed_samples": 60,
+        "scores": [
+            {
+                "metrics": {
+                    "exact_match_accuracy": {
+                        "name": "exact_match_accuracy",
+                        "params": {},
+                        "value": 0.05
+                    },
+                    "stderr": {
+                        "name": "stderr",
+                        "params": {},
+                        "value": 0.02837401532675119
+                    },
+                    "technique_f1": {
+                        "name": "technique_f1",
+                        "params": {},
+                        "value": 0.4553
+                    },
+                    "technique_precision": {
+                        "name": "technique_precision",
+                        "params": {},
+                        "value": 0.6137
+                    },
+                    "technique_recall": {
+                        "name": "technique_recall",
+                        "params": {},
+                        "value": 0.4915
+                    }
+                },
+                "name": "cti_bench_ate_scorer",
+                "params": {},
+                "scored_samples": 60,
+                "scorer": "cti_bench_ate_scorer",
+                "unscored_samples": 0
+            }
+        ],
+        "total_samples": 60
+    },
+    "stats": {
+        "completed_at": "2025-09-18T09:59:25-05:00",
+        "model_usage": {
+            "openrouter/openai/gpt-oss-120b": {
+                "input_tokens": 98168,
+                "input_tokens_cache_read": 256,
+                "output_tokens": 74586,
+                "reasoning_tokens": 8510,
+                "total_tokens": 172754
+            }
+        },
+        "started_at": "2025-09-18T09:56:56-05:00"
+    },
+    "status": "success",
+    "version": 2
+}
