@@ -8,7 +8,7 @@ evaluation:
   runs:
     # # Evaluation for OpenAI GPT-OSS 120B
     # openai-gpt-oss-120B:
-    #   model: openrouter/openai/gpt-oss-120b
+    #   model: openrouter/openai/gpt-oss-120b:free
     #   json: true
     #   evals:
     #     # Spider diagram:
@@ -27,7 +27,7 @@ evaluation:
 
     # Evaluation for OpenAI GPT-OSS 20B
     openai-gpt-oss-20B:
-      model: openrouter/openai/gpt-oss-20b
+      model: openrouter/openai/gpt-oss-20b:free
       json: true
       evals:
         - drop
@@ -39,9 +39,9 @@ evaluation:
         - cti_bench_rcm
         - cti_bench_vsp
 
-    # Evaluation for Qwen 3 (30B)
-    openrouter-qwen3-30b:
-      model: openrouter/qwen/qwen3-30b-a3b-instruct-2507
+    # Evaluation for Qwen3 A22B (235B)
+    openrouter-qwen3-a22b-235b:
+      model: openrouter/qwen/qwen3-235b-a22b:free
       json: true
       evals:
         - drop
@@ -54,7 +54,7 @@ evaluation:
 
     # Evaluation for Kimi K2 (32B)
     openrouter-kimi-k2-32b:
-      model: openrouter/moonshotai/kimi-k2
+      model: openrouter/moonshotai/kimi-k2:free
       json: true
       evals:
         - drop
@@ -80,7 +80,59 @@ evaluation:
 
     # Evaluation for Venice (24B)
     openrouter-venice-24b:
-      model: cognitivecomputations/dolphin-mistral-24b-venice-edition:free
+      model: openrouter/cognitivecomputations/dolphin-mistral-24b-venice-edition:free
+      json: true
+      evals:
+        - drop
+        - math_500
+        - openbookqa
+        - cti_bench_ate
+        - cti_bench_mcq
+        - cti_bench_rcm
+        - cti_bench_vsp
+    
+    # Evaluation for Mistral Small 3.2 (24B)
+    openrouter-mistral-small-3-2-24b:
+      model: openrouter/mistralai/mistral-small-3.2-24b-instruct:free
+      json: true
+      evals:
+        - drop
+        - math_500
+        - openbookqa
+        - cti_bench_ate
+        - cti_bench_mcq
+        - cti_bench_rcm
+        - cti_bench_vsp
+  
+    # Evaluation for Google Gemini 2.0 Flash Experimental
+    openrouter-google-gemini-2-flash-experimental:
+      model: openrouter/google/gemini-2.0-flash-exp:free
+      json: true
+      evals:
+        - drop
+        - math_500
+        - openbookqa
+        - cti_bench_ate
+        - cti_bench_mcq
+        - cti_bench_rcm
+        - cti_bench_vsp
+
+    # Evaluation for Nous DeepHermes 3 Llama 3 8B
+    openrouter-nous-deephermes-3-llama-3-8b:
+      model: openrouter/nousresearch/deephermes-3-llama-3-8b-preview:free
+      json: true
+      evals:
+        - drop
+        - math_500
+        - openbookqa
+        - cti_bench_ate
+        - cti_bench_mcq
+        - cti_bench_rcm
+        - cti_bench_vsp
+
+    # Evaluation for Deepseek R1 0528 (671B)
+    openrouter-deepseek-r1-0528-671b:
+      model: openrouter/deepseek/deepseek-r1-0528:free
       json: true
       evals:
         - drop
