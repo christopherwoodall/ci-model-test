@@ -13,7 +13,7 @@ evaluation:
       evals:
         # Spider diagram:
         # reading comprehension
-        - drop
+        # - drop # 9536 samples
         - detailbench
         # # math
         - math_500
