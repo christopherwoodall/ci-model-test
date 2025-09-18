@@ -88,7 +88,7 @@ evaluation:
 
     # Evaluation for Deepseek R1 0528 (671B)
     openrouter-deepseek-r1-0528-671b:
-      model: openrouter/deepseek/deepseek-r1-0528:free
+      model: openrouter/deepseek/deepseek-r1-0528
       json: true
       evals:
         # - drop
