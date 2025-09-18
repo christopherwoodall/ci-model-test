@@ -1,6 +1,6 @@
 import datetime
 import openbench
-from concurrent.futures import ProcessPoolExecutor
+from concurrent.futures import ProcessPoolExecutor, as_completed
 
 
 def run_single_eval(model_name, eval_name, limit):
