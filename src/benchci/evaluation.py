@@ -12,10 +12,11 @@ def run_single_eval(model_name, eval_name, limit):
     )
 
     # Generate logfile name with timestamp
+    sanitized_model_name = model_name
+    for char in ["/", "-", ".", ":"]:
+        sanitized_model_name = sanitized_model_name.replace(char, "_")
+    
     timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
-    sanitized_model_name = (
-        model_name.replace("/", "_").replace("-", "_").replace(".", "_")
-    )
     logfile_name = f"results_{sanitized_model_name}_{eval_name}_{timestamp}"
 
     # Run the evaluation
@@ -49,15 +50,18 @@ def run_evaluation(config, max_workers=4):
             evals_list = run_config.get("evals", [])
 
             for eval_name in evals_list:
-                # Submit each eval to run in parallel
-                tasks.append(
-                    executor.submit(run_single_eval, model_name, eval_name, limit)
-                )
+                run_single_eval(model_name, eval_name, limit)
 
-        # Gather results as they complete
-        for future in as_completed(tasks):
-            try:
-                result = future.result()
-                print(result)
-            except Exception as e:
-                print(f"Task failed: {e}")
+        #     for eval_name in evals_list:
+        #         # Submit each eval to run in parallel
+        #         tasks.append(
+        #             executor.submit(run_single_eval, model_name, eval_name, limit)
+        #         )
+
+        # # Gather results as they complete
+        # for future in as_completed(tasks):
+        #     try:
+        #         result = future.result()
+        #         print(result)
+        #     except Exception as e:
+        #         print(f"Task failed: {e}")
