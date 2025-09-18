@@ -7,54 +7,54 @@ evaluation:
 
   runs:
     # Evaluation for OpenAI GPT-OSS 120B
-    openai-gpt-oss-120B:
-      model: openrouter/openai/gpt-oss-120b
-      json: true
-      evals:
-        # Spider diagram:
-        # reading comprehension
-        # - drop # 9536 samples
-        # - detailbench
-        # # math
-        - math_500
-        # science
-        - openbookqa
-        # cybersecurity
-        - cti_bench
-        - cti_bench_ate
-        - cti_bench_mcq
-        - cti_bench_rcm
-        - cti_bench_vsp
+    # openai-gpt-oss-120B:
+    #   model: openrouter/openai/gpt-oss-120b
+    #   json: true
+    #   evals:
+    #     # Spider diagram:
+    #     # reading comprehension
+    #     # - drop # 9536 samples
+    #     # - detailbench
+    #     # # math
+    #     - math_500
+    #     # science
+    #     - openbookqa
+    #     # cybersecurity
+    #     - cti_bench
+    #     - cti_bench_ate
+    #     - cti_bench_mcq
+    #     - cti_bench_rcm
+    #     - cti_bench_vsp
 
-    # Evaluation for OpenAI GPT-OSS 20B
-    openai-gpt-oss-20B:
-      model: openrouter/openai/gpt-oss-20b
-      json: true
-      evals:
-        # - drop
-        # - detailbench
-        - math_500
-        - openbookqa
-        - cti_bench
-        - cti_bench_ate
-        - cti_bench_mcq
-        - cti_bench_rcm
-        - cti_bench_vsp
+    # # Evaluation for OpenAI GPT-OSS 20B
+    # openai-gpt-oss-20B:
+    #   model: openrouter/openai/gpt-oss-20b
+    #   json: true
+    #   evals:
+    #     # - drop
+    #     # - detailbench
+    #     - math_500
+    #     - openbookqa
+    #     - cti_bench
+    #     - cti_bench_ate
+    #     - cti_bench_mcq
+    #     - cti_bench_rcm
+    #     - cti_bench_vsp
 
-    # Evaluation for Qwen3 A22B (235B)
-    openrouter-qwen3-a22b-235b:
-      model: openrouter/qwen/qwen3-235b-a22b
-      json: true
-      evals:
-        # - drop
-        # - detailbench
-        - math_500
-        - openbookqa
-        - cti_bench
-        - cti_bench_ate
-        - cti_bench_mcq
-        - cti_bench_rcm
-        - cti_bench_vsp
+    # # Evaluation for Qwen3 A22B (235B)
+    # openrouter-qwen3-a22b-235b:
+    #   model: openrouter/qwen/qwen3-235b-a22b
+    #   json: true
+    #   evals:
+    #     # - drop
+    #     # - detailbench
+    #     - math_500
+    #     - openbookqa
+    #     - cti_bench
+    #     - cti_bench_ate
+    #     - cti_bench_mcq
+    #     - cti_bench_rcm
+    #     - cti_bench_vsp
 
     # Evaluation for Kimi K2 (32B)
     openrouter-kimi-k2-32b:
@@ -64,9 +64,9 @@ evaluation:
         # - drop
         # - detailbench
         - math_500
-        - openbookqa
+        # - openbookqa
         - cti_bench
-        - cti_bench_ate
+        # - cti_bench_ate
         - cti_bench_mcq
         - cti_bench_rcm
         - cti_bench_vsp
