@@ -21,8 +21,8 @@ def run_single_eval(model_name, eval_name, limit):
     # Run the evaluation
     openbench.run_eval(
         display=openbench._cli.eval_command.DisplayType.NONE,
-        benchmarks=["mmlu"],
-        model=["openrouter/openai/gpt-oss-20b"],
+        benchmarks=[eval_name],
+        model=[model_name],
         # TODO: Fix limit error
         # limit=limit,
         log_format=openbench._cli.eval_command.LogFormat.JSON,
