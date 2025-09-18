@@ -6,46 +6,87 @@ evaluation:
     reports: "./reports/"
 
   runs:
-    # Evaluation for OpenAI GPT-OSS 120B
-    openai-gpt-oss-120B:
-      model: openrouter/openai/gpt-oss-120b
+    # # Evaluation for OpenAI GPT-OSS 120B
+    # openai-gpt-oss-120B:
+    #   model: openrouter/openai/gpt-oss-120b
+    #   json: true
+    #   evals:
+    #     # Spider diagram:
+    #     # reading comprehension
+    #     - drop
+    #     # # math
+    #     # - math_500
+    #     # science
+    #     - openbookqa
+    #     # cybersecurity
+    #     - cti_bench
+    #     - cti_bench_ate
+    #     - cti_bench_mcq
+    #     - cti_bench_rcm
+    #     - cti_bench_vsp
+
+    # Evaluation for OpenAI GPT-OSS 20B
+    openai-gpt-oss-20B:
+      model: openrouter/openai/gpt-oss-20b
       json: true
       evals:
-        # Spider diagram:
-        # reading comprehension
         - drop
-        # # math
-        # - math_500
-        # science
+        - math_500
         - openbookqa
-        # cybersecurity
+        - cti_bench
         - cti_bench_ate
         - cti_bench_mcq
         - cti_bench_rcm
         - cti_bench_vsp
 
-    # # Evaluation for OpenAI GPT-OSS 20B
-    # openai-gpt-oss-20B:
-    #   model: openrouter/openai/gpt-oss-20b
-    #   json: true
-    #   evals:
-    #     - drop
-    #     - math_500
-    #     - openbookqa
-    #     - cti_bench_ate
-    #     - cti_bench_mcq
-    #     - cti_bench_rcm
-    #     - cti_bench_vsp
+    # Evaluation for Qwen 3 (30B)
+    openrouter-qwen3-30b:
+      model: openrouter/qwen/qwen3-30b-a3b-instruct-2507
+      json: true
+      evals:
+        - drop
+        - math_500
+        - openbookqa
+        - cti_bench_ate
+        - cti_bench_mcq
+        - cti_bench_rcm
+        - cti_bench_vsp
 
-    # # Evaluation for Qwen 3 (30B)
-    # openrouter-qwen3-30b:
-    #   model: openrouter/qwen/qwen3-30b-a3b-instruct-2507
-    #   json: true
-    #   evals:
-    #     - drop
-    #     - math_500
-    #     - openbookqa
-    #     - cti_bench_ate
-    #     - cti_bench_mcq
-    #     - cti_bench_rcm
-    #     - cti_bench_vsp
+    # Evaluation for Kimi K2 (32B)
+    openrouter-kimi-k2-32b:
+      model: openrouter/moonshotai/kimi-k2
+      json: true
+      evals:
+        - drop
+        - math_500
+        - openbookqa
+        - cti_bench_ate
+        - cti_bench_mcq
+        - cti_bench_rcm
+        - cti_bench_vsp
+
+    # Evaluation for Meta LLAMA 4 Maverick (17B)
+    openrouter-meta-llama4-maverick-17b:
+      model: openrouter/meta-llama/llama-4-maverick:free
+      json: true
+      evals:
+        - drop
+        - math_500
+        - openbookqa
+        - cti_bench_ate
+        - cti_bench_mcq
+        - cti_bench_rcm
+        - cti_bench_vsp
+
+    # Evaluation for Venice (24B)
+    openrouter-venice-24b:
+      model: cognitivecomputations/dolphin-mistral-24b-venice-edition:free
+      json: true
+      evals:
+        - drop
+        - math_500
+        - openbookqa
+        - cti_bench_ate
+        - cti_bench_mcq
+        - cti_bench_rcm
+        - cti_bench_vsp
