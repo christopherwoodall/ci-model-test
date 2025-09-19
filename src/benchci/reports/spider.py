@@ -46,13 +46,17 @@ def prepare_spider_chart_data(data):
 
     # Normalize scores to a 0-1 range to make them comparable on the chart
     # First, find the min and max scores for each evaluation
-    eval_min_max = {eval: {'min': 1, 'max': 0} for eval in eval_names}
+    eval_min_max = {eval: {"min": 1, "max": 0} for eval in eval_names}
     for model in model_scores:
         for eval_name, scores in model_scores[model].items():
             if scores:
                 avg_score = sum(scores) / len(scores)
-                eval_min_max[eval_name]['min'] = min(eval_min_max[eval_name]['min'], avg_score)
-                eval_min_max[eval_name]['max'] = max(eval_min_max[eval_name]['max'], avg_score)
+                eval_min_max[eval_name]["min"] = min(
+                    eval_min_max[eval_name]["min"], avg_score
+                )
+                eval_min_max[eval_name]["max"] = max(
+                    eval_min_max[eval_name]["max"], avg_score
+                )
 
     # Create datasets for the spider chart
     datasets = []
@@ -62,8 +66,8 @@ def prepare_spider_chart_data(data):
             if eval_name in evals:
                 avg_score = sum(evals[eval_name]) / len(evals[eval_name])
                 # Normalize the score
-                min_val = eval_min_max[eval_name]['min']
-                max_val = eval_min_max[eval_name]['max']
+                min_val = eval_min_max[eval_name]["min"]
+                max_val = eval_min_max[eval_name]["max"]
                 if max_val > min_val:
                     normalized_score = (avg_score - min_val) / (max_val - min_val)
                 else:

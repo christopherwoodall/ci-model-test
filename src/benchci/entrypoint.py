@@ -25,7 +25,9 @@ def main():
     chart_parser = subparsers.add_parser("build-charts", help="Build charts")
     chart_parser.set_defaults(func=benchci.reports.charts.build_charts)
 
-    spider_parser = subparsers.add_parser("build-spider-chart", help="Build spider chart")
+    spider_parser = subparsers.add_parser(
+        "build-spider-chart", help="Build spider chart"
+    )
     spider_parser.set_defaults(func=benchci.reports.spider.build_spider_chart)
 
     compat_parser = subparsers.add_parser("compat", help="Compat logs")
