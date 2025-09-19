@@ -20,10 +20,15 @@ def main():
     eval_parser.set_defaults(func=benchci.evaluation.run_evaluation)
 
     page_parser = subparsers.add_parser("build-pages", help="Build HTML pages")
-    page_parser.set_defaults(func=benchci.pages.build_pages)
+    page_parser.set_defaults(func=benchci.reports.pages.build_pages)
 
     chart_parser = subparsers.add_parser("build-charts", help="Build charts")
-    chart_parser.set_defaults(func=benchci.charts.build_charts)
+    chart_parser.set_defaults(func=benchci.reports.charts.build_charts)
+
+    spider_parser = subparsers.add_parser(
+        "build-spider-chart", help="Build spider chart"
+    )
+    spider_parser.set_defaults(func=benchci.reports.spider.build_spider_chart)
 
     compat_parser = subparsers.add_parser("compat", help="Compat logs")
     compat_parser.set_defaults(func=benchci.compat.compat_logs)
