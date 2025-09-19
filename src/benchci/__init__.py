@@ -16,9 +16,6 @@ from .reports.charts import build_charts
 from .reports.spider import build_spider_chart
 
 
-
-
-
 __all__ = [
     "compat",
         "compat_logs",
