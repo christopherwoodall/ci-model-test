@@ -1,9 +1,10 @@
 # ruff: noqa
 # fmt: off
-# from . import spider
-# from .spider import generate_spider_charts
+from . import spider
+from .spider import build_spider_chart
 
 
-# __all__ = [
-#     "generate_spider_charts"
-# ]
+__all__ = [
+    "spider",
+        "build_spider_chart"
+]
