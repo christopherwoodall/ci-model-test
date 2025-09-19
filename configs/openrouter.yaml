@@ -3,7 +3,7 @@
 evaluation:
   output:
     logs: "./logs/"
-    reports: "./reports/"
+    reports: "./docs/"
 
   # This section defines specific evaluation configurations.
   # Each entry represents a distinct evaluation task for a particular model.

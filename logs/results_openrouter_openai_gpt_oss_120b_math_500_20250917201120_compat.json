@@ -14,7 +14,7 @@
             "sandbox_cleanup": true,
             "score_display": true
         },
-        "created": "2025-09-18T13:37:07-05:00",
+        "created": "2025-09-17T20:11:27-05:00",
         "dataset": {
             "name": "math_500_test",
             "sample_ids": [
@@ -522,8 +522,8 @@
             "samples": 500,
             "shuffled": false
         },
-        "eval_id": "afXa78Hvf8ZuHvNsVGwXba",
-        "model": "openrouter/moonshotai/kimi-k2",
+        "eval_id": "LCBe7fGH2u6btQWktMQM2K",
+        "model": "openrouter/openai/gpt-oss-120b",
         "model_args": {},
         "model_base_url": "https://openrouter.ai/api/v1",
         "model_generate_config": {
@@ -534,11 +534,11 @@
             "inspect_ai": "0.3.125"
         },
         "revision": {
-            "commit": "a7b7a36",
+            "commit": "c45482e",
             "origin": "https://github.com/christopherwoodall/ci-model-test.git",
             "type": "git"
         },
-        "run_id": "Y9CbUbFU8NnVDGKxNuwS7g",
+        "run_id": "JQ26EycWyW2EiBCGR8TvSt",
         "scorers": [
             {
                 "metadata": {},
@@ -565,7 +565,7 @@
         "task_args_passed": {},
         "task_attribs": {},
         "task_display_name": "math_500",
-        "task_id": "ipgTNW26iVgpJujbFmLiRZ",
+        "task_id": "3BYPpcnaEba9gY5eYKtrYv",
         "task_registry_name": "openbench/math_500",
         "task_version": 0
     },
@@ -583,11 +583,53 @@
             }
         ]
     },
-    "stats": {
-        "completed_at": "",
-        "model_usage": {},
-        "started_at": ""
+    "results": {
+        "completed_samples": 500,
+        "scores": [
+            {
+                "metrics": {
+                    "accuracy": {
+                        "name": "accuracy",
+                        "params": {},
+                        "value": 0.914
+                    },
+                    "stderr": {
+                        "name": "stderr",
+                        "params": {},
+                        "value": 0.012550818542716023
+                    }
+                },
+                "name": "math_scorer",
+                "params": {
+                    "model": "openai/gpt-4-turbo-preview"
+                },
+                "scored_samples": 500,
+                "scorer": "math_scorer",
+                "unscored_samples": 0
+            }
+        ],
+        "total_samples": 500
     },
-    "status": "started",
+    "stats": {
+        "completed_at": "2025-09-17T20:22:31-05:00",
+        "model_usage": {
+            "openai/gpt-4-turbo-preview": {
+                "input_tokens": 249098,
+                "input_tokens_cache_read": 0,
+                "output_tokens": 484,
+                "reasoning_tokens": 0,
+                "total_tokens": 249582
+            },
+            "openrouter/openai/gpt-oss-120b": {
+                "input_tokens": 101278,
+                "input_tokens_cache_read": 3744,
+                "output_tokens": 575911,
+                "reasoning_tokens": 48461,
+                "total_tokens": 677189
+            }
+        },
+        "started_at": "2025-09-17T20:11:27-05:00"
+    },
+    "status": "success",
     "version": 2
 }

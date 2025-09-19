@@ -3,10 +3,10 @@
 evaluation:
   output:
     logs: "./logs/"
-    reports: "./reports/"
+    reports: "./docs/"
 
   runs:
-    # Evaluation for OpenAI GPT-OSS 120B
+    # # Evaluation for OpenAI GPT-OSS 120B
     # openai-gpt-oss-120B:
     #   model: openrouter/openai/gpt-oss-120b
     #   json: true
@@ -15,16 +15,16 @@ evaluation:
     #     # reading comprehension
     #     # - drop # 9536 samples
     #     # - detailbench
-    #     # # math
-    #     - math_500
-    #     # science
-    #     - openbookqa
+    #     # # # math
+    #     # - math_500
+    #     # # science
+    #     # - openbookqa
     #     # cybersecurity
-    #     - cti_bench
-    #     - cti_bench_ate
-    #     - cti_bench_mcq
-    #     - cti_bench_rcm
-    #     - cti_bench_vsp
+    #     # - cti_bench
+    #     # - cti_bench_ate
+    #     # - cti_bench_mcq
+    #     # - cti_bench_rcm
+    #     # - cti_bench_vsp
 
     # # Evaluation for OpenAI GPT-OSS 20B
     # openai-gpt-oss-20B:
@@ -57,38 +57,38 @@ evaluation:
     #     - cti_bench_vsp
 
     # Evaluation for Kimi K2 (32B)
-    openrouter-kimi-k2-32b:
-      model: openrouter/moonshotai/kimi-k2
-      json: true
-      evals:
-        # - drop
-        # - detailbench
-        - math_500
-        # - openbookqa
-        - cti_bench
-        # - cti_bench_ate
-        - cti_bench_mcq
-        - cti_bench_rcm
-        - cti_bench_vsp
+    # openrouter-kimi-k2-32b:
+    #   model: openrouter/moonshotai/kimi-k2
+    #   json: true
+    #   evals:
+    #     # - drop
+    #     # - detailbench
+    #     - math_500
+    #     # - openbookqa
+    #     # - cti_bench
+    #     # - cti_bench_ate
+    #     # - cti_bench_mcq
+    #     # - cti_bench_rcm
+    #     # - cti_bench_vsp
 
-    # Evaluation for Meta LLAMA 4 Maverick (17B)
+    # # Evaluation for Meta LLAMA 4 Maverick (17B)
     openrouter-meta-llama4-maverick-17b:
       model: openrouter/meta-llama/llama-4-maverick
       json: true
       evals:
         # - drop
         # - detailbench
-        - math_500
-        - openbookqa
+        # - math_500
+        # - openbookqa
         - cti_bench
-        - cti_bench_ate
-        - cti_bench_mcq
-        - cti_bench_rcm
-        - cti_bench_vsp
+        # - cti_bench_ate
+        # - cti_bench_mcq
+        # - cti_bench_rcm
+        # - cti_bench_vsp
 
-    # Evaluation for Deepseek R1 0528 (671B)
-    openrouter-deepseek-r1-0528-671b:
-      model: openrouter/deepseek/deepseek-r1-0528
+    # # Evaluation for Deepseek Chat V3.1 (671B)
+    openrouter-deepseek-chat-v3.1-671b:
+      model: openrouter/deepseek/deepseek-chat-v3.1
       json: true
       evals:
         # - drop

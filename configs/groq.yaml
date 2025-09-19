@@ -3,7 +3,7 @@
 evaluation:
   output:
     logs: "./logs/"
-    reports: "./reports/"
+    reports: "./docs/"
   
   runs:
     groq-gpt-oss-120B:

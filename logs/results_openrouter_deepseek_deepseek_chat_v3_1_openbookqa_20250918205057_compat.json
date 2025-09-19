@@ -14,7 +14,7 @@
             "sandbox_cleanup": true,
             "score_display": true
         },
-        "created": "2025-09-18T12:56:29-05:00",
+        "created": "2025-09-18T20:51:17-05:00",
         "dataset": {
             "location": "allenai/openbookqa",
             "name": "allenai/openbookqa",
@@ -523,8 +523,8 @@
             "samples": 500,
             "shuffled": false
         },
-        "eval_id": "6Xbg5NaBA4mZ2i6bb8nuNT",
-        "model": "openrouter/qwen/qwen3-235b-a22b",
+        "eval_id": "hg9rDbGcyv8jVPwkRNHYKp",
+        "model": "openrouter/deepseek/deepseek-chat-v3.1",
         "model_args": {},
         "model_base_url": "https://openrouter.ai/api/v1",
         "model_generate_config": {
@@ -535,11 +535,11 @@
             "inspect_ai": "0.3.125"
         },
         "revision": {
-            "commit": "a7b7a36",
+            "commit": "3a10749",
             "origin": "https://github.com/christopherwoodall/ci-model-test.git",
             "type": "git"
         },
-        "run_id": "NQNqinta66vx3udLQSBq29",
+        "run_id": "7x68VhtpY53qZiEmBFwyLq",
         "scorers": [
             {
                 "metadata": {},
@@ -564,7 +564,7 @@
         "task_args_passed": {},
         "task_attribs": {},
         "task_display_name": "openbookqa",
-        "task_id": "LLK8ZkcVHtRSfTxgAV3GVB",
+        "task_id": "hLuoE9QpD3pQd3nKduSxCM",
         "task_registry_name": "openbench/openbookqa",
         "task_version": 0
     },
@@ -589,12 +589,12 @@
                     "accuracy": {
                         "name": "accuracy",
                         "params": {},
-                        "value": 0.924
+                        "value": 0.92
                     },
                     "stderr": {
                         "name": "stderr",
                         "params": {},
-                        "value": 0.01186294478271882
+                        "value": 0.012144751540478704
                     }
                 },
                 "name": "choice",
@@ -607,15 +607,17 @@
         "total_samples": 500
     },
     "stats": {
-        "completed_at": "2025-09-18T13:18:03-05:00",
+        "completed_at": "2025-09-18T20:58:43-05:00",
         "model_usage": {
-            "openrouter/qwen/qwen3-235b-a22b": {
-                "input_tokens": 44578,
-                "output_tokens": 337111,
-                "total_tokens": 381689
+            "openrouter/deepseek/deepseek-chat-v3.1": {
+                "input_tokens": 41986,
+                "input_tokens_cache_read": 1732,
+                "output_tokens": 85828,
+                "reasoning_tokens": 0,
+                "total_tokens": 127814
             }
         },
-        "started_at": "2025-09-18T12:56:29-05:00"
+        "started_at": "2025-09-18T20:51:17-05:00"
     },
     "status": "success",
     "version": 2

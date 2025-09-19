@@ -6,34 +6,34 @@
     <title>Model Performance Charts</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        body {{
+        body {
             font-family: Arial, sans-serif;
             margin: 20px;
             background-color: #f5f5f5;
-        }}
-        .container {{
+        }
+        .container {
             max-width: 1200px;
             margin: 0 auto;
             background-color: white;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }}
-        h1 {{
+        }
+        h1 {
             text-align: center;
             color: #333;
-        }}
-        .chart-container {{
+        }
+        .chart-container {
             position: relative;
             height: 500px;
             margin-bottom: 40px;
-        }}
-        .description {{
+        }
+        .description {
             margin-bottom: 30px;
             line-height: 1.6;
             color: #666;
-        }}
-        .controls {{
+        }
+        .controls {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
@@ -41,23 +41,23 @@
             padding: 15px;
             background-color: #f8f9fa;
             border-radius: 5px;
-        }}
-        .control-group {{
+        }
+        .control-group {
             flex: 1;
             min-width: 200px;
-        }}
-        .control-group label {{
+        }
+        .control-group label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
-        }}
-        .control-group select {{
+        }
+        .control-group select {
             width: 100%;
             padding: 8px;
             border-radius: 4px;
             border: 1px solid #ddd;
-        }}
-        .control-group button {{
+        }
+        .control-group button {
             width: 100%;
             padding: 8px;
             background-color: #007bff;
@@ -66,15 +66,15 @@
             border-radius: 4px;
             cursor: pointer;
             margin-top: 10px;
-        }}
-        .control-group button:hover {{
+        }
+        .control-group button:hover {
             background-color: #0056b3;
-        }}
-        @media (max-width: 768px) {{
-            .controls {{
+        }
+        @media (max-width: 768px) {
+            .controls {
                 flex-direction: column;
-            }}
-        }}
+            }
+        }
     </style>
 </head>
 <body>
@@ -117,8 +117,8 @@
 
     <script>
         // Chart data (full dataset)
-        const allLabels = {labels_json};
-        const allDatasets = {datasets_json};
+        const allLabels = {{ labels_json }};
+        const allDatasets = {{ datasets_json }};
         
         // Current chart data (filtered)
         let currentLabels = [...allLabels];
@@ -146,55 +146,55 @@
         ];
         
         // Add colors to datasets
-        currentDatasets.forEach((dataset, index) => {{
+        currentDatasets.forEach((dataset, index) => {
             dataset.backgroundColor = backgroundColors[index % backgroundColors.length];
             dataset.borderColor = borderColors[index % borderColors.length];
-        }});
+        });
         
         // Create the chart
         const ctx = document.getElementById('performanceChart').getContext('2d');
-        const chart = new Chart(ctx, {{
+        const chart = new Chart(ctx, {
             type: 'bar',
-            data: {{
+            data: {
                 labels: currentLabels,
                 datasets: currentDatasets
-            }},
-            options: {{
+            },
+            options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                scales: {{
-                    y: {{
+                scales: {
+                    y: {
                         beginAtZero: true,
-                        title: {{
+                        title: {
                             display: true,
                             text: 'Score'
-                        }}
-                    }},
-                    x: {{
-                        title: {{
+                        }
+                    },
+                    x: {
+                        title: {
                             display: true,
                             text: 'Models'
-                        }}
-                    }}
-                }},
-                plugins: {{
-                    title: {{
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
                         display: true,
                         text: 'Model Performance by Evaluation Task'
-                    }},
-                    tooltip: {{
-                        callbacks: {{
-                            label: function(context) {{
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
                                 return context.dataset.label + ': ' + context.parsed.y.toFixed(4);
-                            }}
-                        }}
-                    }}
-                }}
-            }}
-        }});
+                            }
+                        }
+                    }
+                }
+            }
+        });
         
         // Populate filter dropdowns
-        function populateFilters() {{
+        function populateFilters() {
             const modelFilter = document.getElementById('modelFilter');
             const evalFilter = document.getElementById('evalFilter');
             
@@ -203,60 +203,60 @@
             evalFilter.innerHTML = '<option value="" selected>All Evaluations</option>';
             
             // Add model options
-            allLabels.forEach(model => {{
+            allLabels.forEach(model => {
                 const option = document.createElement('option');
                 option.value = model;
                 option.textContent = model;
                 modelFilter.appendChild(option);
-            }});
+            });
             
             // Add evaluation options
-            allDatasets.forEach(dataset => {{
+            allDatasets.forEach(dataset => {
                 const option = document.createElement('option');
                 option.value = dataset.label;
                 option.textContent = dataset.label;
                 evalFilter.appendChild(option);
-            }});
-        }}
+            });
+        }
         
         // Apply model filter
-        function applyModelFilter() {{
+        function applyModelFilter() {
             const selectedModels = Array.from(document.getElementById('modelFilter').selectedOptions)
                 .map(option => option.value)
                 .filter(value => value !== "");
                 
-            if (selectedModels.length === 0) {{
+            if (selectedModels.length === 0) {
                 currentLabels = [...allLabels];
-            }} else {{
+            } else {
                 currentLabels = allLabels.filter(label => selectedModels.includes(label));
-            }}
+            }
             
             updateChart();
-        }}
+        }
         
         // Apply evaluation filter
-        function applyEvalFilter() {{
+        function applyEvalFilter() {
             const selectedEvals = Array.from(document.getElementById('evalFilter').selectedOptions)
                 .map(option => option.value)
                 .filter(value => value !== "");
                 
-            if (selectedEvals.length === 0) {{
+            if (selectedEvals.length === 0) {
                 currentDatasets = JSON.parse(JSON.stringify(allDatasets));
-            }} else {{
+            } else {
                 currentDatasets = allDatasets.filter(dataset => selectedEvals.includes(dataset.label));
-            }}
+            }
             
             // Reapply colors
-            currentDatasets.forEach((dataset, index) => {{
+            currentDatasets.forEach((dataset, index) => {
                 dataset.backgroundColor = backgroundColors[index % backgroundColors.length];
                 dataset.borderColor = borderColors[index % borderColors.length];
-            }});
+            });
             
             updateChart();
-        }}
+        }
         
         // Reset all filters
-        function resetFilters() {{
+        function resetFilters() {
             const modelFilter = document.getElementById('modelFilter');
             const evalFilter = document.getElementById('evalFilter');
             
@@ -271,30 +271,30 @@
             currentDatasets = JSON.parse(JSON.stringify(allDatasets));
             
             // Reapply colors
-            currentDatasets.forEach((dataset, index) => {{
+            currentDatasets.forEach((dataset, index) => {
                 dataset.backgroundColor = backgroundColors[index % backgroundColors.length];
                 dataset.borderColor = borderColors[index % borderColors.length];
-            }});
+            });
             
             updateChart();
-        }}
+        }
         
         // Update chart with current data
-        function updateChart() {{
+        function updateChart() {
             chart.data.labels = currentLabels;
             chart.data.datasets = currentDatasets;
             chart.update();
-        }}
+        }
         
         // Initialize
-        document.addEventListener('DOMContentLoaded', function() {{
+        document.addEventListener('DOMContentLoaded', function() {
             populateFilters();
             
             // Add event listeners
             document.getElementById('applyModelFilter').addEventListener('click', applyModelFilter);
             document.getElementById('applyEvalFilter').addEventListener('click', applyEvalFilter);
             document.getElementById('resetFilters').addEventListener('click', resetFilters);
-        }});
+        });
     </script>
 </body>
 </html>

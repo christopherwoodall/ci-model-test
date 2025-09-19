@@ -133,6 +133,6 @@ def build_charts(config):
         return
 
     # Generate the HTML chart
-    generate_chart_html(labels, datasets)
+    generate_chart_html(labels, datasets, reports_path)
 
     print("Chart generation completed successfully!")

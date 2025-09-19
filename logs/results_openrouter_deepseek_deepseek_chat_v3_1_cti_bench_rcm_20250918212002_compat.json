@@ -14,7 +14,7 @@
             "sandbox_cleanup": true,
             "score_display": true
         },
-        "created": "2025-09-18T13:12:30-05:00",
+        "created": "2025-09-18T21:20:07-05:00",
         "dataset": {
             "location": "AI4Sec/cti-bench",
             "name": "AI4Sec/cti-bench",
@@ -1023,8 +1023,8 @@
             "samples": 1000,
             "shuffled": false
         },
-        "eval_id": "BwgCF9bGFEVXoPQ8Py4xpJ",
-        "model": "openrouter/qwen/qwen3-235b-a22b",
+        "eval_id": "Sova8jRjExXgGmspWTTbJY",
+        "model": "openrouter/deepseek/deepseek-chat-v3.1",
         "model_args": {},
         "model_base_url": "https://openrouter.ai/api/v1",
         "model_generate_config": {
@@ -1035,21 +1035,17 @@
             "inspect_ai": "0.3.125"
         },
         "revision": {
-            "commit": "a7b7a36",
+            "commit": "3a10749",
             "origin": "https://github.com/christopherwoodall/ci-model-test.git",
             "type": "git"
         },
-        "run_id": "fqq9mtfQXMm5L2evJUDzfm",
+        "run_id": "cwj8Df4qFSu7cTCJUK8gKD",
         "scorers": [
             {
                 "metadata": {},
                 "metrics": [
                     {
-                        "name": "openbench/mean_absolute_deviation",
-                        "options": {}
-                    },
-                    {
-                        "name": "openbench/accuracy_within_threshold",
+                        "name": "inspect_ai/accuracy",
                         "options": {}
                     },
                     {
@@ -1057,17 +1053,17 @@
                         "options": {}
                     }
                 ],
-                "name": "cti_bench_vsp_scorer",
+                "name": "cti_bench_rcm_scorer",
                 "options": {}
             }
         ],
-        "task": "cti_bench_vsp",
+        "task": "cti_bench_rcm",
         "task_args": {},
         "task_args_passed": {},
         "task_attribs": {},
-        "task_display_name": "cti_bench_vsp",
-        "task_id": "GQJR68r7rKhYqjnSgWyL6D",
-        "task_registry_name": "openbench/cti_bench_vsp",
+        "task_display_name": "cti_bench_rcm",
+        "task_id": "B2W7LFx2uq5uJpT935Y7Lz",
+        "task_registry_name": "openbench/cti_bench_rcm",
         "task_version": 0
     },
     "plan": {
@@ -1085,11 +1081,44 @@
             }
         ]
     },
-    "stats": {
-        "completed_at": "",
-        "model_usage": {},
-        "started_at": ""
+    "results": {
+        "completed_samples": 1000,
+        "scores": [
+            {
+                "metrics": {
+                    "accuracy": {
+                        "name": "accuracy",
+                        "params": {},
+                        "value": 0.74
+                    },
+                    "stderr": {
+                        "name": "stderr",
+                        "params": {},
+                        "value": 0.01387777332977422
+                    }
+                },
+                "name": "cti_bench_rcm_scorer",
+                "params": {},
+                "scored_samples": 1000,
+                "scorer": "cti_bench_rcm_scorer",
+                "unscored_samples": 0
+            }
+        ],
+        "total_samples": 1000
     },
-    "status": "started",
+    "stats": {
+        "completed_at": "2025-09-18T21:27:39-05:00",
+        "model_usage": {
+            "openrouter/deepseek/deepseek-chat-v3.1": {
+                "input_tokens": 130714,
+                "input_tokens_cache_read": 1402,
+                "output_tokens": 4803,
+                "reasoning_tokens": 0,
+                "total_tokens": 135517
+            }
+        },
+        "started_at": "2025-09-18T21:20:07-05:00"
+    },
+    "status": "success",
     "version": 2
 }
