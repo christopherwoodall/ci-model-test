@@ -57,6 +57,7 @@ build: ## Build the database, HTML page, and chart page
 -   benchci compat
 -	benchci build-pages
 -	benchci build-charts
+-   benchci build-spider-chart
 
 # .PHONY: build
 # build: ## Build the application
@@ -69,8 +70,7 @@ build: ## Build the database, HTML page, and chart page
 .PHONY: clean
 clean: ## Clean generated files
 -	rm -f docs/database.json
--	rm -f docs/ReportPage.js
--	rm -f docs/ReportPage.css
+-	rm -f docs/report.css
 -	@echo "Cleaned generated files"
 
 
