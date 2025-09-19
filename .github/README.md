@@ -6,6 +6,7 @@ Benchmark models using OpenRouter and [OpenBench](https://github.com/groq/openbe
 
 ![Charts](https://raw.githubusercontent.com/christopherwoodall/ci-model-test/main/.github/docs/chart.png)
 
+![Spider Chart](https://raw.githubusercontent.com/christopherwoodall/ci-model-test/main/.github/docs/spider_chart.png)
 
 ## Installation
 1. Follow the [`openbench`](https://github.com/groq/openbench) installation instructions.
