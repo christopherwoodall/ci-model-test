@@ -32,9 +32,6 @@ __all__ = [
     "pages",
         "build_pages",
 
-    "server",
-        "start_server",
-
     "reports",
         "spider",
             "build_spider_chart",
